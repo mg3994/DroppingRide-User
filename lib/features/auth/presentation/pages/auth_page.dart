@@ -89,8 +89,9 @@ class AuthPage extends StatelessWidget {
                       : TextDirection.ltr,
                   child: Scaffold(
                     // resizeToAvoidBottomInset: true,
-                    body: AuthBodyWidget(cont:context),
-                    bottomSheet: AuthBottomSheetWidget(
+                    body: AuthBodyWidget(cont:context
+                    // bottomSheet: 
+                    ,children: [AuthBottomSheetWidget(
                         formKey: context.read<AuthBloc>().formKey,
                         emailOrMobile:
                             context.read<AuthBloc>().emailOrMobileController,
@@ -129,7 +130,7 @@ class AuthPage extends StatelessWidget {
                         },
                         isShowLoader: context.read<AuthBloc>().isLoading,
                         dialCode: context.read<AuthBloc>().dialCode,
-                        flagImage: context.read<AuthBloc>().flagImage),
+                        flagImage: context.read<AuthBloc>().flagImage)],),
                   ),
                 ),
               ),
@@ -223,7 +224,7 @@ class AuthPage extends StatelessWidget {
                               .toString())) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 3),
+                              horizontal: 4, vertical: 3),
                           child: InkWell(
                             onTap: () {
                               set(() {

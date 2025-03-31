@@ -136,7 +136,7 @@ class AppThemes {
           fontWeight: FontWeight.w400,
           fontSize: 10,
           fontFamily: fontFamily,
-          color: AppColors.black,
+          color: AppColors.labelSmall,
         ),
       )),
       inputDecorationTheme: InputDecorationTheme(
@@ -297,7 +297,7 @@ class AppThemes {
           fontWeight: FontWeight.w400,
           fontSize: 10,
           fontFamily: fontFamily,
-          color: AppColors.white,
+          color: AppColors.labelSmall,
         ),
       )),
       inputDecorationTheme: InputDecorationTheme(

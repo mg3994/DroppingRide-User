@@ -69,7 +69,7 @@ class _LoaderPageState extends State<LoaderPage> {
             return PopScope(
             canPop: false,
             child :Scaffold(
-              backgroundColor: Theme.of(context).primaryColor,
+              // backgroundColor: Theme.of(context).primaryColor,
               resizeToAvoidBottomInset: false,
               body: Center(
                 child: Column(

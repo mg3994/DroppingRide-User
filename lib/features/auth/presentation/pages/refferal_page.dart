@@ -1,5 +1,7 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../core/utils/custom_background.dart';
@@ -51,30 +53,46 @@ class RefferalPage extends StatelessWidget {
                   ? TextDirection.rtl
                   : TextDirection.ltr,
               child: Scaffold(
-                body: CustomBackground(
-                  child: SafeArea(
+                body:
+                  //  CustomBackground( child: 
+                 SafeArea(
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(height: size.width * 0.1),
-                          MyText(
-                              text: AppLocalizations.of(context)!.applyRefferal,
-                              textStyle: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge!
-                                  .copyWith(
-                                      color: AppColors.black,)),
-                          SizedBox(height: size.width * 0.1),
-                          CustomTextField(
-                            controller: context
-                                .read<AuthBloc>()
-                                .rReferralCodeController,
-                            filled: true,
-                            hintText:
-                                AppLocalizations.of(context)!.enterRefferalCode,
-                          ),
+                        CustomCard(
+                           child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [ MyText(
+                                text: AppLocalizations.of(context)!.applyRefferal,
+                                textStyle: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                       fontWeight: FontWeight.bold)),
+                            SizedBox(height: size.width * 0.1),
+                              DottedLine(
+                                // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
+                            SizedBox(height: size.width * 0.07),
+                            CustomTextField(
+                              controller: context
+                                  .read<AuthBloc>()
+                                  .rReferralCodeController,
+                              filled: true,
+                              hintText:
+                                  AppLocalizations.of(context)!.enterRefferalCode,
+                            ),
+                            SizedBox(height: size.width * 0.07),
+                              ]),
+                         ),
                           SizedBox(height: size.width * 0.1),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +128,7 @@ class RefferalPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                // ),
               ),
             );
           },

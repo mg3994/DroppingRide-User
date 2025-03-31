@@ -40,12 +40,14 @@ class LanguageList {
     String lang;
     String name;
     int defaultStatus;
+     String flag;
 
     LanguageList({
         required this.id,
         required this.lang,
         required this.name,
         required this.defaultStatus,
+        required this.flag,
     });
 
     factory LanguageList.fromJson(Map<String, dynamic> json) => LanguageList(
@@ -53,20 +55,24 @@ class LanguageList {
         lang: json["lang"]??'',
         name: json["name"]??'',
         defaultStatus: json["default_status"]??0,
+        flag: json["flag"]??'',
     );
 }
 
 class LocaleLanguageList {
   String lang;
   String name;
+  String flag;
 
   LocaleLanguageList({
     required this.lang,
     required this.name,
+     required this.flag,
   });
 
   factory LocaleLanguageList.fromJson(Map<String, dynamic> json) => LocaleLanguageList(
         lang: json["lang"] ?? '',
         name: json["name"] ?? '',
+         flag: json["flag"] ?? '',
       );
 }

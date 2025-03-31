@@ -25,13 +25,18 @@ class AppConstants {
   static const String privacyPolicy = 'https://webapp.droppingride.com/privacy';
   static const String termsCondition = 'https://webapp.droppingride.com/terms';
 
+  // static List<LocaleLanguageList> languageList = [
+  //   LocaleLanguageList(name: 'English', lang: 'en'),
+  //   LocaleLanguageList(name: 'Arabic', lang: 'ar'),
+  //   LocaleLanguageList(name: 'French', lang: 'fr'),
+  //   LocaleLanguageList(name: 'Spanish', lang: 'es'),
+  // ];
   static List<LocaleLanguageList> languageList = [
-    LocaleLanguageList(name: 'English', lang: 'en'),
-    LocaleLanguageList(name: 'Arabic', lang: 'ar'),
-    LocaleLanguageList(name: 'French', lang: 'fr'),
-    LocaleLanguageList(name: 'Spanish', lang: 'es'),
+    LocaleLanguageList(name: 'English', lang: 'en',flag: '${baseUrl}image/country/flags/US.png'),
+    // LocaleLanguageList(name: 'Arabic', lang: 'ar'),
+    LocaleLanguageList(name: 'French', lang: 'fr',flag: '${baseUrl}image/country/flags/FR.png'),
+    // LocaleLanguageList(name: 'Spanish', lang: 'es')
   ];
-
   static LatLng currentLocations = const LatLng(5.6234971, -0.1995342);
   double headerSize = 18.0;
   double subHeaderSize = 16.0;
