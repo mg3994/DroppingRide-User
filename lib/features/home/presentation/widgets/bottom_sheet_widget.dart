@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,8 +33,8 @@ class BottomSheetWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30)),
+                    topLeft: Radius.circular(1),
+                    topRight: Radius.circular(1)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +66,7 @@ class BottomSheetWidget extends StatelessWidget {
                         return Container(
                           width: size.width,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(2),
                           ),
                           child: Padding(
                             padding: EdgeInsets.only(
@@ -84,6 +85,7 @@ class BottomSheetWidget extends StatelessWidget {
                                             null)
                                       Flexible(
                                         child: NavigationIconWidget(
+                                          color: Theme.of(context).cardColor,
                                           icon: InkWell(
                                             onTap: () {
                                               Navigator.pushNamed(context,
@@ -156,10 +158,11 @@ class BottomSheetWidget extends StatelessWidget {
                                           padding:
                                               EdgeInsets.all(size.width * 0.02),
                                           decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .scaffoldBackgroundColor,
+                                            // color: Theme.of(context)
+                                            //     .scaffoldBackgroundColor,
+                                            color: Theme.of(context).cardColor,
                                             borderRadius:
-                                                BorderRadius.circular(20),
+                                                BorderRadius.circular(2),
                                             border: Border.all(
                                               color: Theme.of(context)
                                                   .disabledColor
@@ -284,6 +287,13 @@ class BottomSheetWidget extends StatelessWidget {
                                   SizedBox(height: size.width * 0.025),
                                   BannerWidget(cont: context),
                                 ],
+                                if (context.read<HomeBloc>().isSheetAtTop) ...[
+                                    Divider(
+                                      color: Theme.of(context)
+                                          .dividerColor
+                                          .withOpacity(0.4),
+                                    ),
+                                  ],
                                 // Service Modules
                                 if (context.read<HomeBloc>().userData != null &&
                                     ((context
@@ -339,6 +349,13 @@ class BottomSheetWidget extends StatelessWidget {
                                       ],
                                     ),
                                   ),
+                                    DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
                                   SizedBox(height: size.width * 0.01),
                                   HomeOnGoingRidesWidget(cont: context),
                                 ],

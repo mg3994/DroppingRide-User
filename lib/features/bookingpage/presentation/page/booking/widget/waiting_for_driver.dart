@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/common/dropoff_icon.dart';
 import 'package:restart_tagxi/core/utils/custom_divider.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
 
@@ -103,7 +105,7 @@ class WaitingForDriverConfirmation extends StatelessWidget {
                 CustomContainer(
                   child: Padding(
                     padding:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                        const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                     child: Column(
                       children: [
                         ListView.builder(
@@ -119,14 +121,16 @@ class WaitingForDriverConfirmation extends StatelessWidget {
                                   .read<BookingBloc>()
                                   .pickUpAddressList
                                   .elementAt(index);
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Padding(
+                              return 
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //     color: Theme.of(context)
+                              //         .disabledColor
+                              //         .withOpacity(0.1),
+                              //     borderRadius: BorderRadius.circular(5),
+                              //   ),
+                              //   child:
+                                 Padding(
                                   padding: const EdgeInsets.all(5),
                                   child: Row(
                                     children: [
@@ -138,14 +142,28 @@ class WaitingForDriverConfirmation extends StatelessWidget {
                                       Expanded(
                                         child: MyText(
                                           text: address.address,
+                                          textStyle: Theme.of(context).textTheme.labelSmall?.copyWith(fontSize: 14),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              );
+                                )
+                                // ,)
+                              ;
                             }),
                         SizedBox(height: size.width * 0.01),
+                         Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
+                         ),
+                        SizedBox(height: size.width * 0.01),
+                        
                         ListView.builder(
                             itemCount: context
                                 .read<BookingBloc>()
@@ -159,35 +177,53 @@ class WaitingForDriverConfirmation extends StatelessWidget {
                                   .read<BookingBloc>()
                                   .dropAddressList
                                   .elementAt(index);
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Padding(
+                              return
+                              //  Container(
+                              //   decoration: BoxDecoration(
+                              //     color: Theme.of(context)
+                              //         .disabledColor
+                              //         .withOpacity(0.1),
+                              //     borderRadius: BorderRadius.circular(5),
+                              //   ),
+                              //   child:
+                                 Padding(
                                   padding: const EdgeInsets.all(8),
                                   child: Row(
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: size.width * 0.005),
-                                        child: Icon(Icons.place_rounded,
-                                            size: 20,
-                                            color:
-                                                Theme.of(context).primaryColorDark),
+                                        child: const DropOffIcon(),
+                                        // Icon(Icons.place_rounded,
+                                        //     size: 20,
+                                        //     color:
+                                        //         Theme.of(context).primaryColorDark),
                                       ),
                                       Expanded(
                                         child: MyText(
                                           text: address.address,
+                                           textStyle: Theme.of(context).textTheme.labelSmall?.copyWith(fontSize: 14),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              );
+                                )
+                                // ,)
+                                ;
                             }),
+                        SizedBox(height: size.width * 0.01),
+
+                             Padding(
+                               padding: const EdgeInsets.all(8.0),
+                               child: DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
+                             ),
+                        SizedBox(height: size.width * 0.01),
                       ],
                     ),
                   ),
@@ -396,6 +432,10 @@ class WaitingForDriverConfirmation extends StatelessWidget {
                     );
                   },
                   child: CustomContainer(
+                    shadowColor: AppColors.red,
+                    border: Border.all(
+                        width: 1.2,
+                        color: AppColors.red),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 6),

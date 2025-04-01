@@ -103,8 +103,11 @@ dependencies:
   drift: ^2.4.1
   drift_flutter: ^0.2.0
   dotted_line: ^3.2.3
+  # fluttertoast: ^8.2.12
+  # geolocator: ^13.0.2
 
-
+# dependency_overrides:
+#   uuid: ^4.0.0  # Override to use a compatible version with geolocator
 
 dev_dependencies:
   flutter_test:

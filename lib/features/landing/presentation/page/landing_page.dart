@@ -146,7 +146,7 @@ class _LandingPageState extends State<LandingPage> {
                                 .description,
                             textStyle: Theme.of(context).textTheme.labelSmall,
                             textAlign: TextAlign.center,
-                            maxLines: 3,
+                            maxLines: 4,
                           ),
                         ],
                       );
@@ -163,7 +163,7 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                 ),
               ),
-               SizedBox(height: 6,),
+               const SizedBox(height: 6,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(

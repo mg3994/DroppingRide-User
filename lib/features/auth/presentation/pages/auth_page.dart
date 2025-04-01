@@ -172,6 +172,7 @@ class AuthPage extends StatelessWidget {
                               .textTheme
                               .bodySmall!
                               .copyWith(
+                                color: Theme.of(context).primaryColorDark,
                                   fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -182,6 +183,9 @@ class AuthPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: CustomTextField(
+                    filled: true,
+                    hintText:AppLocalizations.of(context)?.searchResult,
+                    fillColor: Theme.of(context).cardColor,
                     controller: context.read<AuthBloc>().searchController,
                     borderRadius: 10,
                     onChange: (p0) => set(() {}),

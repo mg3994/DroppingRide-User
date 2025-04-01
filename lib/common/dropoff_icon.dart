@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'common.dart';
 
-class PickupIcon extends StatelessWidget {
-  const PickupIcon({super.key});
+class DropOffIcon extends StatelessWidget {
+  const DropOffIcon({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class PickupIcon extends StatelessWidget {
       width: 25,
       height: 25,
       decoration: BoxDecoration(
-          shape: BoxShape.circle, color: AppColors.green.withOpacity(0.3)),
+          shape: BoxShape.circle, color: AppColors.red.withOpacity(0.3)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -20,7 +20,7 @@ class PickupIcon extends StatelessWidget {
             width: 12,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.green,
+              color: AppColors.red,
             ),
           ),
         ],
