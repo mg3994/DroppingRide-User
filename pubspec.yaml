@@ -40,7 +40,7 @@ dependencies:
   shared_preferences: ^2.5.2
   meta: ^1.12.0  
   google_fonts: ^4.0.4
-  fluttertoast: ^8.2.2
+  # fluttertoast: ^8.2.2
   flutter_svg: ^2.0.10+1
   carousel_slider_plus: ^7.0.1
   pin_code_fields: ^8.0.1
@@ -68,7 +68,7 @@ dependencies:
   google_maps_flutter: ^2.10.1
   flutter_map: ^7.0.1
   location: ^7.0.0
-  geolocator: ^12.0.0
+  # geolocator: ^12.0.0
   latlong2: ^0.9.1
 
   # localNotificaion
@@ -103,11 +103,11 @@ dependencies:
   drift: ^2.4.1
   drift_flutter: ^0.2.0
   dotted_line: ^3.2.3
-  # fluttertoast: ^8.2.12
-  # geolocator: ^13.0.2
+  fluttertoast: ^8.2.12
+  geolocator: ^13.0.2
 
-# dependency_overrides:
-#   uuid: ^4.0.0  # Override to use a compatible version with geolocator
+dependency_overrides:
+  uuid: ^4.0.0  # Override to use a compatible version with geolocator
 
 dev_dependencies:
   flutter_test:
