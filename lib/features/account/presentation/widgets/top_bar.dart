@@ -14,6 +14,7 @@ class TopBarDesign extends StatelessWidget {
   final Widget? child;
   final Function()? onTap;
   final ScrollController? controller;
+  final Icon? icon;
 
   const TopBarDesign(
       {super.key,
@@ -23,7 +24,7 @@ class TopBarDesign extends StatelessWidget {
       this.onTap,
       this.isOngoingPage,
       this.subTitleWidget,
-      this.controller});
+      this.controller, this.icon});
       
 
   @override
@@ -92,6 +93,7 @@ class TopBarDesign extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
+                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(20.0),
@@ -135,15 +137,57 @@ class TopBarDesign extends StatelessWidget {
                                   )),
                             ),
                           ),
-                          MyText(
-                            text: title,
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontSize: 20,
-                                  color: AppColors.whiteText,
+                          SizedBox(
+                            width: size.width *0.1,
+                          ),
+                          Row(
+                            
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                   boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).disabledColor,
+            // blurRadius: 0,
+            spreadRadius:1.2,
+            blurStyle: BlurStyle.solid,
+            offset: const Offset(-4, 0),
+          ),
+        ],
+                color:Theme.of(context).cardColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(4),
+                  bottomLeft: Radius.circular(4),
+                  topRight: Radius.circular(4),
+                  bottomRight: Radius.circular(4),
+                ),
+              ),
+
+                                width: size.width * 0.45,
+                                height: size.height * 0.051,
+                                // color: Colors.red,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    if(icon != null)icon!,
+                                    SizedBox(
+                                      width: size.width * 0.02,
+                                    ),  
+                                    MyText(
+                                      text: title,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(
+                                            fontSize: 20,
+                                                        color: Theme.of(context).primaryColorDark,
+
+                                          ),
+                                    ),
+                                  ],
                                 ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

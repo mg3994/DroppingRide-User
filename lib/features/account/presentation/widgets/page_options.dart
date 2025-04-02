@@ -1,7 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:restart_tagxi/common/app_constants.dart';
+import 'package:restart_tagxi/core/utils/custom_navigation_icon.dart';
 
 import '../../../../core/utils/custom_text.dart';
 
@@ -38,7 +40,7 @@ class PageOptions extends StatelessWidget {
           splashColor: Theme.of(context).disabledColor.withOpacity(0.2),
           hoverColor: Theme.of(context).disabledColor.withOpacity(0.05),
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 20),
+            padding: const EdgeInsets.only(bottom: 4, top: 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -46,6 +48,7 @@ class PageOptions extends StatelessWidget {
                   flex: 1,
                   child: Row(
                     children: [
+                       if(icon != null) ...[NavigationIconWidget(icon: icon!,),const SizedBox(width: 10,)],
                       MyText(
                         text: optionName,
                         textStyle: Theme.of(context)
@@ -53,7 +56,8 @@ class PageOptions extends StatelessWidget {
                             .bodyMedium!
                             .copyWith(
                                 color: Theme.of(context).disabledColor,
-                                fontSize: AppConstants().headerSize),
+                                 fontWeight: FontWeight.bold,
+                                fontSize: AppConstants().subHeaderSize),
                       ),
                       const SizedBox(
                         width: 10,
@@ -66,17 +70,20 @@ class PageOptions extends StatelessWidget {
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
-                  size: 15,
+                  size: 20,
                   color: Theme.of(context).disabledColor,
                 ),
               ],
             ),
           ),
         ),
-        Divider(
-          height: 1,
-          color: Theme.of(context).dividerColor.withOpacity(0.2),
-        ),
+                DottedLine( // ADDED: BY MG: Dotted line
+                         dashLength: 2,
+                          dashGapLength: 2,
+                          dashRadius: 1,
+                          lineThickness: 1,
+                          dashColor: Theme.of(context).dividerColor,
+                        ),
       ],
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/common/app_colors.dart';
+import 'package:restart_tagxi/common/app_constants.dart';
 import 'package:restart_tagxi/core/network/extensions.dart';
 import '../../../../../../common/app_arguments.dart';
 import '../../../../../../core/utils/custom_loader.dart';
@@ -82,6 +84,17 @@ class ProfileInfoPage extends StatelessWidget {
                           Navigator.pop(
                               context, context.read<AccBloc>().userData);
                         },
+                        topCenterWidget: MyText(
+                                    text: AppLocalizations.of(context)!
+                                        .personalInformation,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          color: AppColors.whiteText,
+                                          fontWeight: FontWeight.bold,
+                                            fontSize: AppConstants().headerSize),
+                                  ),
                         child: SizedBox(
                           height: size.height * 0.7,
                           child: SingleChildScrollView(
@@ -92,16 +105,17 @@ class ProfileInfoPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 10),
-                                  MyText(
-                                    text: AppLocalizations.of(context)!
-                                        .personalInformation,
-                                    textStyle: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium!
-                                        .copyWith(
-                                            color:
-                                                Theme.of(context).primaryColorDark,fontSize: 20),
-                                  ),
+                                  
+                                  // MyText(
+                                  //   text: AppLocalizations.of(context)!
+                                  //       .personalInformation,
+                                  //   textStyle: Theme.of(context)
+                                  //       .textTheme
+                                  //       .titleMedium!
+                                  //       .copyWith(
+                                  //           color:
+                                  //               Theme.of(context).primaryColorDark,fontSize: 20),
+                                  // ),
                                   const SizedBox(height: 10),
                                   EditOptions(
                                     text:

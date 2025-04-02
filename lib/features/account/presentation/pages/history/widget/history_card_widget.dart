@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../common/common.dart';
 import '../../../../../../common/pickup_icon.dart';
@@ -23,16 +24,17 @@ class HistoryCardWidget extends StatelessWidget {
       value: cont.read<AccBloc>(),
       child: BlocBuilder<AccBloc, AccState>(
         builder: (context, state) {
-          return Container(
+          return CustomCard(
+            borderRadius: 6,
             margin: EdgeInsets.only(bottom: size.width * 0.02),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary.withOpacity(0.15),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                width: size.width * 0.001,
-                color: Theme.of(context).disabledColor,
-              ),
-            ),
+            // decoration: BoxDecoration(
+            //   color: Theme.of(context).colorScheme.secondary.withOpacity(0.15),
+            //   borderRadius: BorderRadius.circular(10),
+            //   border: Border.all(
+            //     width: size.width * 0.001,
+            //     color: Theme.of(context).disabledColor,
+            //   ),
+            // ),
             child: Column(
               children: [
                 Padding(
