@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restart_tagxi/core/utils/custom_card.dart';
@@ -37,56 +38,31 @@ class HistoryCardWidget extends StatelessWidget {
             // ),
             child: Column(
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const PickupIcon(),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: MyText(
-                            overflow: TextOverflow.ellipsis,
-                            text: history.pickAddress,
-                            textStyle: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ),
-                      ),
-                      MyText(
-                        text: history.cvTripStartTime,
-                        textStyle:
-                            Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: Theme.of(context).disabledColor,
-                                ),
-                      ),
-                    ],
+                Container(
+                   decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(4)),
                   ),
-                ),
-                if (!history.isRental && history.dropAddress.isNotEmpty)
+                  child: Column(children:[
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const DropIcon(),
+                        const PickupIcon(),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 5),
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: MyText(
                               overflow: TextOverflow.ellipsis,
-                              text: (history.requestStops != null &&
-                                      history.requestStops!.data.isNotEmpty)
-                                  ? history.requestStops!.data.last.address
-                                  : history.dropAddress,
+                              text: history.pickAddress,
                               textStyle: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),
                         ),
                         MyText(
-                          text: history.cvCompletedAt,
+                          text: history.cvTripStartTime,
                           textStyle:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
                                     color: Theme.of(context).disabledColor,
@@ -95,15 +71,55 @@ class HistoryCardWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                  if (!history.isRental && history.dropAddress.isNotEmpty)
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const DropIcon(),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: MyText(
+                                overflow: TextOverflow.ellipsis,
+                                text: (history.requestStops != null &&
+                                        history.requestStops!.data.isNotEmpty)
+                                    ? history.requestStops!.data.last.address
+                                    : history.dropAddress,
+                                textStyle: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ),
+                          ),
+                          MyText(
+                            text: history.cvCompletedAt,
+                            textStyle:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Theme.of(context).disabledColor,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ),
+                                ]),
+                ),
                 SizedBox(height: size.width * 0.03),
+                 DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
                 Container(
                   padding: EdgeInsets.all(size.width * 0.025),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10)),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: Theme.of(context).scaffoldBackgroundColor,
+                  //   borderRadius: const BorderRadius.only(
+                  //       bottomLeft: Radius.circular(10),
+                  //       bottomRight: Radius.circular(10)),
+                  // ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,7 +170,7 @@ class HistoryCardWidget extends StatelessWidget {
                                       text: history.vehicleTypeName,
                                       textStyle: Theme.of(context)
                                           .textTheme
-                                          .labelMedium,
+                                          .labelMedium?.copyWith(fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
@@ -194,8 +210,9 @@ class HistoryCardWidget extends StatelessWidget {
                                       height: 50,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor),
+                                          // color: Theme.of(context)
+                                          //     .scaffoldBackgroundColor
+                                              ),
                                       child: CachedNetworkImage(
                                         imageUrl: history.vehicleTypeImage,
                                         fit: BoxFit.fill,
@@ -240,7 +257,7 @@ class HistoryCardWidget extends StatelessWidget {
                                           text: history.vehicleTypeName,
                                           textStyle: Theme.of(context)
                                               .textTheme
-                                              .labelMedium,
+                                              .labelMedium?.copyWith(fontWeight:FontWeight.bold),
                                         ),
                                       ],
                                     ),
@@ -250,41 +267,79 @@ class HistoryCardWidget extends StatelessWidget {
                             ),
                       (history.isOutStation != 1)
                           ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                            spacing: 4,
+                              // crossAxisAlignment: CrossAxisAlignment,
                               children: [
-                                MyText(
-                                  text: history.isCompleted == 1
-                                      ? AppLocalizations.of(context)!.completed
-                                      : history.isCancelled == 1
-                                          ? AppLocalizations.of(context)!
-                                              .cancelled
-                                          : history.isLater == true
-                                              ? (history.isRental == false)
-                                                  ? AppLocalizations.of(
-                                                          context)!
-                                                      .upcoming
-                                                  : 'Rental ${history.rentalPackageName.toString()}'
-                                              : '',
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .labelMedium!
-                                      .copyWith(
-                                        color: history.isCompleted == 1
-                                            ? AppColors.green
-                                            : history.isCancelled == 1
-                                                ? AppColors.red
-                                                : history.isLater == true
-                                                    ? AppColors.secondaryDark
-                                                    : Theme.of(context)
-                                                        .primaryColor,
-                                      ),
+                                Container(
+                                  width: size.width * 0.24,
+                                  height: size.width * 0.08,
+                                   decoration: BoxDecoration(
+                                   boxShadow: [
+          BoxShadow(
+           color: history.isCompleted == 1
+                                              ? AppColors.green
+                                              : history.isCancelled == 1
+                                                  ? AppColors.red
+                                                  : history.isLater == true
+                                                      ? AppColors.secondaryDark
+                                                      : Theme.of(context)
+                                                          .primaryColor,
+            // blurRadius: 0,
+            spreadRadius:1.2,
+            blurStyle: BlurStyle.solid,
+            offset: const Offset(-2, 0),
+          ),
+        ],
+                 color: history.isCompleted == 1
+        ? Color.lerp(Colors.white, AppColors.green, 0.2) // Light green splash
+        : history.isCancelled == 1
+            ? Color.lerp(Colors.white, AppColors.red, 0.2) // Light red splash
+            : history.isLater == true
+                ? Color.lerp(Colors.white, AppColors.secondaryDark, 0.2) // Light secondary color
+                : Color.lerp(Colors.white, Theme.of(context).primaryColor, 0.2), // Light primary color
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(4),
+                  bottomLeft: Radius.circular(4),
+                  topRight: Radius.circular(4),
+                  bottomRight: Radius.circular(4),
+                ),
+              ),
+                                  child: Center(
+                                    child: MyText(
+                                      text: history.isCompleted == 1
+                                          ? AppLocalizations.of(context)!.completed
+                                          : history.isCancelled == 1
+                                              ? AppLocalizations.of(context)!
+                                                  .cancelled
+                                              : history.isLater == true
+                                                  ? (history.isRental == false)
+                                                      ? AppLocalizations.of(
+                                                              context)!
+                                                          .upcoming
+                                                      : 'Rental ${history.rentalPackageName.toString()}'
+                                                  : '',
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium!
+                                          .copyWith(
+                                            color: history.isCompleted == 1
+                                                ? AppColors.green
+                                                : history.isCancelled == 1
+                                                    ? AppColors.red
+                                                    : history.isLater == true
+                                                        ? AppColors.secondaryDark
+                                                        : Theme.of(context)
+                                                            .primaryColor,
+                                          ),
+                                    ),
+                                  ),
                                 ),
                                 MyText(
                                     text: (history.isBidRide == 1)
                                         ? '${history.requestedCurrencySymbol} ${history.acceptedRideFare}'
                                         : (history.isCompleted == 1)
                                             ? '${history.requestBill.data.requestedCurrencySymbol} ${history.requestBill.data.totalAmount}'
-                                            : '${history.requestedCurrencySymbol} ${history.requestEtaAmount}'),
+                                            : '${history.requestedCurrencySymbol} ${history.requestEtaAmount}',textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),),
                               ],
                             )
                           : Column(
@@ -332,6 +387,7 @@ class HistoryCardWidget extends StatelessWidget {
                                           .copyWith(
                                             color: Theme.of(context)
                                                 .primaryColorDark,
+                                              // fontWeight: FontWeight.bold
                                           ),
                                     ),
                                     SizedBox(
@@ -351,6 +407,8 @@ class HistoryCardWidget extends StatelessWidget {
                                           .copyWith(
                                             color: Theme.of(context)
                                                 .primaryColorDark,
+                                              fontWeight: FontWeight.bold
+                                                // fontWeight: FontWeight.bold
                                           ),
                                     ),
                                   ],

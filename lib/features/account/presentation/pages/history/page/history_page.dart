@@ -43,7 +43,7 @@ class HistoryPage extends StatelessWidget {
                   ? TextDirection.rtl
                   : TextDirection.ltr,
               child: TopBarDesign(
-                icon: const Icon(Icons.dashboard_rounded), //TODO: Change
+                icon: const Icon(Icons.table_rows_outlined), //TODO: Change
                   isHistoryPage: true,
                   controller: context.read<AccBloc>().scrollController,
                   title: AppLocalizations.of(context)!.history,
