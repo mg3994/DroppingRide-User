@@ -36,7 +36,7 @@ class BookingPage extends StatefulWidget {
 
 class _BookingPageState extends State<BookingPage>
     with
-    //  TickerProviderStateMixin,  // Commented: by MG: Uncomment this Please
+     TickerProviderStateMixin,  // Commented: by MG: Uncomment this Please
      WidgetsBindingObserver {
 
 
