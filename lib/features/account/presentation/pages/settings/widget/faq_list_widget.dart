@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +37,8 @@ class FaqDataListWidget extends StatelessWidget {
                       width: size.width,
                       margin: const EdgeInsets.only(right: 10, bottom: 10),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(4),
+                          color: Theme.of(context).cardColor,
                           border: Border.all(
                               width: 0.5,
                               color: Theme.of(context).disabledColor)),
@@ -85,6 +87,13 @@ class FaqDataListWidget extends StatelessWidget {
                                             SizedBox(
                                               height: size.width * 0.025,
                                             ),
+                                              DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                             SizedBox(
                                               width: size.width * 0.8,
                                               child: MyText(

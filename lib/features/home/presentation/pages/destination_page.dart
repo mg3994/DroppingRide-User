@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:restart_tagxi/common/pickup_icon.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 import 'package:restart_tagxi/core/utils/custom_divider.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
 
@@ -1412,107 +1413,112 @@ class _DestinationPageState extends State<DestinationPage> {
           bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SizedBox(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MyText(
-                text: AppLocalizations.of(context)!.searchPlaces,
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Theme.of(context).disabledColor,
-                    fontWeight: FontWeight.bold),
-                maxLines: 1,
-              ),
-              SizedBox(height: size.width * 0.02),
-              ListView.separated(
-                itemCount: context.read<HomeBloc>().recentSearchPlaces.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                itemBuilder: (_, index) {
-                  final recentPlace = context
-                      .read<HomeBloc>()
-                      .recentSearchPlaces
-                      .elementAt(index);
-                  return InkWell(
-                    onTap: () {
-                      context.read<HomeBloc>().add(
-                            RecentSearchPlaceSelectEvent(
-                                transportType: widget.arg.transportType,
-                                address: recentPlace,
-                                isPickupSelect:
-                                    context.read<HomeBloc>().isPickupSelect),
-                          );
-                    },
-                    child: SizedBox(
-                      height: size.width * 0.14,
-                      child: Row(
-                        children: [
-                          Container(
-                            height: size.height * 0.075,
-                            width: size.width * 0.075,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .disabledColor
-                                  .withOpacity(0.1),
-                              shape: BoxShape.circle,
+          child: CustomCard(
+           
+            padding: EdgeInsets.all(8),
+            blurRadius: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyText(
+                  text: AppLocalizations.of(context)!.searchPlaces,
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      // color: Theme.of(context).disabledColor,
+                      fontWeight: FontWeight.bold),
+                  maxLines: 1,
+                ),
+                SizedBox(height: size.width * 0.02),
+                ListView.separated(
+                  itemCount: context.read<HomeBloc>().recentSearchPlaces.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (_, index) {
+                    final recentPlace = context
+                        .read<HomeBloc>()
+                        .recentSearchPlaces
+                        .elementAt(index);
+                    return InkWell(
+                      onTap: () {
+                        context.read<HomeBloc>().add(
+                              RecentSearchPlaceSelectEvent(
+                                  transportType: widget.arg.transportType,
+                                  address: recentPlace,
+                                  isPickupSelect:
+                                      context.read<HomeBloc>().isPickupSelect),
+                            );
+                      },
+                      child: SizedBox(
+                        height: size.width * 0.14,
+                        child: Row(
+                          children: [
+                            Container(
+                              height: size.height * 0.075,
+                              width: size.width * 0.075,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context)
+                                    .disabledColor
+                                    .withOpacity(0.1),
+                                shape: BoxShape.circle,
+                              ),
+                              alignment: Alignment.center,
+                              child: Icon(
+                                Icons.location_pin,
+                                size: 20,
+                                color: Theme.of(context)
+                                    .disabledColor
+                                    .withOpacity(0.75),
+                              ),
                             ),
-                            alignment: Alignment.center,
-                            child: Icon(
-                              Icons.location_pin,
-                              size: 20,
-                              color: Theme.of(context)
-                                  .disabledColor
-                                  .withOpacity(0.75),
+                            SizedBox(width: size.width * 0.025),
+                            SizedBox(
+                              width: size.width * 0.75,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  MyText(
+                                    text: recentPlace.address.split(',')[0],
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold),
+                                    maxLines: 1,
+                                  ),
+                                  MyText(
+                                    text: recentPlace.address,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(
+                                            color:
+                                                Theme.of(context).disabledColor),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(width: size.width * 0.025),
-                          SizedBox(
-                            width: size.width * 0.75,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                MyText(
-                                  text: recentPlace.address.split(',')[0],
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold),
-                                  maxLines: 1,
-                                ),
-                                MyText(
-                                  text: recentPlace.address,
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                          color:
-                                              Theme.of(context).disabledColor),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return  DottedLine( // ADDED: BY MG: Dotted line
-                                 dashLength: 2,
-                                 dashGapLength: 2,
-                                 dashRadius: 1,
-                                 lineThickness: 1,
-                                 dashColor: Theme.of(context).dividerColor,
-                               );
-                },
-              ),
-              SizedBox(height: size.width * 0.15),
-            ],
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return  DottedLine( // ADDED: BY MG: Dotted line
+                                   dashLength: 2,
+                                   dashGapLength: 2,
+                                   dashRadius: 1,
+                                   lineThickness: 1,
+                                   dashColor: Theme.of(context).dividerColor,
+                                 );
+                  },
+                ),
+                SizedBox(height: size.width * 0.15),
+              ],
+            ),
           ),
         ),
       ),

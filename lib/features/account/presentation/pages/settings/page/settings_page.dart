@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_text.dart';
 import 'package:restart_tagxi/features/account/presentation/pages/settings/widget/settings_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../../common/common.dart';
@@ -50,6 +51,17 @@ class SettingsPage extends StatelessWidget {
                 body: TopBarDesign(
                   isHistoryPage: false,
                   title: AppLocalizations.of(context)!.settings,
+                  topCenterWidget: MyText(
+                                    text: AppLocalizations.of(context)!
+                                        .settings,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          color: AppColors.whiteText,
+                                          fontWeight: FontWeight.bold,
+                                            fontSize: AppConstants().headerSize),
+                                  ),
                   onTap: () {
                     Navigator.of(context).pop();
                   },

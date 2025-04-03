@@ -35,7 +35,9 @@ class BookingPage extends StatefulWidget {
 }
 
 class _BookingPageState extends State<BookingPage>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+    with
+    //  TickerProviderStateMixin,  // Commented: by MG: Uncomment this Please
+     WidgetsBindingObserver {
 
 
   @override
@@ -55,6 +57,15 @@ class _BookingPageState extends State<BookingPage>
       BookingBloc().etaDurationStream?.resume();
     }
   }
+//   @override
+// Future<void> close() {
+//   // Dispose any AnimationControllers or Tickers
+//   if (directionAnimationController != null) {
+//     directionAnimationController.dispose();
+//   }
+//   // Dispose other resources if necessary
+//   return super.close();
+// }
 
   @override
   void dispose() {
@@ -67,8 +78,13 @@ class _BookingPageState extends State<BookingPage>
       BookingBloc().etaDurationStream = null;
     }
     if (BookingBloc().driverDataStream != null) BookingBloc().driverDataStream?.cancel();
+    // Dispose any Tickers or AnimationControllers in the BookingBloc
+  BookingBloc().close();
+
     BookingBloc().add(BookingNavigatorPopEvent());
+    
     WidgetsBinding.instance.removeObserver(this);
+    // Dispose ticker provider
     super.dispose();
   }
 

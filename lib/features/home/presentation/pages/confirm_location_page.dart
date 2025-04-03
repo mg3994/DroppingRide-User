@@ -1,10 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_map/flutter_map.dart' as fm;
 import 'package:latlong2/latlong.dart' as fmlt;
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
 import '../../../../common/common.dart';
 import '../../../../core/utils/custom_button.dart';
@@ -331,6 +333,9 @@ class _ConfirmLocationPageState extends State<ConfirmLocationPage>
             Row(
               children: [
                 NavigationIconWidget(
+                  height: 30,
+                  width: 30,
+                  color: Theme.of(context).cardColor,
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -342,26 +347,32 @@ class _ConfirmLocationPageState extends State<ConfirmLocationPage>
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 4,
-                              spreadRadius: 3,
-                              color: Theme.of(context).shadowColor)
-                        ]),
+                        // color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.circular(2),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //       blurRadius: 4,
+                        //       spreadRadius: 3,
+                        //       color: Theme.of(context).shadowColor)
+                        // ]
+                        ),
                     child: CustomTextField(
+                      borderRadius:2,
                       controller: context.read<HomeBloc>().searchController,
                       filled: true,
+                      fillColor: Theme.of(context).cardColor,
                       focusNode: context.read<HomeBloc>().searchFocus,
                       // focusNode: FocusNode(skipTraversal: true, canRequestFocus:false),
                       prefixConstraints:
-                          BoxConstraints(maxWidth: size.width * 0.1),
+                          BoxConstraints(maxWidth: size.width * 0.2),
                       prefixIcon: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Icon(
-                          Icons.search_rounded,
-                          color: Theme.of(context).primaryColorDark,
+                        padding: const EdgeInsets.only(left: 10, right: 10,top: 5, bottom: 5),
+                        child: NavigationIconWidget(
+                          color: Theme.of(context).disabledColor.withAlpha(100),
+                          icon: Icon(
+                            Icons.search_rounded,
+                            color: Theme.of(context).primaryColorDark,
+                          ),
                         ),
                       ),
                       suffixConstraints:
@@ -496,7 +507,13 @@ class _ConfirmLocationPageState extends State<ConfirmLocationPage>
                   );
                 },
                 separatorBuilder: (context, index) {
-                  return Divider(color: Theme.of(context).dividerColor);
+                  return DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              );
                 },
               ),
           ],
@@ -524,36 +541,48 @@ class _ConfirmLocationPageState extends State<ConfirmLocationPage>
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: size.width * 0.01),
-            MyText(
-                maxLines: 3,
-                textStyle: Theme.of(context).textTheme.bodyLarge,
-                text: context.read<HomeBloc>().currentLocation),
-            SizedBox(height: size.width * 0.05),
-            CustomButton(
-              buttonName: widget.arg.isPickupEdit
-                  ? '${AppLocalizations.of(context)!.confirm} ${AppLocalizations.of(context)!.pickupLocation}'
-                  : AppLocalizations.of(context)!.confirmLocation,
-              width: size.width,
-              textSize:
-                  context.read<HomeBloc>().languageCode == 'fr' ? 14 : null,
-              onTap: () {
-                context.read<HomeBloc>().add(ConfirmAddressEvent(
-                      isDelivery:
-                          widget.arg.transportType.toString().toLowerCase() ==
-                                  'delivery'
-                              ? true
-                              : false,
-                      isEditAddress: widget.arg.isEditAddress,
-                      isPickUpEdit: widget.arg.isPickupEdit,
-                    ));
-              },
-            ),
-            SizedBox(height: size.width * 0.05),
-          ],
+        child: CustomCard(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(height: size.width * 0.01),
+              MyText(
+                  maxLines: 3,
+                  textStyle: Theme.of(context).textTheme.bodyLarge,
+                  text: context.read<HomeBloc>().currentLocation),
+              SizedBox(height: size.width * 0.025),
+              DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
+              SizedBox(height: size.width * 0.05),
+          
+              CustomButton(
+                borderRadius: 4,
+                buttonName: widget.arg.isPickupEdit
+                    ? '${AppLocalizations.of(context)!.confirm} ${AppLocalizations.of(context)!.pickupLocation}'
+                    : AppLocalizations.of(context)!.confirmLocation,
+                width: size.width,
+                textSize:
+                    context.read<HomeBloc>().languageCode == 'fr' ? 14 : null,
+                onTap: () {
+                  context.read<HomeBloc>().add(ConfirmAddressEvent(
+                        isDelivery:
+                            widget.arg.transportType.toString().toLowerCase() ==
+                                    'delivery'
+                                ? true
+                                : false,
+                        isEditAddress: widget.arg.isEditAddress,
+                        isPickUpEdit: widget.arg.isPickupEdit,
+                      ));
+                },
+              ),
+              SizedBox(height: size.width * 0.05),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,8 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/common/app_colors.dart';
+import 'package:restart_tagxi/common/app_constants.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
 import '../../../../../../common/app_arguments.dart';
 import '../../../../../../common/app_images.dart';
@@ -34,6 +37,17 @@ class ComplaintListPage extends StatelessWidget {
             child: Scaffold(
               body: TopBarDesign(
                 isHistoryPage: false,
+                topCenterWidget: MyText(
+                                    text: AppLocalizations.of(context)!
+                                    .makeComplaint,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          color: AppColors.whiteText,
+                                          fontWeight: FontWeight.bold,
+                                            fontSize: AppConstants().headerSize),
+                                  ),
                 title: AppLocalizations.of(context)!.makeComplaint,
                 onTap: () {
                   Navigator.of(context).pop();
@@ -55,6 +69,13 @@ class ComplaintListPage extends StatelessWidget {
                                     .copyWith(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18)),
+                                         DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
                             SizedBox(height: size.width * 0.05),
                             (state is MakeComplaintSuccess)
                                 ? (state.complaintList != null &&
@@ -101,8 +122,7 @@ class ComplaintListPage extends StatelessWidget {
                                                             BorderRadius
                                                                 .circular(3),
                                                         color: Theme.of(context)
-                                                            .disabledColor
-                                                            .withOpacity(0.07),
+                                                            .cardColor,
                                                       ),
                                                       child: Padding(
                                                         padding:

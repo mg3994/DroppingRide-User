@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,10 +37,27 @@ class AddMoneyWalletWidget extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
+              Row(
+                children: [
+                  MyText(
+                              text: AppLocalizations.of(context)?.addMoney ??  "_",textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold), ),
+                ],
+              ),
+                    const SizedBox(height: 4,),
+                    DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
+                    const SizedBox(height: 10,),
+
+
               Container(
                 height: size.width * 0.128,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(4),
                   border: Border.all(
                       width: 1.2, color: Theme.of(context).disabledColor),
                 ),
@@ -59,8 +77,8 @@ class AddMoneyWalletWidget extends StatelessWidget {
                       child: MyText(
                           text: context
                               .read<AccBloc>()
-                              .walletResponse!
-                              .currencySymbol),
+                              .walletResponse
+                              ?.currencySymbol ??  "_" ),
                     ),
                     SizedBox(
                       width: size.width * 0.05,
@@ -111,8 +129,8 @@ class AddMoneyWalletWidget extends StatelessWidget {
                           border: Border.all(
                               color: Theme.of(context).disabledColor,
                               width: 1.2),
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(6)),
+                          color: Theme.of(context).dividerColor.withAlpha(100),
+                          borderRadius: BorderRadius.circular(4)),
                       alignment: Alignment.center,
                       child: MyText(
                           text:
@@ -132,11 +150,12 @@ class AddMoneyWalletWidget extends StatelessWidget {
                       height: size.width * 0.11,
                       width: size.width * 0.17,
                       decoration: BoxDecoration(
+                        // color:Theme.of(context).canvasColor,
                           border: Border.all(
                               color: Theme.of(context).disabledColor,
                               width: 1.2),
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(6)),
+                          color: Theme.of(context).dividerColor.withAlpha(100),
+                          borderRadius: BorderRadius.circular(4)),
                       alignment: Alignment.center,
                       child: MyText(
                           text:
@@ -159,8 +178,8 @@ class AddMoneyWalletWidget extends StatelessWidget {
                           border: Border.all(
                               color: Theme.of(context).disabledColor,
                               width: 1.2),
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(6)),
+                         color: Theme.of(context).dividerColor.withAlpha(100),
+                          borderRadius: BorderRadius.circular(4)),
                       alignment: Alignment.center,
                       child: MyText(
                           text:
@@ -169,7 +188,17 @@ class AddMoneyWalletWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: size.width * 0.05),
+              SizedBox(height: size.width * 0.025),
+
+                    DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                lineLength: size.width * 0.7,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
+              SizedBox(height: size.width * 0.025),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -188,7 +217,7 @@ class AddMoneyWalletWidget extends StatelessWidget {
                                   : AppColors.white,
                               width: 1.2),
                           color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(6)),
+                          borderRadius: BorderRadius.circular(4)),
                       alignment: Alignment.center,
                       child: MyText(
                         text: AppLocalizations.of(context)!.cancel,
@@ -219,7 +248,7 @@ class AddMoneyWalletWidget extends StatelessWidget {
                       width: size.width * 0.425,
                       decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(6)),
+                          borderRadius: BorderRadius.circular(4)),
                       alignment: Alignment.center,
                       child: MyText(
                         text: AppLocalizations.of(context)!.addMoney,

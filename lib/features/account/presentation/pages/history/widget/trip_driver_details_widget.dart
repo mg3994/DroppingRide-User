@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -78,7 +79,16 @@ class TripDriverDetailsWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                SizedBox(height: size.height * 0.01),
+                SizedBox(height: size.height * 0.005),
+
+                        DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
+                SizedBox(height: size.height * 0.005),
                 Container(
                   padding: const EdgeInsets.all(6),
                   color: Theme.of(context).scaffoldBackgroundColor,

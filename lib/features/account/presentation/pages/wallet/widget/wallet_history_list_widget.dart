@@ -1,5 +1,7 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 import 'package:restart_tagxi/features/account/application/acc_bloc.dart';
 
 import '../../../../../../common/common.dart';
@@ -31,25 +33,27 @@ class WalletHistoryListWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      Container(
-                        width: size.width,
-                        height: size.width * 0.175,
+                      CustomCard(
+                        blurRadius: 4,
+                        // width: size.width,
+                        // height: size.width * 0.175,
                         margin: EdgeInsets.only(bottom: size.width * 0.030),
                         padding: EdgeInsets.all(size.width * 0.025),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border:
-                              Border.all(width: 0.5, color: AppColors.darkGrey),
-                        ),
+                        // decoration: BoxDecoration(
+                        //   borderRadius: BorderRadius.circular(8),
+                        //   border:
+                        //       Border.all(width: 0.5, color: AppColors.darkGrey),
+                        // ),
                         child: Row(
                           children: [
                             Container(
-                              height: size.width * 0.15,
-                              width: size.width * 0.125,
+                              height: size.width * 0.1,
+                              width: size.width * 0.1,
                               decoration: BoxDecoration(
+                                shape: BoxShape.circle,
                                 // color: Theme.of(context).primaryColorLight,
                                 color: Theme.of(context).dividerColor,
-                                borderRadius: BorderRadius.circular(8),
+                                // borderRadius: BorderRadius.circular(8),
                               ),
                               alignment: Alignment.center,
                               child: (walletHistoryList[index].remarks ==
@@ -80,6 +84,13 @@ class WalletHistoryListWidget extends StatelessWidget {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .bodyMedium),
+                                           DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
                                   MyText(
                                       text: walletHistoryList[index].createdAt,
                                       textStyle: Theme.of(context)

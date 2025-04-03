@@ -118,13 +118,14 @@ class ConfirmFavLocation extends StatelessWidget {
                                     child: Container(
                                       height: size.width * 0.7,
                                       decoration: BoxDecoration(
+                                        color: Theme.of(context).cardColor,
                                           border: Border.all(
                                               width: 1.2,
                                               color: Theme.of(context)
                                                   .disabledColor
                                                   .withOpacity(0.5)),
                                           borderRadius:
-                                              BorderRadius.circular(20)),
+                                              BorderRadius.circular(4)),
                                       alignment: Alignment.topCenter,
                                       child: Column(
                                         children: [
@@ -132,7 +133,7 @@ class ConfirmFavLocation extends StatelessWidget {
                                             height: size.width * 0.4,
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(20),
+                                                    BorderRadius.circular(8),
                                                 border: Border(
                                                   bottom: BorderSide(
                                                       width: 1,
@@ -142,45 +143,48 @@ class ConfirmFavLocation extends StatelessWidget {
                                                 )),
                                             child: Stack(
                                               children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  child: GoogleMap(
-                                                      onMapCreated:
-                                                          (GoogleMapController
-                                                              controller) {
-                                                        context
-                                                                .read<AccBloc>()
-                                                                .googleMapController =
-                                                            controller;
-                                                      },
-                                                      initialCameraPosition:
-                                                          CameraPosition(
-                                                        target: LatLng(
-                                                            context
-                                                                .read<AccBloc>()
-                                                                .favNewAddress!
-                                                                .lat,
-                                                            context
-                                                                .read<AccBloc>()
-                                                                .favNewAddress!
-                                                                .lng),
-                                                        zoom: 15.0,
-                                                      ),
-                                                      onCameraMove:
-                                                          (CameraPosition
-                                                              position) async {},
-                                                      minMaxZoomPreference:
-                                                          const MinMaxZoomPreference(
-                                                              0, 20),
-                                                      scrollGesturesEnabled:
-                                                          false,
-                                                      buildingsEnabled: false,
-                                                      zoomControlsEnabled:
-                                                          false,
-                                                      myLocationEnabled: false,
-                                                      myLocationButtonEnabled:
-                                                          false),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(2.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(8),
+                                                    child: GoogleMap(
+                                                        onMapCreated:
+                                                            (GoogleMapController
+                                                                controller) {
+                                                          context
+                                                                  .read<AccBloc>()
+                                                                  .googleMapController =
+                                                              controller;
+                                                        },
+                                                        initialCameraPosition:
+                                                            CameraPosition(
+                                                          target: LatLng(
+                                                              context
+                                                                  .read<AccBloc>()
+                                                                  .favNewAddress!
+                                                                  .lat,
+                                                              context
+                                                                  .read<AccBloc>()
+                                                                  .favNewAddress!
+                                                                  .lng),
+                                                          zoom: 15.0,
+                                                        ),
+                                                        onCameraMove:
+                                                            (CameraPosition
+                                                                position) async {},
+                                                        minMaxZoomPreference:
+                                                            const MinMaxZoomPreference(
+                                                                0, 20),
+                                                        scrollGesturesEnabled:
+                                                            false,
+                                                        buildingsEnabled: false,
+                                                        zoomControlsEnabled:
+                                                            false,
+                                                        myLocationEnabled: false,
+                                                        myLocationButtonEnabled:
+                                                            false),
+                                                  ),
                                                 ),
                                                 Positioned(
                                                   child: Container(
@@ -262,6 +266,8 @@ class ConfirmFavLocation extends StatelessWidget {
                                   ),
                                   SizedBox(height: size.width * 0.05),
                                   CustomTextField(
+                                    filled: true,
+                                    fillColor: Theme.of(context).cardColor,
                                     controller: context
                                         .read<AccBloc>()
                                         .newAddressController,

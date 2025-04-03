@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,14 +67,36 @@ class LeaveInstructions extends StatelessWidget {
                     )
                   ],
                 ),
+                const SizedBox(height: 4,),
+                DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
                 Theme(
                   data: ThemeData(
+                    checkboxTheme: CheckboxThemeData(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(1),
+                      ),
+                      fillColor: MaterialStateProperty.all(
+                          Theme.of(context).cardColor),
+                      checkColor:
+                          MaterialStateProperty.all(Colors.white),
+                    ),
                     unselectedWidgetColor: Theme.of(context).primaryColorDark,
                   ),
                   child: ListTileTheme(
                     horizontalTitleGap: 0.0,
                     contentPadding: EdgeInsets.zero,
                     child: CheckboxListTile(
+                      
+                      // fillColor: WidgetStatePropertyAll(
+                      //     Theme.of(context).cardColor),
+                          // overlayColor: MaterialStateProperty.all(
+                          // Theme.of(context).cardColor),
                       value: context.read<HomeBloc>().isMyself,
                       contentPadding: EdgeInsets.zero,
                       controlAffinity: ListTileControlAffinity.leading,
@@ -98,24 +121,30 @@ class LeaveInstructions extends StatelessWidget {
                 ),
                 if (isReceiveParcel) SizedBox(height: size.width * 0.05),
                 CustomTextField(
+                  borderRadius: 2,
                   controller: context.read<HomeBloc>().receiverNameController,
                   filled: true,
+                  fillColor: Theme.of(context).cardColor,
                   hintText: AppLocalizations.of(context)!.name,
                   maxLine: 1,
                   keyboardType: TextInputType.text,
                 ),
                 SizedBox(height: size.width * 0.03),
                 CustomTextField(
+                  borderRadius: 2,
                   controller: context.read<HomeBloc>().receiverMobileController,
                   filled: true,
+                  fillColor: Theme.of(context).cardColor,
                   hintText: AppLocalizations.of(context)!.mobileNumber,
                   maxLine: 1,
                   keyboardType: TextInputType.number,
                 ),
                 SizedBox(height: size.width * 0.03),
                 CustomTextField(
+                  borderRadius: 2,
                   controller: context.read<HomeBloc>().instructionsController,
                   filled: true,
+                  fillColor: Theme.of(context).cardColor,
                   hintText:
                       '${AppLocalizations.of(context)!.instructions}(${AppLocalizations.of(context)!.optional})',
                   maxLine: 3,
@@ -123,7 +152,9 @@ class LeaveInstructions extends StatelessWidget {
                 ),
                 SizedBox(height: size.width * 0.03),
                 CustomButton(
+                  borderRadius: 4,
                   width: size.width,
+                  
                   buttonColor: Theme.of(context).primaryColor,
                   buttonName: AppLocalizations.of(context)!.confirm,
                   onTap: () {

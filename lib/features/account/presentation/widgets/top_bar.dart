@@ -15,6 +15,7 @@ class TopBarDesign extends StatelessWidget {
   final Function()? onTap;
   final ScrollController? controller;
   final Icon? icon;
+  final Widget? topCenterWidget;
 
   const TopBarDesign(
       {super.key,
@@ -24,7 +25,7 @@ class TopBarDesign extends StatelessWidget {
       this.onTap,
       this.isOngoingPage,
       this.subTitleWidget,
-      this.controller, this.icon});
+      this.controller, this.icon, this.topCenterWidget});
       
 
   @override
@@ -137,12 +138,13 @@ class TopBarDesign extends StatelessWidget {
                                   )),
                             ),
                           ),
-                          SizedBox(
+                          if (topCenterWidget == null) SizedBox(
                             width: size.width *0.1,
                           ),
                           Row(
                             
                             children: [
+                              (topCenterWidget != null) ? topCenterWidget!:
                               Container(
                                 decoration: BoxDecoration(
                                    boxShadow: [
@@ -178,6 +180,7 @@ class TopBarDesign extends StatelessWidget {
                                     MyText(
                                      overflow: TextOverflow.clip,
                                       text: title,
+                                      maxLines: 1,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleLarge!

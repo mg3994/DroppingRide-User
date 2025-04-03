@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,6 +38,21 @@ class WalletTransferMoneyWidget extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
+               Row(
+                children: [
+                  MyText(
+                              text: AppLocalizations.of(context)?.transferMoney ??  "_",textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold), ),
+                ],
+              ),
+                    const SizedBox(height: 4,),
+                    DottedLine( // ADDED: BY MG: Dotted line
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                dashRadius: 1,
+                                lineThickness: 1,
+                                dashColor: Theme.of(context).dividerColor,
+                              ),
+                    const SizedBox(height: 10,),
               DropdownButtonFormField(
                 decoration: InputDecoration(
                   filled: true,

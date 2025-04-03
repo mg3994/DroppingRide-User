@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/common/app_colors.dart';
+import 'package:restart_tagxi/common/app_constants.dart';
+import 'package:restart_tagxi/core/utils/custom_text.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
 
 import '../../../../application/acc_bloc.dart';
@@ -29,6 +32,17 @@ class FaqPage extends StatelessWidget {
               body: TopBarDesign(
                 isHistoryPage: false,
                 title: AppLocalizations.of(context)!.faq,
+                topCenterWidget: MyText(
+                                    text: AppLocalizations.of(context)!
+                                        .faq,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          color: AppColors.whiteText,
+                                          fontWeight: FontWeight.bold,
+                                            fontSize: AppConstants().headerSize),
+                                  ),
                 onTap: () {
                   Navigator.of(context).pop();
                 },

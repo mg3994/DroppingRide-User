@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../common/common.dart';
 import '../../../../../../core/utils/custom_dialoges.dart';
@@ -23,14 +24,14 @@ class NotificationCardWidget extends StatelessWidget {
       value: cont.read<AccBloc>(),
       child: BlocBuilder<AccBloc, AccState>(
         builder: (context, state) {
-          return Container(
+          return CustomCard(
             margin: EdgeInsets.only(bottom: size.width * 0.05),
             padding: EdgeInsets.all(size.width * 0.025),
-            decoration: BoxDecoration(
-                color: AppColors.darkGrey.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    width: size.width * 0.0025, color: AppColors.darkGrey)),
+            // decoration: BoxDecoration(
+            //     color: AppColors.darkGrey.withOpacity(0.15),
+            //     borderRadius: BorderRadius.circular(10),
+            //     border: Border.all(
+            //         width: size.width * 0.0025, color: AppColors.darkGrey)),
             child: Column(
               children: [
                 Row(

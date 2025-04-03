@@ -1,6 +1,8 @@
 import "package:cached_network_image/cached_network_image.dart";
+import "package:dotted_line/dotted_line.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
+import "package:restart_tagxi/core/utils/custom_card.dart";
 import "package:restart_tagxi/features/account/presentation/pages/paymentgateways.dart";
 import "package:restart_tagxi/features/bookingpage/presentation/page/review/page/review_page.dart";
 import "../../../../../../common/common.dart";
@@ -260,6 +262,13 @@ class InvoicePage extends StatelessWidget {
                                                     )
                                                   ],
                                                 ),
+                                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                                 SizedBox(
                                                     height: size.width * 0.025),
                                                 Row(
@@ -306,6 +315,13 @@ class InvoicePage extends StatelessWidget {
                                                     )
                                                   ],
                                                 ),
+                                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                                 SizedBox(
                                                     height: size.width * 0.025),
                                                 Row(
@@ -365,6 +381,13 @@ class InvoicePage extends StatelessWidget {
                                                     )
                                                   ],
                                                 ),
+                                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                               ],
                                             ),
                                           ),
@@ -411,6 +434,13 @@ class InvoicePage extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
+                                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                                 if (arg.requestData.requestStops
                                                     .data.isNotEmpty)
                                                   ListView.separated(
@@ -457,9 +487,13 @@ class InvoicePage extends StatelessWidget {
                                                     },
                                                     separatorBuilder:
                                                         (context, index) {
-                                                      return SizedBox(
-                                                          height: size.width *
-                                                              0.0025);
+                                                      return  DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                );
                                                     },
                                                   ),
                                                 if (arg.requestData.requestStops
@@ -561,105 +595,169 @@ class InvoicePage extends StatelessWidget {
                                             ),
                                             SizedBox(
                                                 height: size.width * 0.025),
-                                            Column(
-                                              children: [
-                                                if (requestBillData
-                                                        .basePrice !=
-                                                    0)
-                                                  FareBreakup(
+                                            CustomCard(
+                                              padding: EdgeInsets.all(4),
+                                              child: Column(
+                                                children: [
+                                                  if (requestBillData
+                                                          .basePrice !=
+                                                      0)
+                                                    ...[FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .basePrice,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.basePrice}'),
+                                                   DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),],
+                                                  if (requestBillData
+                                                          .distancePrice !=
+                                                      0)
+                                                   ...[ FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .distancePrice,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.distancePrice}'),
+                                                   DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),],if (requestBillData
+                                                          .timePrice !=
+                                                      0)
+                                                    ...[FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .timePrice,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.timePrice}'),
+                                                  DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),], if (requestBillData
+                                                          .waitingCharge !=
+                                                      0)
+                                                    ...[FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .waitingPrice,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.waitingCharge}'),
+                                                  DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),] ,if (requestBillData
+                                                          .adminCommision !=
+                                                      0)
+                                                    ...[FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .convenienceFee,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.adminCommision}'),
+                                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),] , if (requestBillData
+                                                          .promoDiscount !=
+                                                      0)
+                                                    ...[FareBreakup(
                                                       text: AppLocalizations.of(
                                                               context)!
-                                                          .basePrice,
+                                                          .discount,
                                                       price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.basePrice}'),
-                                                if (requestBillData
-                                                        .distancePrice !=
-                                                    0)
-                                                  FareBreakup(
+                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.promoDiscount}',
+                                                      textcolor: AppColors.green,
+                                                      pricecolor: AppColors.green,
+                                                    ), DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),],
+...[                                                  FareBreakup(
                                                       text: AppLocalizations.of(
                                                               context)!
-                                                          .distancePrice,
+                                                          .taxes,
                                                       price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.distancePrice}'),
-                                                if (requestBillData
-                                                        .timePrice !=
-                                                    0)
-                                                  FareBreakup(
-                                                      text: AppLocalizations.of(
-                                                              context)!
-                                                          .timePrice,
-                                                      price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.timePrice}'),
-                                                if (requestBillData
-                                                        .waitingCharge !=
-                                                    0)
-                                                  FareBreakup(
-                                                      text: AppLocalizations.of(
-                                                              context)!
-                                                          .waitingPrice,
-                                                      price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.waitingCharge}'),
-                                                if (requestBillData
-                                                        .adminCommision !=
-                                                    0)
-                                                  FareBreakup(
-                                                      text: AppLocalizations.of(
-                                                              context)!
-                                                          .convenienceFee,
-                                                      price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.adminCommision}'),
-                                                if (requestBillData
-                                                        .promoDiscount !=
-                                                    0)
-                                                  FareBreakup(
-                                                    text: AppLocalizations.of(
-                                                            context)!
-                                                        .discount,
-                                                    price:
-                                                        '${requestBillData.requestedCurrencySymbol} ${requestBillData.promoDiscount}',
-                                                    textcolor: AppColors.green,
-                                                    pricecolor: AppColors.green,
-                                                  ),
-                                                FareBreakup(
-                                                    text: AppLocalizations.of(
-                                                            context)!
-                                                        .taxes,
-                                                    price:
-                                                        '${requestBillData.requestedCurrencySymbol} ${requestBillData.serviceTax}'),
-                                                if (requestBillData
-                                                            .cancellationFee !=
-                                                        0.0 &&
-                                                    requestBillData
-                                                            .cancellationFee !=
-                                                        0)
-                                                  FareBreakup(
-                                                      text: AppLocalizations.of(
-                                                              context)!
-                                                          .cancellationFee,
-                                                      price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.cancellationFee}'),
-                                                if (requestBillData
-                                                            .additionalChargesAmount !=
-                                                        0 &&
-                                                    requestBillData
-                                                            .additionalChargesReason !=
-                                                        null)
-                                                  FareBreakup(
-                                                      text: '${requestBillData
-                                                            .additionalChargesReason}',
-                                                      price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.additionalChargesAmount}'),
-                                                if (requestBillData
-                                                            .driverTips !=
-                                                        '0')
-                                                  FareBreakup(
-                                                      text: AppLocalizations.of(
-                                                              context)!
-                                                          .tips,
-                                                      price:
-                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.driverTips}'),
-                                               
-                                              ],
+                                                          '${requestBillData.requestedCurrencySymbol} ${requestBillData.serviceTax}'),
+                                                   DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),],if (requestBillData
+                                                              .cancellationFee !=
+                                                          0.0 &&
+                                                      requestBillData
+                                                              .cancellationFee !=
+                                                          0)
+                                                    ...[FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .cancellationFee,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.cancellationFee}'),
+                                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),] , if (requestBillData
+                                                              .additionalChargesAmount !=
+                                                          0 &&
+                                                      requestBillData
+                                                              .additionalChargesReason !=
+                                                          null)
+                                                    ...[FareBreakup(
+                                                        text: '${requestBillData
+                                                              .additionalChargesReason}',
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.additionalChargesAmount}'),
+                                                   DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),],if (requestBillData
+                                                              .driverTips !=
+                                                          '0')
+                                                    ...[FareBreakup(
+                                                        text: AppLocalizations.of(
+                                                                context)!
+                                                            .tips,
+                                                        price:
+                                                            '${requestBillData.requestedCurrencySymbol} ${requestBillData.driverTips}'),
+                                                  DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),],
+                                                ],
+                                              ),
                                             ),
                                           ],
                                           SizedBox(height: size.width * 0.025),

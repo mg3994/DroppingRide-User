@@ -95,7 +95,7 @@ class ChatHistoryWidget extends StatelessWidget {
                                                           .id
                                                           .toString())
                                                               ? (Theme.of(context).brightness==Brightness.dark)?const Color(
-                                                                  0xffE7EDEF):AppColors.black
+                                                                  0xffE7EDEF):Theme.of(context).cardColor
                                                               : const Color(
                                                                   0xffE7EDEF)
                                         ),
@@ -113,7 +113,7 @@ class ChatHistoryWidget extends StatelessWidget {
                                                           .userData!
                                                           .id
                                                           .toString())
-                                                              ? (Theme.of(context).brightness==Brightness.dark)?AppColors.black:AppColors.white:AppColors.black
+                                                              ? (Theme.of(context).brightness==Brightness.dark)?AppColors.black:Theme.of(context).primaryColorDark:AppColors.black
                                             ),
                                     ),
                                   ),
@@ -142,8 +142,7 @@ class ChatHistoryWidget extends StatelessWidget {
                                                           .toString())
                                                               ? (Theme.of(context).brightness==Brightness.dark)?const Color(
                                                                   0xffE7EDEF):AppColors.black
-                                                              : const Color(
-                                                                  0xffE7EDEF)
+                                                              : Theme.of(context).primaryColor
                                             ),
                                     child: MyText(
                                       text: adminChatList[index].message,
@@ -158,7 +157,7 @@ class ChatHistoryWidget extends StatelessWidget {
                                                           .userData!
                                                           .id
                                                           .toString())
-                                                              ? (Theme.of(context).brightness==Brightness.dark)?AppColors.black:AppColors.white:AppColors.black
+                                                              ? (Theme.of(context).brightness==Brightness.dark)?AppColors.black:AppColors.black:AppColors.white,
                                                   ),
                                     ),
                                   ),
