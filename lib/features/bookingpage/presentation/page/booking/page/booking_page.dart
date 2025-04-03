@@ -68,6 +68,7 @@ class _BookingPageState extends State<BookingPage>
     }
     if (BookingBloc().driverDataStream != null) BookingBloc().driverDataStream?.cancel();
     BookingBloc().add(BookingNavigatorPopEvent());
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

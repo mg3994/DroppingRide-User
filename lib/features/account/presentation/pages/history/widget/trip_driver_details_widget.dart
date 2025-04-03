@@ -79,105 +79,114 @@ class TripDriverDetailsWidget extends StatelessWidget {
                     ),
                   ),
                 SizedBox(height: size.height * 0.01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const PickupIcon(),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: MyText(
-                          overflow: TextOverflow.ellipsis,
-                          text: arg.historyData.pickAddress,
-                          textStyle: Theme.of(context).textTheme.bodySmall,
-                        ),
-                      ),
-                    ),
-                    MyText(
-                      text: arg.historyData.cvTripStartTime,
-                      textStyle:
-                          Theme.of(context).textTheme.bodySmall!.copyWith(
-                                color: Theme.of(context).disabledColor,
-                              ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: size.height * 0.01),
-                if (arg.historyData.requestStops != null &&
-                    arg.historyData.requestStops!.data.isNotEmpty)
-                  Column(
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: Column(
                     children: [
-                      ListView.builder(
-                        itemCount: arg.historyData.requestStops!.data.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (context, i) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                const DropIcon(),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: MyText(
-                                      overflow: TextOverflow.ellipsis,
-                                      text: arg.historyData.requestStops!
-                                          .data[i].address,
-                                      textStyle:
-                                          Theme.of(context).textTheme.bodySmall,
-                                    ),
-                                  ),
-                                ),
-                                MyText(
-                                  text: arg.historyData.cvCompletedAt,
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        color: Theme.of(context).disabledColor,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      )
-                    ],
-                  ),
-                if (arg.historyData.dropAddress != "" &&
-                    arg.historyData.requestStops != null &&
-                    arg.historyData.requestStops!.data.isEmpty)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const DropIcon(),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 5),
-                            child: MyText(
-                              overflow: TextOverflow.ellipsis,
-                              text: arg.historyData.dropAddress,
-                              textStyle: Theme.of(context).textTheme.bodySmall,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const PickupIcon(),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 5),
+                              child: MyText(
+                                overflow: TextOverflow.ellipsis,
+                                text: arg.historyData.pickAddress,
+                                textStyle: Theme.of(context).textTheme.bodySmall,
+                              ),
                             ),
                           ),
-                        ),
-                        MyText(
-                          text: arg.historyData.cvCompletedAt,
-                          textStyle:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: Theme.of(context).disabledColor,
+                          MyText(
+                            text: arg.historyData.cvTripStartTime,
+                            textStyle:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Theme.of(context).disabledColor,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    
+                  SizedBox(height: size.height * 0.01),
+                  if (arg.historyData.requestStops != null &&
+                      arg.historyData.requestStops!.data.isNotEmpty)
+                    Column(
+                      children: [
+                        ListView.builder(
+                          itemCount: arg.historyData.requestStops!.data.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, i) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  const DropIcon(),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 5),
+                                      child: MyText(
+                                        overflow: TextOverflow.ellipsis,
+                                        text: arg.historyData.requestStops!
+                                            .data[i].address,
+                                        textStyle:
+                                            Theme.of(context).textTheme.bodySmall,
+                                      ),
+                                    ),
                                   ),
-                        ),
+                                  MyText(
+                                    text: arg.historyData.cvCompletedAt,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(
+                                          color: Theme.of(context).disabledColor,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        )
                       ],
                     ),
-                  )
-              ],
-            ),
+                  if (arg.historyData.dropAddress != "" &&
+                      arg.historyData.requestStops != null &&
+                      arg.historyData.requestStops!.data.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const DropIcon(),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: MyText(
+                                overflow: TextOverflow.ellipsis,
+                                text: arg.historyData.dropAddress,
+                                textStyle: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ),
+                          ),
+                          MyText(
+                            text: arg.historyData.cvCompletedAt,
+                            textStyle:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Theme.of(context).disabledColor,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    )
+                                ],
+                              ),
+                ),
+            ],
+                ),
           );
         },
       ),

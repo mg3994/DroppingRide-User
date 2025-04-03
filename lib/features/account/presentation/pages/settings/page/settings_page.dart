@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/features/account/presentation/pages/settings/widget/settings_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../../common/common.dart';
 import '../../../../../../core/utils/custom_dialoges.dart';
@@ -55,12 +56,13 @@ class SettingsPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
+                      spacing: 14,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
                           height: size.height * 0.03,
                         ),
-                        PageOptions(
+                        SettingsCard(
                           optionName: AppLocalizations.of(context)!.faq,
                           onTap: () {
                             Navigator.pushNamed(
@@ -69,7 +71,7 @@ class SettingsPage extends StatelessWidget {
                             );
                           },
                         ),
-                        PageOptions(
+                         SettingsCard(
                           optionName: AppLocalizations.of(context)!
                               .privacyPolicyAccounts,
                           onTap: () async {
@@ -81,7 +83,7 @@ class SettingsPage extends StatelessWidget {
                             }
                           },
                         ),
-                        PageOptions(
+                         SettingsCard(
                           optionName: AppLocalizations.of(context)!.logout,
                           onTap: () {
                             showDialog(
@@ -109,7 +111,7 @@ class SettingsPage extends StatelessWidget {
                             );
                           },
                         ),
-                        PageOptions(
+                         SettingsCard(
                           optionName:
                               AppLocalizations.of(context)!.deleteAccount,
                           onTap: () {

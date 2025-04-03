@@ -166,14 +166,17 @@ class TopBarDesign extends StatelessWidget {
                                 width: size.width * 0.45,
                                 height: size.height * 0.051,
                                 // color: Colors.red,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Wrap(
+                                  alignment:WrapAlignment.center,
+                                  runAlignment: WrapAlignment.center,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
                                   children: [
                                     if(icon != null)icon!,
                                     SizedBox(
                                       width: size.width * 0.02,
                                     ),  
                                     MyText(
+                                     overflow: TextOverflow.clip,
                                       text: title,
                                       textStyle: Theme.of(context)
                                           .textTheme

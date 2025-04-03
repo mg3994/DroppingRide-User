@@ -45,6 +45,7 @@ class _NavigationIconWidgetState extends State<NavigationIconWidget> {
       onTapCancel: () {},
       onDoubleTap: () {},
       child: Container(
+        clipBehavior: Clip.hardEdge,
         height: size.width * 0.1,
         width: size.width * 0.1,
         // height: widget.height ?? size.width * 0.1,

@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -95,51 +96,83 @@ class TripFarebreakupWidget extends StatelessWidget {
                                 children: [
                                   if (arg.historyData.requestBill.data.basePrice !=
                                       0)
-                                    FareBreakup(
+                                   ...[ FareBreakup(
                                         showBorder: false,
                                         text: AppLocalizations.of(context)!
                                             .basePrice,
                                         price:
                                             '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.basePrice}'),
+                                             DottedLine( // ADDED: BY MG: Dotted line
+                                 dashLength: 2,
+                                 dashGapLength: 2,
+                                 dashRadius: 1,
+                                 lineThickness: 1,
+                                 dashColor: Theme.of(context).dividerColor,
+                               ),],
                                   if (arg.historyData.requestBill.data
                                           .distancePrice !=
                                       0)
-                                    FareBreakup(
+                                    ...[FareBreakup(
                                         showBorder: false,
                                         text:
                                             '${AppLocalizations.of(context)!.distancePrice}(${arg.historyData.totalDistance}${arg.historyData.unit})',
                                         price:
                                             '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.distancePrice}'),
+                                                   DottedLine( // ADDED: BY MG: Dotted line
+                                 dashLength: 2,
+                                 dashGapLength: 2,
+                                 dashRadius: 1,
+                                 lineThickness: 1,
+                                 dashColor: Theme.of(context).dividerColor,
+                               ),],
                                   if (arg.historyData.requestBill.data
                                           .timePrice !=
                                       0)
-                                    FareBreakup(
+                                    ...[FareBreakup(
                                         showBorder: false,
                                         text:
                                             '${AppLocalizations.of(context)!.timePrice}(${arg.historyData.totalTime} mins x ${arg.historyData.requestBill.data.requestedCurrencySymbol}${arg.historyData.requestBill.data.pricePerTime})',
                                         price:
-                                            '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.timePrice}'),
+                                            '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.timePrice}'),       DottedLine( // ADDED: BY MG: Dotted line
+                                 dashLength: 2,
+                                 dashGapLength: 2,
+                                 dashRadius: 1,
+                                 lineThickness: 1,
+                                 dashColor: Theme.of(context).dividerColor,
+                               ),],
                                   if (arg.historyData.requestBill.data
                                           .waitingCharge !=
                                       0)
-                                    FareBreakup(
+                                 ...[   FareBreakup(
                                         showBorder: false,
                                         text: AppLocalizations.of(context)!
                                             .waitingPrice,
                                         price:
-                                            '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.waitingCharge}'),
+                                            '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.waitingCharge}'),       DottedLine( // ADDED: BY MG: Dotted line
+                                 dashLength: 2,
+                                 dashGapLength: 2,
+                                 dashRadius: 1,
+                                 lineThickness: 1,
+                                 dashColor: Theme.of(context).dividerColor,
+                               ),],
                                   if (arg.historyData.requestBill.data.adminCommision !=
                                       0)
-                                    FareBreakup(
+                                   ...[ FareBreakup(
                                         showBorder: false,
                                         text: AppLocalizations.of(context)!
                                             .convenienceFee,
                                         price:
-                                            '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.adminCommision}'),
+                                            '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.adminCommision}'),       DottedLine( // ADDED: BY MG: Dotted line
+                                 dashLength: 2,
+                                 dashGapLength: 2,
+                                 dashRadius: 1,
+                                 lineThickness: 1,
+                                 dashColor: Theme.of(context).dividerColor,
+                               ),],
                                   if (arg.historyData.requestBill.data
                                           .promoDiscount !=
                                       0)
-                                    FareBreakup(
+                                   ...[ FareBreakup(
                                       showBorder: false,
                                       text: AppLocalizations.of(context)!
                                           .discount,
@@ -148,11 +181,19 @@ class TripFarebreakupWidget extends StatelessWidget {
                                       textcolor: AppColors.green,
                                       pricecolor: AppColors.green,
                                     ),
+                                           DottedLine( // ADDED: BY MG: Dotted line
+                                 dashLength: 2,
+                                 dashGapLength: 2,
+                                 dashRadius: 1,
+                                 lineThickness: 1,
+                                 dashColor: Theme.of(context).dividerColor,
+                               ),],
                                   FareBreakup(
                                       showBorder: false,
                                       text: AppLocalizations.of(context)!.taxes,
                                       price:
                                           '${arg.historyData.requestBill.data.requestedCurrencySymbol} ${arg.historyData.requestBill.data.serviceTax}'),
+                                  
                                   if (arg.historyData.requestBill.data
                                               .cancellationFee !=
                                           0.0 &&
