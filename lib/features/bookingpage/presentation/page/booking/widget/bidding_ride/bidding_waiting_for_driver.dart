@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_container.dart';
 import 'package:restart_tagxi/features/bookingpage/presentation/page/booking/widget/custom_timer.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
 import '../../../../../../../common/common.dart';
@@ -698,8 +700,8 @@ class BiddingWaitingForDriverConfirmation extends StatelessWidget {
                             return Container(
                               width: size.width,
                               decoration: BoxDecoration(
-                                color: AppColors.darkGrey.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(5),
+                                color: Theme.of(context).cardColor,
+                                borderRadius: BorderRadius.circular(2),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(5),
@@ -804,24 +806,28 @@ class BiddingWaitingForDriverConfirmation extends StatelessWidget {
                                                           ),
                                                         ],
                                                       ),
-                                                      MyText(
-                                                        text: context
-                                                                .read<
-                                                                    BookingBloc>()
-                                                                .userData!
-                                                                .currencySymbol +
-                                                            driver['price'],
-                                                        textStyle: Theme.of(
-                                                                context)
-                                                            .textTheme
-                                                            .bodyMedium!
-                                                            .copyWith(
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColorDark,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
+                                                      CustomContainer(
+                                                        borderRadius: 2,
+
+                                                        child: MyText(
+                                                          text: context
+                                                                  .read<
+                                                                      BookingBloc>()
+                                                                  .userData!
+                                                                  .currencySymbol +
+                                                              driver['price'],
+                                                          textStyle: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .bodyMedium!
+                                                              .copyWith(
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .primaryColorDark,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -858,6 +864,7 @@ class BiddingWaitingForDriverConfirmation extends StatelessWidget {
                                                                           .maximumTimeForFindDriversForBittingRide))
                                                               : 1,
                                                         ),
+                                                        
                                                         child: Container(
                                                           height:
                                                               size.width * 0.1,
@@ -870,6 +877,7 @@ class BiddingWaitingForDriverConfirmation extends StatelessWidget {
                                                           ),
                                                         ),
                                                       ),
+                                                          
                                                       Align(
                                                         alignment:
                                                             Alignment.center,
@@ -898,12 +906,20 @@ class BiddingWaitingForDriverConfirmation extends StatelessWidget {
                                             ),
                                           ],
                                         ),
+                                          DottedLine( // ADDED: BY MG: Dotted line
+                                    dashLength: 2,
+                                    dashGapLength: 2,
+                                    dashRadius: 1,
+                                    lineThickness: 1,
+                                    dashColor: Theme.of(context).dividerColor,
+                                  ),
                                         SizedBox(height: size.width * 0.02),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             CustomButton(
+                                              borderRadius: 4,
                                               onTap: () {
                                                 context.read<BookingBloc>().add(
                                                     BiddingAcceptOrDeclineEvent(
@@ -916,12 +932,13 @@ class BiddingWaitingForDriverConfirmation extends StatelessWidget {
                                                       .reject,
                                               width: size.width * 0.4,
                                               buttonColor: Theme.of(context)
-                                                  .primaryColorLight
-                                                  .withOpacity(0.5),
+                                                  .cardColor,
                                               textColor: Theme.of(context)
                                                   .primaryColor,
                                             ),
                                             CustomButton(
+                                              borderRadius: 4,
+
                                               onTap: () {
                                                 context.read<BookingBloc>().add(
                                                     BiddingAcceptOrDeclineEvent(
