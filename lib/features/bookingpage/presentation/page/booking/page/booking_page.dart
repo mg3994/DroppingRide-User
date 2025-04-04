@@ -79,7 +79,7 @@ class _BookingPageState extends State<BookingPage>
     }
     if (BookingBloc().driverDataStream != null) BookingBloc().driverDataStream?.cancel();
     // Dispose any Tickers or AnimationControllers in the BookingBloc
-  BookingBloc().close();
+  // BookingBloc().close();
 
     BookingBloc().add(BookingNavigatorPopEvent());
     
