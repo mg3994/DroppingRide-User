@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 import '../../../../common/common.dart';
 import '../../../../common/pickup_icon.dart';
 import '../../../../core/utils/custom_loader.dart';
@@ -227,17 +228,33 @@ class OnGoingRidesPage extends StatelessWidget {
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment.end,
                                                     children: [
-                                                      MyText(
-                                                          text:
-                                                              'OTP - ${ride.rideOtp}',
-                                                          textStyle: Theme.of(
-                                                                  context)
-                                                              .textTheme
-                                                              .bodyMedium!
-                                                              .copyWith(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400)),
+                                                      Row(
+                                                        children: [
+                                                          MyText(
+                                                              text:
+                                                                  'OTP }',
+                                                              textStyle: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .bodyMedium!
+                                                                  .copyWith(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400)),
+                                                          MyText(
+                                                              text:
+                                                                  '${ride.rideOtp}',
+                                                              textStyle: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .bodyMedium!
+                                                                  .copyWith(
+                                                                    color: Theme.of(context).primaryColor,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400)),
+                                                        ],
+                                                      ),
                                                       MyText(
                                                           text:
                                                               '${ride.creatededAtWithDate} ${ride.cvCreatedAt}'
@@ -355,12 +372,15 @@ class OnGoingRidesPage extends StatelessWidget {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.end,
                                                 children: [
-                                                  MyText(
-                                                    text: ride.driverDetail.data
-                                                        .carNumber,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .bodySmall,
+                                                  CustomCard(
+                                                    padding: const EdgeInsets.all(2),
+                                                    child: MyText(
+                                                      text: ride.driverDetail.data
+                                                          .carNumber,
+                                                      textStyle: Theme.of(context)
+                                                          .textTheme
+                                                          .bodySmall,
+                                                    ),
                                                   ),
                                                   MyText(
                                                     text: ride.driverDetail.data

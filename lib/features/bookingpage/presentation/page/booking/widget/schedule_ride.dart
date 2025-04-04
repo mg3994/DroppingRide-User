@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +17,8 @@ Widget scheduleRide(BuildContext context, Size size, BookingPageArguments arg,
       height: size.width,
       padding: EdgeInsets.all(size.width * 0.05),
       decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(10)),
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -51,6 +52,13 @@ Widget scheduleRide(BuildContext context, Size size, BookingPageArguments arg,
                 ),
             ],
           ),
+                DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
           SizedBox(height: size.width * 0.05),
           Container(
             height: size.width * 0.5,
@@ -95,6 +103,7 @@ Widget scheduleRide(BuildContext context, Size size, BookingPageArguments arg,
           Center(
             child: CustomButton(
               width: size.width,
+              borderRadius: 4,
               buttonColor: Theme.of(context).primaryColor,
               buttonName: AppLocalizations.of(context)!.confirm,
               onTap: () {

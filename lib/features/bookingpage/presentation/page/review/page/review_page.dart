@@ -115,6 +115,7 @@ class ReviewPage extends StatelessWidget {
                           controller:
                               context.read<BookingBloc>().feedBackController,
                           filled: true,
+                          fillColor:Theme.of(context).cardColor,
                           hintText: '${AppLocalizations.of(context)!.leaveFeedback}(${AppLocalizations.of(context)!.optional})',
                           maxLine: 5,
                         ),
@@ -126,6 +127,7 @@ class ReviewPage extends StatelessWidget {
                           child: CustomButton(
                             width: size.width,
                             buttonColor: Theme.of(context).primaryColor,
+                            borderRadius:4,
                             buttonName: AppLocalizations.of(context)!.submit,
                             onTap: () {
                               if (context

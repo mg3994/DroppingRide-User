@@ -1,5 +1,7 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../core/utils/custom_button.dart';
 import '../../../../../../core/utils/custom_snack_bar.dart';
@@ -33,76 +35,88 @@ class SelectGoodsType extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: size.width * 0.15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          MyText(
-                              text:
-                                  AppLocalizations.of(context)!.selectGoodsType,
-                              textStyle: Theme.of(context).textTheme.bodyLarge),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: MyText(
-                                text: AppLocalizations.of(context)!.cancel,
-                                textStyle:
-                                    Theme.of(context).textTheme.bodyLarge),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: size.width * 0.03),
-                      SizedBox(
-                        height: size.height * 0.73,
-                        child: ListView.builder(
-                          itemCount:
-                              context.read<BookingBloc>().goodsTypeList.length,
-                          shrinkWrap: true,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.only(bottom: 16),
-                          itemBuilder: (context, index) {
-                            final type = context
-                                .read<BookingBloc>()
-                                .goodsTypeList
-                                .elementAt(index);
-                            return Theme(
-                              data: ThemeData(
-                                  unselectedWidgetColor:
-                                      Theme.of(context).primaryColorDark),
-                              child: RadioListTile(
-                                value: type.id,
-                                contentPadding: EdgeInsets.zero,
-                                dense: true,
-                                activeColor: Theme.of(context).primaryColorDark,
-                                groupValue: context
-                                    .read<BookingBloc>()
-                                    .selectedGoodsTypeId,
-                                onChanged: (int? value) {
-                                  debugPrint(value.toString());
-                                  context
-                                      .read<BookingBloc>()
-                                      .selectedGoodsTypeId = value!;
-                                  context
-                                      .read<BookingBloc>()
-                                      .add(UpdateEvent());
-                                },
-                                title: MyText(
-                                  text: type.goodsTypeName,
-                                  maxLines: 2,
+                  child: CustomCard(
+                    padding: const EdgeInsets.all(3),borderRadius: 6,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: size.width * 0.15),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            MyText(
+                                text:
+                                    AppLocalizations.of(context)!.selectGoodsType,
+                                textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: MyText(
+                                  text: AppLocalizations.of(context)!.cancel,
                                   textStyle:
-                                      Theme.of(context).textTheme.bodyMedium,
-                                ),
-                              ),
-                            );
-                          },
+                                      Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(height: size.width * 0.03),
-                    ],
+                        SizedBox(height: size.width * 0.015),
+                                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
+                        SizedBox(height: size.width * 0.015),
+
+                        SizedBox(
+                          height: size.height * 0.73,
+                          child: ListView.builder(
+                            itemCount:
+                                context.read<BookingBloc>().goodsTypeList.length,
+                            shrinkWrap: true,
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: const EdgeInsets.only(bottom: 16),
+                            itemBuilder: (context, index) {
+                              final type = context
+                                  .read<BookingBloc>()
+                                  .goodsTypeList
+                                  .elementAt(index);
+                              return Theme(
+                                data: ThemeData(
+                                    unselectedWidgetColor:
+                                        Theme.of(context).primaryColorDark),
+                                child: RadioListTile(
+                                  value: type.id,
+                                  contentPadding: EdgeInsets.zero,
+                                  dense: true,
+                                  activeColor: Theme.of(context).primaryColorDark,
+                                  groupValue: context
+                                      .read<BookingBloc>()
+                                      .selectedGoodsTypeId,
+                                  onChanged: (int? value) {
+                                    debugPrint(value.toString());
+                                    context
+                                        .read<BookingBloc>()
+                                        .selectedGoodsTypeId = value!;
+                                    context
+                                        .read<BookingBloc>()
+                                        .add(UpdateEvent());
+                                  },
+                                  title: MyText(
+                                    text: type.goodsTypeName,
+                                    maxLines: 2,
+                                    textStyle:
+                                        Theme.of(context).textTheme.bodyMedium,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(height: size.width * 0.03),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -217,6 +231,7 @@ class SelectGoodsType extends StatelessWidget {
                                     SizedBox(width: size.width * 0.02),
                                     Expanded(
                                       child: CustomTextField(
+                                        fillColor: Theme.of(context).cardColor,
                                         controller: context
                                             .read<BookingBloc>()
                                             .goodsQtyController,

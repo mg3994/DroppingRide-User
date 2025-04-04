@@ -190,11 +190,12 @@ class OnRideBottomSheet extends StatelessWidget {
                                               .textTheme
                                               .bodyLarge!
                                               .copyWith(
-                                                  color: (Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light)
-                                                      ? AppColors.black
-                                                      : AppColors.white,
+                                                  color: Theme.of(context).primaryColor,
+                                                  // (Theme.of(context)
+                                                  //             .brightness ==
+                                                  //         Brightness.light)
+                                                  //     ? AppColors.black
+                                                  //     : AppColors.white,
                                                   fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -1087,7 +1088,8 @@ class OnRideBottomSheet extends StatelessWidget {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5)),
+                                      border: Border.all(color: Theme.of(context).primaryColor),
+                                        borderRadius: BorderRadius.circular(2)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(

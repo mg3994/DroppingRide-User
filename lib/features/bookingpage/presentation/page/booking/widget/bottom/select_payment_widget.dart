@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restart_tagxi/core/utils/custom_snack_bar.dart';
@@ -22,7 +23,7 @@ class SelectPaymentMethodWidget extends StatelessWidget {
             height: size.width * 0.7,
             padding: EdgeInsets.all(size.width * 0.05),
             decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
@@ -36,6 +37,7 @@ class SelectPaymentMethodWidget extends StatelessWidget {
                       text: AppLocalizations.of(context)!.choosePayment,
                       textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Theme.of(context).primaryColorDark,
+                            fontWeight: FontWeight.bold
                           ),
                     ),
                     InkWell(
@@ -46,6 +48,13 @@ class SelectPaymentMethodWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+                          DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                 Expanded(
                   child: Column(
                     children: [
@@ -154,7 +163,7 @@ class SelectPaymentMethodWidget extends StatelessWidget {
                                             .bodySmall!
                                             .copyWith(
                                                 color: Theme.of(context)
-                                                    .primaryColorDark),
+                                                    .primaryColor),
                                       ),
                                     )
                                   : null,

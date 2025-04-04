@@ -323,7 +323,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                                     isScrollControlled: true,
                                     barrierColor: Theme.of(context).shadowColor,
                                     backgroundColor: Theme.of(context)
-                                        .scaffoldBackgroundColor,
+                                        .cardColor,
                                     shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.vertical(
                                         top: Radius.circular(20.0),

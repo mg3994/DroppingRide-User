@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +46,7 @@ class ApplyCouponWidget extends StatelessWidget {
                               .bodyMedium!
                               .copyWith(
                                   color: Theme.of(context).primaryColorDark,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 16),
                         ),
                         MyText(
@@ -55,6 +56,13 @@ class ApplyCouponWidget extends StatelessWidget {
                               .bodySmall!
                               .copyWith(color: Theme.of(context).disabledColor),
                         ),
+                               DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                       ],
                     ),
                     InkWell(
@@ -115,6 +123,8 @@ class ApplyCouponWidget extends StatelessWidget {
                     context.read<BookingBloc>().promoErrorText = '';
                     context.read<BookingBloc>().add(UpdateEvent());
                   },
+                  filled: true,
+                  fillColor: Theme.of(context).scaffoldBackgroundColor,
                   contentPadding:
                       const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
                   focusedBorder:
@@ -191,6 +201,7 @@ class ApplyCouponWidget extends StatelessWidget {
                 child: Center(
                   child: CustomButton(
                     width: size.width,
+                    borderRadius: 4,
                     buttonColor: Theme.of(context).primaryColor,
                     buttonName: (context.read<BookingBloc>().isRentalRide
                             ? context
