@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_plus/share_plus.dart';
@@ -340,12 +342,14 @@ class OnRideBottomSheet extends StatelessWidget {
                               width: size.width,
                               decoration: BoxDecoration(
                                   color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(10),
+                                      .cardColor
+                                     ,
+                                  borderRadius: BorderRadius.circular(2),
                                   border: Border.all(
                                       width: 0.5,
-                                      color: Theme.of(context).disabledColor)),
+                                      color: Theme.of(context).disabledColor.withAlpha(100)
+                                      )
+                                      ),
                               child: Padding(
                                 padding: const EdgeInsets.all(5),
                                 child: Row(
@@ -532,12 +536,13 @@ class OnRideBottomSheet extends StatelessWidget {
                                           Container(
                                             decoration: BoxDecoration(
                                                 color: Theme.of(context)
-                                                    .scaffoldBackgroundColor,
+                                                    .cardColor,
                                                 borderRadius:
-                                                    BorderRadius.circular(5),
+                                                    BorderRadius.circular(2),
                                                 border: Border.all(
+                                                  width: 1.2,
                                                     color: Theme.of(context)
-                                                        .primaryColorDark)),
+                                                        .disabledColor.withAlpha(100))),
                                             child: MyText(
                                                 text: context
                                                     .read<BookingBloc>()
@@ -603,10 +608,11 @@ class OnRideBottomSheet extends StatelessWidget {
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Theme.of(context)
-                                                .disabledColor
-                                                .withOpacity(0.3),
+                                                .cardColor
+                                                // .withOpacity(0.3)
+                                                ,
                                             border: Border.all(
-                                                width: 0.5,
+                                                width: 1,
                                                 color: Theme.of(context)
                                                     .primaryColorDark
                                                     .withOpacity(0.5))),
@@ -659,10 +665,11 @@ class OnRideBottomSheet extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Theme.of(context)
-                                            .disabledColor
-                                            .withOpacity(0.3),
+                                                .cardColor
+                                            // .withOpacity(0.3)
+                                            ,
                                         border: Border.all(
-                                            width: 0.5,
+                                            width: 1,
                                             color: Theme.of(context)
                                                 .primaryColorDark
                                                 .withOpacity(0.5))),
@@ -687,11 +694,12 @@ class OnRideBottomSheet extends StatelessWidget {
                                     width: size.width * 0.110,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Theme.of(context)
-                                            .disabledColor
-                                            .withOpacity(0.3),
+                                       color: Theme.of(context)
+                                                .cardColor
+                                            // .withOpacity(0.3)
+                                            ,
                                         border: Border.all(
-                                            width: 0.5,
+                                            width: 1,
                                             color: Theme.of(context)
                                                 .primaryColorDark
                                                 .withOpacity(0.5))),
@@ -712,6 +720,19 @@ class OnRideBottomSheet extends StatelessWidget {
                                 size.width * 0.025,
                                 size.width * 0.05,
                                 size.width * 0.025),
+                                padding:const EdgeInsets.symmetric(horizontal: 14,vertical: 5),
+                                decoration: BoxDecoration(
+        border: Border.all(width: 0.5,color: Theme.of(context).dividerColor),
+        color:Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(8),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color:Theme.of(context).disabledColor, 
+        //     blurRadius: 5,
+        //     offset: const Offset(0, 2),
+        //   ),
+        // ],
+      ), 
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -731,6 +752,13 @@ class OnRideBottomSheet extends StatelessWidget {
                                                 .pickAddress)),
                                   ],
                                 ),
+                                  DottedLine( // ADDED: BY MG: Dotted line
+                                    dashLength: 2,
+                                    dashGapLength: 2,
+                                    dashRadius: 1,
+                                    lineThickness: 1,
+                                    dashColor: Theme.of(context).dividerColor,
+                                  ),
                                 if (!context
                                         .read<BookingBloc>()
                                         .requestData!
@@ -878,6 +906,12 @@ class OnRideBottomSheet extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 left: size.width * 0.05,
                                 right: size.width * 0.05),
+                                padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 4),
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 0.5,color: Theme.of(context).disabledColor.withAlpha(100)),
+                                  color: Theme.of(context).cardColor,
+                                  borderRadius: BorderRadius.circular(8)
+                                ),
                             child: Row(
                               children: [
                                 Expanded(
@@ -1087,13 +1121,21 @@ class OnRideBottomSheet extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
+                                    width: size.width *0.85,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Theme.of(context).primaryColor),
-                                        borderRadius: BorderRadius.circular(2)),
+                                      boxShadow: [
+                                        BoxShadow(color:AppColors.red.withAlpha(50) )
+                                      ],
+                                      
+                                      border: Border.all(color: Theme.of(context).primaryColor,),
+                                        borderRadius: BorderRadius.circular(4)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
+                                        spacing: 4,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
+                                          const Icon(CupertinoIcons.clear_circled,color: AppColors.red),
                                           MyText(
                                             text: AppLocalizations.of(context)!
                                                 .cancelRide,

@@ -1,3 +1,4 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,10 +43,10 @@ class RidePreviewWidget extends StatelessWidget {
           Container(
             width: size.width,
             decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: Theme.of(context).cardColor, //
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+                topLeft: Radius.circular(4), //
+                topRight: Radius.circular(4), //
               ),
             ),
             child: Column(
@@ -227,10 +228,17 @@ class RidePreviewWidget extends StatelessWidget {
                     }),
                 if (arg.stopAddressList.isNotEmpty) ...[
                   SizedBox(height: size.width * 0.02),
-                  Divider(
-                      indent: size.width * 0.12,
-                      endIndent: size.width * 0.05,
-                      color: Theme.of(context).dividerColor.withOpacity(0.4)),
+                   DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor.withOpacity(0.4),
+                                ),
+                  // Divider(
+                  //     indent: size.width * 0.12,
+                  //     endIndent: size.width * 0.05,
+                  //     color: Theme.of(context).dividerColor.withOpacity(0.4)),
                   ListView.separated(
                     itemCount: arg.stopAddressList.length,
                     shrinkWrap: true,
@@ -259,18 +267,23 @@ class RidePreviewWidget extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return Divider(
-                          indent: size.width * 0.073,
-                          endIndent: size.width * 0.01,
-                          color:
-                              Theme.of(context).dividerColor.withOpacity(0.4));
+                      return  DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor.withOpacity(0.4),
+                                );
                     },
                   ),
                   SizedBox(height: size.width * 0.02),
-                  Divider(
-                      indent: size.width * 0.12,
-                      endIndent: size.width * 0.05,
-                      color: Theme.of(context).dividerColor.withOpacity(0.4)),
+                   DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor.withOpacity(0.4),
+                                ),
                   SizedBox(height: size.width * 0.03),
                 ],
                 if (!context.read<BookingBloc>().isRentalRide &&

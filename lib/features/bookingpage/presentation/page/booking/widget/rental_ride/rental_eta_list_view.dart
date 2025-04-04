@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -59,6 +60,13 @@ class RentalEtaListViewWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+                        DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                 SizedBox(height: size.width * 0.02),
                 Container(
                   decoration: BoxDecoration(
@@ -233,7 +241,7 @@ class RentalEtaListViewWidget extends StatelessWidget {
                             border: Border.all(
                                 color: (index == 0) // Selected item at the top
                                     ? Theme.of(context)
-                                        .primaryColorDark
+                                        .primaryColor //
                                         .withOpacity(0.7)
                                     : Colors.white),
                             borderRadius: BorderRadius.circular(6),

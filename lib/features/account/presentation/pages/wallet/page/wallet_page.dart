@@ -158,7 +158,8 @@ class WalletHistoryPage extends StatelessWidget {
         },
         child: BlocBuilder<AccBloc, AccState>(builder: (context, state) {
           return Scaffold(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).dividerColor.withAlpha(100),
+            
             body: Stack(
               children: [
                 SizedBox(

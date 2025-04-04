@@ -326,39 +326,14 @@ class BottomSheetWidget extends StatelessWidget {
                                   ),
 
                                 // ON GOING RIDES
+
                                 if (context
                                     .read<HomeBloc>()
                                     .isMultipleRide) ...[
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        MyText(
-                                            text: AppLocalizations.of(context)!
-                                                .onGoingRides,
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .copyWith(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Theme.of(context)
-                                                        .primaryColorDark)),
-                                      ],
-                                    ),
-                                  ),
-                                    DottedLine( // ADDED: BY MG: Dotted line
-                                dashLength: 2,
-                                dashGapLength: 2,
-                                dashRadius: 1,
-                                lineThickness: 1,
-                                dashColor: Theme.of(context).dividerColor,
-                              ),
-                                  SizedBox(height: size.width * 0.01),
+                                 SizedBox(height: 2,),
                                   HomeOnGoingRidesWidget(cont: context),
                                 ],
+                                
                                 // Recent search places
                                 if (context
                                     .read<HomeBloc>()

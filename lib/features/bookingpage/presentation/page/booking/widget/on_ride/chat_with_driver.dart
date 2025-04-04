@@ -25,7 +25,7 @@ class ChatWithDriverWidget extends StatelessWidget {
             Container(
               width: size.width,
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).disabledColor.withAlpha(100),
                 image: const DecorationImage(
                   alignment: Alignment.topCenter,
                   image: AssetImage(AppImages.map),
@@ -95,7 +95,7 @@ class ChatWithDriverWidget extends StatelessWidget {
                                     horizontal: 20),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.end,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     MyText(
                                       text: context
@@ -187,6 +187,10 @@ class ChatWithDriverWidget extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: CustomTextField(
+                                    fillColor: Theme.of(context).cardColor,
+                                    filled: true,
+                                    borderRadius: 2,
+                                    contentPadding: EdgeInsets.all(12),
                                     controller: context
                                         .read<BookingBloc>()
                                         .chatController,
@@ -220,7 +224,7 @@ class ChatWithDriverWidget extends StatelessWidget {
                                     },
                                     child: Icon(Icons.send,
                                         color:
-                                            Theme.of(context).primaryColorDark))
+                                            Theme.of(context).primaryColor))
                               ],
                             ),
                             SizedBox(height: size.width * 0.1)
@@ -308,9 +312,11 @@ class ChatWithDriverWidget extends StatelessWidget {
                                                     .userData!
                                                     .id)
                                             ? (Theme.of(context).brightness==Brightness.dark)?const Color(
-                                                                  0xffE7EDEF):AppColors.black
-                                                              : const Color(
-                                                                  0xffE7EDEF)),
+                                                                  0xffE7EDEF):Theme.of(context).cardColor
+                                                              : Theme.of(context).primaryColor
+                                                              //  const Color(
+                                                              //     0xffE7EDEF)
+                                                                  ),
                                     child: MyText(
                                       text: chatList[index].message,
                                       maxLines: 5,
@@ -321,7 +327,7 @@ class ChatWithDriverWidget extends StatelessWidget {
                                                 context
                                                     .read<BookingBloc>()
                                                     .userData!
-                                                    .id)?(Theme.of(context).brightness==Brightness.dark)?AppColors.black:AppColors.white:AppColors.black),
+                                                    .id)?(Theme.of(context).brightness==Brightness.dark)?AppColors.black:Theme.of(context).primaryColorDark:Theme.of(context).cardColor),
                                     ),
                                   ),
                                 ),

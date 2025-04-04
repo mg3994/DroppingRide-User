@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -93,27 +94,38 @@ class DeliveryBookingWidget extends StatelessWidget {
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.all(8),
-                                              child: Row(
+                                              child: Column( //
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal:
-                                                                size.width *
-                                                                    0.01),
-                                                    child: const PickupIcon(),
+                                                  Row(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                                horizontal:
+                                                                    size.width *
+                                                                        0.01),
+                                                        child: const PickupIcon(),
+                                                      ),
+                                                      Expanded(
+                                                        child: MyText(
+                                                          text: address.address,
+                                                          textStyle:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodySmall!
+                                                                  .copyWith(
+                                                                      fontSize: 13),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                  Expanded(
-                                                    child: MyText(
-                                                      text: address.address,
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .bodySmall!
-                                                              .copyWith(
-                                                                  fontSize: 13),
-                                                    ),
-                                                  ),
+                                                          DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                                 ],
                                               ),
                                             ),
@@ -139,26 +151,37 @@ class DeliveryBookingWidget extends StatelessWidget {
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.all(8),
-                                              child: Row(
+                                              child: Column( //
                                                 children: [
-                                                  Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal:
-                                                                  size.width *
-                                                                      0.005),
-                                                      child: const DropIcon()),
-                                                  Expanded(
-                                                    child: MyText(
-                                                      text: address.address,
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .bodySmall!
-                                                              .copyWith(
-                                                                  fontSize: 13),
-                                                    ),
+                                                  Row(
+                                                    children: [
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.symmetric(
+                                                                  horizontal:
+                                                                      size.width *
+                                                                          0.005),
+                                                          child: const DropIcon()),
+                                                      Expanded(
+                                                        child: MyText(
+                                                          text: address.address,
+                                                          textStyle:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodySmall!
+                                                                  .copyWith(
+                                                                      fontSize: 13),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
+                                                          DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                                                 ],
                                               ),
                                             ),

@@ -61,22 +61,22 @@ class EtaListViewWidget extends StatelessWidget {
                               width: size.width * 0.25,
                               margin: const EdgeInsets.only(right: 5),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(4),
                                 color: !context
                                         .read<BookingBloc>()
                                         .showBiddingVehicles
                                     ? Theme.of(context)
-                                        .dividerColor
+                                        .primaryColor
                                         .withOpacity(0.5)
                                     : Theme.of(context)
-                                        .dividerColor
+                                        .cardColor
                                         .withOpacity(0.5),
                                 border: Border.all(
                                     color: !context
                                             .read<BookingBloc>()
                                             .showBiddingVehicles
                                         ? Theme.of(context)
-                                            .primaryColorDark
+                                            .primaryColor
                                             .withOpacity(0.5)
                                         : AppColors.transparent),
                               ),
@@ -117,22 +117,22 @@ class EtaListViewWidget extends StatelessWidget {
                                 width: size.width * 0.25,
                                 margin: const EdgeInsets.only(right: 5),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(4),
                                   color: context
                                           .read<BookingBloc>()
                                           .showBiddingVehicles
                                       ? Theme.of(context)
-                                          .dividerColor
+                                          .primaryColor
                                           .withOpacity(0.5)
                                       : Theme.of(context)
-                                          .dividerColor
+                                          .cardColor
                                           .withOpacity(0.5),
                                   border: Border.all(
                                       color: context
                                               .read<BookingBloc>()
                                               .showBiddingVehicles
                                           ? Theme.of(context)
-                                              .primaryColorDark
+                                              .primaryColor
                                               .withOpacity(0.5)
                                           : AppColors.transparent),
                                 ),

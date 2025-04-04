@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
@@ -211,7 +212,14 @@ class EtaDetailsWidget extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: size.width * 0.02),
-                  Divider(color: Theme.of(context).dividerColor),
+                  // Divider(color: Theme.of(context).dividerColor),
+                         DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
                   SizedBox(height: size.width * 0.01),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
