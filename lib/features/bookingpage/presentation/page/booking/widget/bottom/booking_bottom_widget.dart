@@ -26,13 +26,10 @@ class BookingBottomWidget extends StatelessWidget {
           return SafeArea(
             child: Container(
               width: size.width,
-              margin: const EdgeInsets.only(top: 1),
+              margin: const EdgeInsets.only(top: 1,right: 10,left: 10),
               decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
+                color: Theme.of(context).cardColor,
+                borderRadius:  BorderRadius.circular(4),
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(-1, -2),

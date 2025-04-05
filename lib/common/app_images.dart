@@ -5,7 +5,7 @@ class AppImages {
   static const String bottomBackground = 'assets/images/bottomBackground.png';
   static const String splash1 = 'assets/images/tagxi_splash.png';
   static const String splash2 = 'assets/images/delivery_splash.png';
-  static const String taxi = 'assets/images/Taxi.png';
+  static const String taxi = 'assets/images/Taxi1.png';
   static const String delivery = 'assets/images/Delivery.png';
   static const String rental = 'assets/images/Rental.png';
   static const String defaultProfile = 'assets/images/default_profile.png';

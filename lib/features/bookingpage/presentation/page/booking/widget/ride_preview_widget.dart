@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../common/common.dart';
 import '../../../../../../common/pickup_icon.dart';
@@ -199,33 +200,40 @@ class RidePreviewWidget extends StatelessWidget {
                     ),
                   ),
                 SizedBox(height: size.width * 0.04),
-                ListView.builder(
-                    itemCount: arg.pickupAddressList.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemBuilder: (context, index) {
-                      final address =
-                          arg.pickupAddressList.elementAt(index);
-                      return Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.018),
-                            child: const PickupIcon(),
-                          ),
-                          Expanded(
-                            child: MyText(
-                              text: address.address,
-                              textStyle: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(fontSize: 13),
+                CustomCard(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.05,
+                      vertical: size.width * 0.02),
+
+                  child: ListView.builder(
+                      itemCount: arg.pickupAddressList.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      itemBuilder: (context, index) {
+                        final address =
+                            arg.pickupAddressList.elementAt(index);
+                        return Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.018),
+                              child: const PickupIcon(),
                             ),
-                          ),
-                        ],
-                      );
-                    }),
+                            Expanded(
+                              child: MyText(
+                                text: address.address,
+                                textStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(fontSize: 13),
+                              ),
+                            ),
+                          ],
+                        );
+                      }),
+                ),
                 if (arg.stopAddressList.isNotEmpty) ...[
                   SizedBox(height: size.width * 0.02),
                    DottedLine( // ADDED: BY MG: Dotted line
@@ -295,7 +303,7 @@ class RidePreviewWidget extends StatelessWidget {
                         .read<BookingBloc>()
                         .rentalEtaDetailsList
                         .isNotEmpty) ...[
-                  SizedBox(height: size.width * 0.02),
+                  // SizedBox(height: size.width * 0.02),
                   RentalEtaListViewWidget(cont: context,arg: arg,thisValue: this),
                 ]
               ],

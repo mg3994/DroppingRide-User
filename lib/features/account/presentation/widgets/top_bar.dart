@@ -76,7 +76,7 @@ class TopBarDesign extends StatelessWidget {
           child: Container(
               height: size.width,
               decoration: BoxDecoration(
-                color: Theme.of(context).shadowColor,
+                color: AppColors.onSecondaryContainerLight,
                 image: const DecorationImage(
                   alignment: Alignment.topCenter,
                   image: AssetImage(AppImages.map),

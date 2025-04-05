@@ -347,14 +347,14 @@ class _DestinationPageState extends State<DestinationPage> {
                               size.width,
                               
                                   (context.read<HomeBloc>().addressList.length == 2)
-                                  ? size.height * 0.22
+                                  ? size.height * 0.3
                                   : (context
                                               .read<HomeBloc>()
                                               .addressList
                                               .length ==
                                           3)
-                                      ?   0.27 * MediaQuery.textScalerOf(context).scale(size.height)
-                                      :   0.33 * MediaQuery.textScalerOf(context).scale(size.height)
+                                      ?   0.37 * MediaQuery.textScalerOf(context).scale(size.height)
+                                      :   0.45 * MediaQuery.textScalerOf(context).scale(size.height)
                                  ),
                       child: AppBar(
                         elevation: 0,
@@ -724,6 +724,7 @@ class _DestinationPageState extends State<DestinationPage> {
                                   children: [
                                     Expanded(
                                       child: CustomTextField(
+                                        contentPadding: EdgeInsets.all(10,),
                                         controller: controller,
                                         enabled: true,
                                         filled: true,

@@ -1,5 +1,7 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 import 'package:restart_tagxi/core/utils/custom_divider.dart';
 
 import '../../../../../../../common/common.dart';
@@ -7,6 +9,7 @@ import '../../../../../../../core/utils/custom_button.dart';
 import '../../../../../../../core/utils/custom_text.dart';
 import '../../../../../../../l10n/app_localizations.dart';
 import '../../../../../application/booking_bloc.dart';
+
 
 Widget packageList(BuildContext context, BookingPageArguments arg) {
   final size = MediaQuery.sizeOf(context);
@@ -39,13 +42,16 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                 .userData!
                                 .enableModulesForApplications ==
                             'both')
-                      MyText(
-                        text: AppLocalizations.of(context)!.service,
-                        textStyle:
-                            Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: Theme.of(context).disabledColor,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                      CustomCard(
+                        padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 2),
+                        child: MyText(
+                          text: AppLocalizations.of(context)!.service,
+                          textStyle:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Theme.of(context).disabledColor,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
                       ),
                     // InkWell(
                     //   onTap: () {
@@ -63,6 +69,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                 ),
                 SizedBox(height: size.width * 0.02),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     if ((arg.userData.enableModulesForApplications == 'both' ||
                             arg.userData.enableModulesForApplications ==
@@ -187,6 +194,13 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
+                  DottedLine( // ADDED: BY MG: Dotted line
+                                    dashLength: 2,
+                                    dashGapLength: 2,
+                                    dashRadius: 1,
+                                    lineThickness: 1,
+                                    dashColor: Theme.of(context).dividerColor,
+                                  ),
                 SizedBox(height: size.width * 0.02),
                 if (context
                     .read<BookingBloc>()
@@ -224,18 +238,18 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                           context
                                               .read<BookingBloc>()
                                               .selectedPackageIndex) // Highlight the item now at the top
-                                      ? AppColors.darkGrey.withOpacity(0.7)
+                                      ? AppColors.red.withOpacity(0.2)
                                       : Theme.of(context)
-                                          .dividerColor
-                                          .withOpacity(0.1),
+                                          .cardColor,
                                   border: Border.all(
+                                    width: 1.5,
                                       color: (index ==
                                               context
                                                   .read<BookingBloc>()
                                                   .selectedPackageIndex) // Selected item at the top
-                                          ? AppColors.darkGrey.withOpacity(0.7)
-                                          : Colors.white),
-                                  borderRadius: BorderRadius.circular(6),
+                                          ? Theme.of(context).primaryColor
+                                          : AppColors.darkGrey.withOpacity(0.7) ),
+                                  borderRadius: BorderRadius.circular(4),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(size.width * 0.01),
@@ -270,6 +284,14 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                                   maxLines: 1,
                                                 ),
                                               ),
+                                                DottedLine( // ADDED: BY MG: Dotted line
+                                    dashLength: 2,
+                                    dashGapLength: 2,
+                                    dashRadius: 1,
+                                    lineThickness: 1,
+                                    lineLength: size.width * 0.5,
+                                    dashColor: Theme.of(context).dividerColor,
+                                  ),
                                               SizedBox(
                                                 width: size.width * 0.44,
                                                 child: MyText(
@@ -280,7 +302,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                                       .textTheme
                                                       .bodySmall!
                                                       .copyWith(
-                                                        fontSize: 14,
+                                                        fontSize: 10,
                                                         color: Theme.of(context)
                                                             .hintColor,
                                                       ),
@@ -299,7 +321,8 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                             .copyWith(
                                               fontSize: 14,
                                               color:
-                                                  Theme.of(context).hintColor,
+                                                  Theme.of(context).primaryColorDark,
+                                                  fontWeight: FontWeight.bold
                                             ),
                                       ),
                                     ],
@@ -340,6 +363,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                   CustomButton(
                     width: size.width * 0.8,
                     height: size.width * 0.12,
+                    borderRadius: 4,
                     buttonName: AppLocalizations.of(context)!.continueN,
                     onTap: () {
                       context.read<BookingBloc>().add(RentalPackageConfirmEvent(

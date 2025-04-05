@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../../common/common.dart';
 import '../../../../../../../core/utils/custom_loader.dart';
@@ -29,70 +30,89 @@ class RentalEtaListViewWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: size.width * 0.02),
-                const Divider(),
-                SizedBox(height: size.width * 0.02),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MyText(
-                      text: AppLocalizations.of(context)!.selectedPackage,
-                      textStyle:
-                          Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                color: Theme.of(context).disabledColor,
-                                fontWeight: FontWeight.w600,
-                              ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        context
-                            .read<BookingBloc>()
-                            .add(ShowRentalPackageListEvent());
-                      },
-                      child: MyText(
-                        text: AppLocalizations.of(context)!.edit,
+                CustomCard(
+                  
+                  padding: EdgeInsets.all(4),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                  // SizedBox(height: size.width * 0.02),
+                  // const Divider(),
+                  SizedBox(height: size.width * 0.02),
+                    DottedLine( // ADDED: BY MG: Dotted line
+                                      dashLength: 2,
+                                      dashGapLength: 2,
+                                      dashRadius: 1,
+                                      lineThickness: 1,
+                                      dashColor: Theme.of(context).dividerColor,
+                                    ),
+                  SizedBox(height: size.width * 0.02),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MyText(
+                        text: AppLocalizations.of(context)!.selectedPackage,
                         textStyle:
                             Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: Theme.of(context).primaryColorDark,
+                                  color: Theme.of(context).disabledColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context
+                              .read<BookingBloc>()
+                              .add(ShowRentalPackageListEvent());
+                        },
+                        child: MyText(
+                          text: AppLocalizations.of(context)!.edit,
+                          textStyle:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Theme.of(context).primaryColorDark,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                          DottedLine( // ADDED: BY MG: Dotted line
+                                    dashLength: 2,
+                                    dashGapLength: 2,
+                                    dashRadius: 1,
+                                    lineThickness: 1,
+                                    dashColor: Theme.of(context).dividerColor,
+                                  ),
+                  SizedBox(height: size.width * 0.02),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(
+                            color: Theme.of(context)
+                                .primaryColorDark
+                                .withOpacity(0.7)),
+                        color: AppColors.darkGrey.withOpacity(0.3)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: MyText(
+                        text: context
+                            .read<BookingBloc>()
+                            .rentalPackagesList[
+                                context.read<BookingBloc>().selectedPackageIndex]
+                            .packageName,
+                        textStyle:
+                            Theme.of(context).textTheme.bodyMedium!.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
                       ),
                     ),
-                  ],
-                ),
-                        DottedLine( // ADDED: BY MG: Dotted line
-                                  dashLength: 2,
-                                  dashGapLength: 2,
-                                  dashRadius: 1,
-                                  lineThickness: 1,
-                                  dashColor: Theme.of(context).dividerColor,
-                                ),
-                SizedBox(height: size.width * 0.02),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                          color: Theme.of(context)
-                              .primaryColorDark
-                              .withOpacity(0.7)),
-                      color: AppColors.darkGrey.withOpacity(0.3)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: MyText(
-                      text: context
-                          .read<BookingBloc>()
-                          .rentalPackagesList[
-                              context.read<BookingBloc>().selectedPackageIndex]
-                          .packageName,
-                      textStyle:
-                          Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                    ),
                   ),
+                  // 
+                                ]),
                 ),
                 SizedBox(height: size.width * 0.02),
-                const Divider(),
+                // const Divider(),
                 SizedBox(height: size.width * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -233,17 +253,17 @@ class RentalEtaListViewWidget extends StatelessWidget {
                             color: (index ==
                                     0) // Highlight the item now at the top
                                 ? Theme.of(context)
-                                    .dividerColor
-                                    .withOpacity(0.3)
+                                    .primaryColor
+                                    .withOpacity(0.2)
                                 : Theme.of(context)
-                                    .dividerColor
-                                    .withOpacity(0.1),
+                                    .cardColor,
                             border: Border.all(
+                              width: 1.2,
                                 color: (index == 0) // Selected item at the top
                                     ? Theme.of(context)
                                         .primaryColor //
                                         .withOpacity(0.7)
-                                    : Colors.white),
+                                    : Theme.of(context).disabledColor.withOpacity(0.4)),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Padding(
@@ -359,29 +379,33 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          MyText(
-                                            text:
-                                                '${eta.currency.toString()} ${eta.fareAmount.toStringAsFixed(1)}',
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    color: Theme.of(context)
-                                                        .hintColor,
-                                                    decoration: (eta
-                                                                .hasDiscount &&
-                                                            !context
-                                                                .read<
-                                                                    BookingBloc>()
-                                                                .showBiddingVehicles)
-                                                        ? TextDecoration
-                                                            .lineThrough
-                                                        : null,
-                                                    decorationColor:
-                                                        Theme.of(context)
-                                                            .primaryColorDark,
-                                                    decorationThickness: 2),
+                                          CustomCard(
+                                            padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),
+                                            color: Theme.of(context).primaryColor,
+                                            child: MyText(
+                                              text:
+                                                  '${eta.currency.toString()} ${eta.fareAmount.toStringAsFixed(1)}',
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .bodySmall!
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      color: Theme.of(context)
+                                                          .cardColor,
+                                                      decoration: (eta
+                                                                  .hasDiscount &&
+                                                              !context
+                                                                  .read<
+                                                                      BookingBloc>()
+                                                                  .showBiddingVehicles)
+                                                          ? TextDecoration
+                                                              .lineThrough
+                                                          : null,
+                                                      decorationColor:
+                                                          Theme.of(context)
+                                                              .primaryColorDark,
+                                                      decorationThickness: 2),
+                                            ),
                                           ),
                                           if (eta.hasDiscount &&
                                               !context
