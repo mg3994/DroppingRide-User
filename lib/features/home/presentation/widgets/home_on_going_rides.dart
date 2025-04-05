@@ -20,7 +20,7 @@ class HomeOnGoingRidesWidget extends StatelessWidget {
     return BlocProvider.value(value: cont.read<HomeBloc>(),
     child: BlocBuilder<HomeBloc,HomeState>(builder: (context, state) {
       return CustomCard(
-        padding: EdgeInsets.all(4),
+        padding: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
         borderRadius: 4,
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

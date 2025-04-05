@@ -211,10 +211,9 @@ class InvoicePage extends StatelessWidget {
                                                 size.width * 0.05),
                                             decoration: BoxDecoration(
                                               color: Theme.of(context)
-                                                  .disabledColor
-                                                  .withOpacity(0.5),
+                                                  .cardColor,
                                               borderRadius:
-                                                  BorderRadius.circular(5),
+                                                  BorderRadius.circular(4),
                                             ),
                                             child: Column(
                                               children: [
@@ -224,7 +223,7 @@ class InvoicePage extends StatelessWidget {
                                                         child: Row(
                                                       children: [
                                                         Icon(
-                                                          Icons.play_arrow,
+                                                          Icons.radio_button_checked, // TODO change MG:
                                                           color: Theme.of(
                                                                   context)
                                                               .primaryColorDark,

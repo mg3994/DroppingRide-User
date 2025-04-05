@@ -396,7 +396,7 @@ class _DestinationPageState extends State<DestinationPage> {
                                     //   color: Theme.of(context).primaryColor,
                                     // ),
                                     child: Container(
-                                                  padding: const EdgeInsets.all(4.0),
+                                                  padding: const EdgeInsets.symmetric(horizontal: 8,vertical:4),
                 decoration: BoxDecoration(
                                                        color: Theme.of(context).cardColor,
 
@@ -724,7 +724,7 @@ class _DestinationPageState extends State<DestinationPage> {
                                   children: [
                                     Expanded(
                                       child: CustomTextField(
-                                        contentPadding: EdgeInsets.all(10,),
+                                        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                                         controller: controller,
                                         enabled: true,
                                         filled: true,
@@ -1203,7 +1203,15 @@ class _DestinationPageState extends State<DestinationPage> {
                   fontWeight: FontWeight.w600),
               maxLines: 1,
             ),
-            SizedBox(height: size.width * 0.02),
+            SizedBox(height: size.width * 0.01),
+                DottedLine( // ADDED: BY MG: Dotted line
+                                      dashLength: 2,
+                                      dashGapLength: 2,
+                                      dashRadius: 1,
+                                      lineThickness: 1,
+                                      dashColor: Theme.of(context).dividerColor,
+                                    ),
+                                    SizedBox(height: size.width * 0.01),
             SizedBox(
               width: size.width,
               height: size.width * (context.read<HomeBloc>().recentRouteHeight),
@@ -1532,7 +1540,7 @@ class _DestinationPageState extends State<DestinationPage> {
        width: size.width*0.5,
                                             padding: const EdgeInsets.all(1.0),
                  decoration: BoxDecoration(
-                                                        color: Theme.of(context).cardColor,
+                                                        color: Theme.of(context).shadowColor.withOpacity(0.4),
  
                    borderRadius: BorderRadius.circular(2.0),
                    boxShadow: [
@@ -1554,8 +1562,8 @@ class _DestinationPageState extends State<DestinationPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.pin_drop_outlined),
-            MyText(text: AppLocalizations.of(context)!.selectFromMap),
+             Icon(Icons.pin_drop_outlined,color: Theme.of(context).cardColor),
+            MyText(text: AppLocalizations.of(context)!.selectFromMap,textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).cardColor),),
           ],
         ),
       ),

@@ -60,8 +60,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   UserDetail? userData;
   List<String> serviceTypeImages = [
     AppImages.taxi,
-    AppImages.bike,
-    AppImages.suv,
+    AppImages.deliveryBike,
+    AppImages.rentalSUV,
     AppImages.outstation,
   ];
 

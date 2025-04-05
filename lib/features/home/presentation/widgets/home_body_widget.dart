@@ -444,6 +444,7 @@ class HomeBodyWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       NavigationIconWidget(
+                        color: Theme.of(context).shadowColor.withAlpha(100),
                         icon: InkWell(
                           onTap: () {
                             if (context.read<HomeBloc>().userData != null) {
@@ -470,7 +471,7 @@ class HomeBodyWidget extends StatelessWidget {
                           },
                           child: Icon(Icons.menu,
                               size: 20,
-                              color: Theme.of(context).primaryColorDark),
+                              color: Theme.of(context).cardColor),
                         ),
                         isShadowWidget: true,
                       ),

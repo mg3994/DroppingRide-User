@@ -50,6 +50,10 @@ class AppImages {
   // Vehicle Images
   static const String car = 'assets/images/car.png';
   static const String bike = 'assets/images/bike.png';
+    static const String deliveryBike = 'assets/images/delivery_bike.png';
+    static const String rentalSUV = 'assets/images/rental_suv.png';
+    
+
   static const String auto = 'assets/images/auto.png';
   static const String truck = 'assets/images/hcv.png';
   static const String ehcv = 'assets/images/ehcv.png';

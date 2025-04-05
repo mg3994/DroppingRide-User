@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../common/common.dart';
 import '../../../../../../core/utils/custom_loader.dart';
@@ -511,6 +512,7 @@ class EtaListViewWidget extends StatelessWidget {
                           : size.height * 0.44,
                       child: RawScrollbar(
                         child: ListView.builder(
+                          // This Screen was Missed Last time MG: Hint
                           shrinkWrap: true,
                           controller:
                               context.read<BookingBloc>().etaScrollController,
@@ -596,18 +598,20 @@ class EtaListViewWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   color: (index ==
                                           0) // Highlight the item now at the top
-                                      ? AppColors.darkGrey.withOpacity(0.5)
+                                      ? AppColors.red.withOpacity(0.2)
                                       : Theme.of(context)
-                                          .dividerColor
-                                          .withOpacity(0.1),
+                                          .cardColor
+                                          // .withOpacity(0.1)
+                                          ,
                                   border: Border.all(
                                       color: (index ==
                                               0) // Selected item at the top
                                           ? Theme.of(context)
-                                              .primaryColorDark
+                                              .primaryColor
                                               .withOpacity(0.5)
-                                          : Colors.white),
-                                  borderRadius: BorderRadius.circular(6),
+                                          : Theme.of(context)
+                                          .cardColor),
+                                  borderRadius: BorderRadius.circular(2),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(size.width * 0.01),
@@ -749,36 +753,42 @@ class EtaListViewWidget extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                MyText(
-                                                  text:
-                                                      '${eta.currency.toString()} ${eta.total.toStringAsFixed(1)}',
-                                                  textStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                                      fontSize:
-                                                          (eta.hasDiscount && !context.read<BookingBloc>().showBiddingVehicles)
-                                                              ? 14
-                                                              : 16,
-                                                      fontWeight: (eta
-                                                                  .hasDiscount &&
-                                                              !context
-                                                                  .read<
-                                                                      BookingBloc>()
-                                                                  .showBiddingVehicles)
-                                                          ? FontWeight.normal
-                                                          : FontWeight.bold,
-                                                      color: (eta.hasDiscount && !context.read<BookingBloc>().showBiddingVehicles)
-                                                          ? Theme.of(context)
-                                                              .hintColor
-                                                          : Theme.of(context)
-                                                              .primaryColorDark,
-                                                      decoration: (eta
-                                                                  .hasDiscount &&
-                                                              !context
-                                                                  .read<BookingBloc>()
-                                                                  .showBiddingVehicles)
-                                                          ? TextDecoration.lineThrough
-                                                          : null,
-                                                      decorationColor: Theme.of(context).primaryColorDark,
-                                                      decorationThickness: 2),
+                                                CustomCard(
+          padding: const EdgeInsets.symmetric(
+                                          horizontal: 6, vertical: 4),
+                                          color: Theme.of(context).primaryColor,
+
+                                                  child: MyText(
+                                                    text:
+                                                        '${eta.currency.toString()} ${eta.total.toStringAsFixed(1)}',
+                                                    textStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                                        fontSize:
+                                                            (eta.hasDiscount && !context.read<BookingBloc>().showBiddingVehicles)
+                                                                ? 14
+                                                                : 16,
+                                                        fontWeight: (eta
+                                                                    .hasDiscount &&
+                                                                !context
+                                                                    .read<
+                                                                        BookingBloc>()
+                                                                    .showBiddingVehicles)
+                                                            ? FontWeight.normal
+                                                            : FontWeight.bold,
+                                                        color: (eta.hasDiscount && !context.read<BookingBloc>().showBiddingVehicles)
+                                                            ? Theme.of(context)
+                                                                .hintColor
+                                                            : Theme.of(context)
+                                                                .cardColor,
+                                                        decoration: (eta
+                                                                    .hasDiscount &&
+                                                                !context
+                                                                    .read<BookingBloc>()
+                                                                    .showBiddingVehicles)
+                                                            ? TextDecoration.lineThrough
+                                                            : null,
+                                                        decorationColor: Theme.of(context).primaryColorDark,
+                                                        decorationThickness: 2),
+                                                  ),
                                                 ),
                                                 if (eta.hasDiscount &&
                                                     !context

@@ -302,7 +302,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                                       .textTheme
                                                       .bodySmall!
                                                       .copyWith(
-                                                        fontSize: 10,
+                                                        fontSize: 12,
                                                         color: Theme.of(context)
                                                             .hintColor,
                                                       ),

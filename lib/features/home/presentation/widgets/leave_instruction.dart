@@ -122,6 +122,7 @@ class LeaveInstructions extends StatelessWidget {
                 if (isReceiveParcel) SizedBox(height: size.width * 0.05),
                 CustomTextField(
                   borderRadius: 2,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical:8),
                   controller: context.read<HomeBloc>().receiverNameController,
                   filled: true,
                   fillColor: Theme.of(context).cardColor,
@@ -132,6 +133,7 @@ class LeaveInstructions extends StatelessWidget {
                 SizedBox(height: size.width * 0.03),
                 CustomTextField(
                   borderRadius: 2,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical:8),
                   controller: context.read<HomeBloc>().receiverMobileController,
                   filled: true,
                   fillColor: Theme.of(context).cardColor,
@@ -142,6 +144,7 @@ class LeaveInstructions extends StatelessWidget {
                 SizedBox(height: size.width * 0.03),
                 CustomTextField(
                   borderRadius: 2,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical:8),
                   controller: context.read<HomeBloc>().instructionsController,
                   filled: true,
                   fillColor: Theme.of(context).cardColor,
