@@ -36,11 +36,12 @@ class SelectGoodsType extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
                   child: CustomCard(
+                    margin: EdgeInsets.symmetric(vertical: 16),
                     padding: const EdgeInsets.all(3),borderRadius: 6,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: size.width * 0.15),
+                        // SizedBox(height: size.width * 0.15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -90,6 +91,11 @@ class SelectGoodsType extends StatelessWidget {
                                   value: type.id,
                                   contentPadding: EdgeInsets.zero,
                                   dense: true,
+                                  // fillColor: MaterialStateProperty.all(
+                                  //     Theme.of(context).shadowColor),
+                                  tileColor: Theme.of(context)
+                                      .shadowColor
+                                      .withOpacity(0.3),
                                   activeColor: Theme.of(context).primaryColorDark,
                                   groupValue: context
                                       .read<BookingBloc>()
@@ -122,8 +128,9 @@ class SelectGoodsType extends StatelessWidget {
               ),
             ),
             bottomNavigationBar: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+                  color: Theme.of(context).cardColor,
                   boxShadow: [
                     BoxShadow(
                       offset: const Offset(0, 0),
@@ -167,8 +174,11 @@ class SelectGoodsType extends StatelessWidget {
                                 .toLowerCase() !=
                             'bike') ...[
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Expanded(
+                           
                             child: Theme(
                               data: ThemeData(
                                   unselectedWidgetColor:
@@ -231,6 +241,7 @@ class SelectGoodsType extends StatelessWidget {
                                     SizedBox(width: size.width * 0.02),
                                     Expanded(
                                       child: CustomTextField(
+                                        borderRadius: 2,
                                         fillColor: Theme.of(context).cardColor,
                                         controller: context
                                             .read<BookingBloc>()
@@ -246,7 +257,10 @@ class SelectGoodsType extends StatelessWidget {
                                         maxLine: 1,
                                         keyboardType: TextInputType.number,
                                       ),
-                                    )
+                                    ),
+                                    SizedBox(
+                                      width: size.width * 0.001,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -257,6 +271,7 @@ class SelectGoodsType extends StatelessWidget {
                     ],
                     SizedBox(height: size.width * 0.03),
                     CustomButton(
+                      borderRadius: 4,
                       width: size.width,
                       buttonColor: Theme.of(context).primaryColor,
                       buttonName: AppLocalizations.of(context)!.confirm,

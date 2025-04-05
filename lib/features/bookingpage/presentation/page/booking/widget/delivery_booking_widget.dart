@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restart_tagxi/core/utils/custom_card.dart';
 
 import '../../../../../../common/common.dart';
 import '../../../../../../common/pickup_icon.dart';
@@ -70,6 +71,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CustomContainer(
+                              color: Theme.of(context).cardColor,
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 5),
@@ -193,6 +195,8 @@ class DeliveryBookingWidget extends StatelessWidget {
                             ),
                             SizedBox(height: size.width * 0.04),
                             CustomContainer(
+                              color: Theme.of(context).cardColor,
+
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 10),
@@ -228,20 +232,24 @@ class DeliveryBookingWidget extends StatelessWidget {
                                               ),
                                             ),
                                             SizedBox(width: size.width * 0.04),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                MyText(
-                                                  text: eta.name,
-                                                  textStyle: Theme.of(context)
-                                                      .textTheme
-                                                      .bodySmall!
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                ),
-                                              ],
+                                            CustomCard(
+                                              padding: EdgeInsets.symmetric(horizontal: 6,vertical: 2),
+                                              color: Theme.of(context).shadowColor,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  MyText(
+                                                    text: eta.name,
+                                                    textStyle: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall!
+                                                        .copyWith(
+                                                            fontWeight:
+                                                                FontWeight.bold),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -297,11 +305,16 @@ class DeliveryBookingWidget extends StatelessWidget {
                                             left: 5, right: 5),
                                         decoration: BoxDecoration(
                                             color: Theme.of(context)
-                                                .primaryColorLight
-                                                .withOpacity(0.2),
+                                                .primaryColor
+                                                .withOpacity(0.05),
+                                                border: Border.all(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 0.5),
                                             borderRadius:
                                                 const BorderRadius.all(
-                                                    Radius.circular(30))),
+                                                  
+                                                    Radius.circular(2))),
                                         child: Padding(
                                           padding: const EdgeInsets.all(3),
                                           child: Row(
@@ -416,6 +429,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                               SizedBox(height: size.width * 0.04),
                             ],
                             CustomContainer(
+                              color: Theme.of(context).cardColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
@@ -441,18 +455,23 @@ class DeliveryBookingWidget extends StatelessWidget {
                                               .amountPayable,
                                           textStyle: Theme.of(context)
                                               .textTheme
-                                              .bodyMedium,
+                                              .bodyMedium?.copyWith(fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        MyText(
-                                            text:
-                                                '${eta.currency} ${!context.read<BookingBloc>().isRentalRide ? eta.total.toStringAsFixed(1) : eta.fareAmount}',
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium)
+                                        CustomCard(
+                                          color: Theme.of(context).shadowColor,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 6, vertical: 2),
+                                          child: MyText(
+                                              text:
+                                                  '${eta.currency} ${!context.read<BookingBloc>().isRentalRide ? eta.total.toStringAsFixed(1) : eta.fareAmount}',
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
+                                        ),  
                                       ],
                                     )
                                   ],
@@ -461,6 +480,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                             ),
                             SizedBox(height: size.width * 0.04),
                             CustomContainer(
+                               color: Theme.of(context).cardColor,
                               child: InkWell(
                                 onTap: () {
                                   context
@@ -504,7 +524,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                       : '${context.read<BookingBloc>().goodsTypeList.firstWhere((element) => element.id == context.read<BookingBloc>().selectedGoodsTypeId).goodsTypeName} ',
                                                   textStyle: Theme.of(context)
                                                       .textTheme
-                                                      .bodyMedium!,
+                                                      .bodyMedium!.copyWith(fontWeight: FontWeight.bold),
                                                 ),
                                                 if (context
                                                         .read<BookingBloc>()
@@ -516,7 +536,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                       textStyle:
                                                           Theme.of(context)
                                                               .textTheme
-                                                              .bodyMedium!),
+                                                              .bodyMedium!.copyWith(fontWeight: FontWeight.bold),),
                                                 if (context
                                                             .read<BookingBloc>()
                                                             .selectedGoodsTypeId !=
@@ -531,28 +551,35 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                       textStyle:
                                                           Theme.of(context)
                                                               .textTheme
-                                                              .bodyMedium!),
+                                                              .bodyMedium!.copyWith(fontWeight: FontWeight.bold),),
                                               ],
                                             )
                                           ],
                                         ),
                                       ),
-                                      MyText(
-                                          text: (context
-                                                      .read<BookingBloc>()
-                                                      .selectedGoodsTypeId !=
-                                                  0)
-                                              ? AppLocalizations.of(context)!
-                                                  .changeLower
-                                              : AppLocalizations.of(context)!
-                                                  .select,
-                                          textStyle: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                  color: Theme.of(context)
-                                                      .primaryColorDark,
-                                                  fontWeight: FontWeight.w600))
+                                      Flexible(
+                                        child: CustomCard(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 2, vertical: 2),
+                                          color: Theme.of(context).shadowColor,
+                                          child: MyText(
+                                              text: (context
+                                                          .read<BookingBloc>()
+                                                          .selectedGoodsTypeId !=
+                                                      0)
+                                                  ? AppLocalizations.of(context)!
+                                                      .changeLower
+                                                  : AppLocalizations.of(context)!
+                                                      .select,
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith(
+                                                      color: Theme.of(context)
+                                                          .primaryColorDark,
+                                                      fontWeight: FontWeight.bold)),
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),
@@ -561,6 +588,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                             if (!context.read<BookingBloc>().isRentalRide) ...[
                               SizedBox(height: size.width * 0.04),
                               CustomContainer(
+                                 color: Theme.of(context).cardColor,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
@@ -726,6 +754,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                             ],
                             SizedBox(height: size.width * 0.04),
                             CustomContainer(
+                               color: Theme.of(context).cardColor,
                               child: InkWell(
                                 onTap: () {
                                   if (context
@@ -824,6 +853,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                             ),
                             SizedBox(height: size.width * 0.04),
                             CustomContainer(
+                               color: Theme.of(context).cardColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -838,6 +868,13 @@ class DeliveryBookingWidget extends StatelessWidget {
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .disabledColor),
+                                    ),
+                                     DottedLine( // ADDED: BY MG: Dotted line
+                                      dashLength: 2,
+                                      dashGapLength: 2,
+                                      dashRadius: 1,
+                                      lineThickness: 1,
+                                      dashColor: Theme.of(context).dividerColor,
                                     ),
                                     SizedBox(height: size.width * 0.02),
                                     Row(
