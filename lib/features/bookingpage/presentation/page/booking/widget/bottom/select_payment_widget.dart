@@ -68,6 +68,7 @@ class SelectPaymentMethodWidget extends StatelessWidget {
                                   Theme.of(context).primaryColorDark,
                             ),
                             child: RadioListTile(
+                              tileColor: Theme.of(context).shadowColor.withOpacity(0.3),
                               value: context
                                   .read<BookingBloc>()
                                   .paymentList[index],

@@ -432,7 +432,7 @@ class WaitingForDriverConfirmation extends StatelessWidget {
                     );
                   },
                   child: CustomContainer(
-                    shadowColor: AppColors.red,
+                    color: AppColors.red.withOpacity(0.1),
                     border: Border.all(
                         width: 1.2,
                         color: AppColors.red),
