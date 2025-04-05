@@ -155,7 +155,7 @@ class InvoicePage extends StatelessWidget {
            final requestBillData = context.read<BookingBloc>().requestBillData;
             return (requestBillData != null) 
             ? Scaffold(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Theme.of(context).shadowColor.withOpacity(0.4),
               resizeToAvoidBottomInset: false,
               body: Stack(
                 children: [
@@ -182,16 +182,20 @@ class InvoicePage extends StatelessWidget {
                                   SizedBox(height: size.width * 0.4),
                                   Row(
                                     children: [
-                                      MyText(
-                                        text: arg.requestData.requestNumber,
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                              color: Theme.of(context)
-                                                  .primaryColorDark,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                      CustomCard(
+                                        blurRadius: 2,
+                                        padding: EdgeInsets.symmetric(horizontal: 6,vertical: 2),
+                                        child: MyText(
+                                          text: arg.requestData.requestNumber,
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
                                       )
                                     ],
                                   ),
@@ -227,7 +231,7 @@ class InvoicePage extends StatelessWidget {
                                                           Icons.radio_button_checked, // TODO change MG:
                                                           color: Theme.of(
                                                                   context)
-                                                              .primaryColorDark,
+                                                              .shadowColor.withAlpha(100),
                                                         ),
                                                         MyText(
                                                           text: AppLocalizations
@@ -240,7 +244,7 @@ class InvoicePage extends StatelessWidget {
                                                               .copyWith(
                                                                   color: Theme.of(
                                                                           context)
-                                                                      .scaffoldBackgroundColor
+                                                                      .primaryColorDark
                                                                       .withOpacity(
                                                                           0.7)),
                                                         )
@@ -256,7 +260,7 @@ class InvoicePage extends StatelessWidget {
                                                           .copyWith(
                                                               color: Theme.of(
                                                                       context)
-                                                                  .scaffoldBackgroundColor
+                                                                   .primaryColorDark
                                                                   .withOpacity(
                                                                       0.7)),
                                                     )
@@ -277,10 +281,10 @@ class InvoicePage extends StatelessWidget {
                                                         child: Row(
                                                       children: [
                                                         Icon(
-                                                          Icons.play_arrow,
+                                                          Icons.radio_button_checked, // TODO change MG:
                                                           color: Theme.of(
                                                                   context)
-                                                              .primaryColorDark,
+                                                              .shadowColor.withAlpha(100),
                                                         ),
                                                         MyText(
                                                           text: AppLocalizations
@@ -291,11 +295,11 @@ class InvoicePage extends StatelessWidget {
                                                               .textTheme
                                                               .bodyMedium!
                                                               .copyWith(
-                                                                  color: Theme.of(
-                                                                          context)
-                                                                      .scaffoldBackgroundColor
-                                                                      .withOpacity(
-                                                                          0.7)),
+                                                                                                                                color: Theme.of(
+                                                                      context)
+                                                                   .primaryColorDark
+                                                                  .withOpacity(
+                                                                      0.7)),
                                                         )
                                                       ],
                                                     )),
@@ -307,9 +311,9 @@ class InvoicePage extends StatelessWidget {
                                                           .textTheme
                                                           .bodyMedium!
                                                           .copyWith(
-                                                              color: Theme.of(
+                                                                                                                           color: Theme.of(
                                                                       context)
-                                                                  .scaffoldBackgroundColor
+                                                                   .primaryColorDark
                                                                   .withOpacity(
                                                                       0.7)),
                                                     )
@@ -329,11 +333,11 @@ class InvoicePage extends StatelessWidget {
                                                     Expanded(
                                                         child: Row(
                                                       children: [
-                                                        Icon(
-                                                          Icons.play_arrow,
+                                                         Icon(
+                                                          Icons.radio_button_checked, // TODO change MG:
                                                           color: Theme.of(
                                                                   context)
-                                                              .primaryColorDark,
+                                                              .shadowColor.withAlpha(100),
                                                         ),
                                                         MyText(
                                                           text: AppLocalizations
@@ -344,11 +348,11 @@ class InvoicePage extends StatelessWidget {
                                                               .textTheme
                                                               .bodyMedium!
                                                               .copyWith(
-                                                                  color: Theme.of(
-                                                                          context)
-                                                                      .scaffoldBackgroundColor
-                                                                      .withOpacity(
-                                                                          0.7)),
+                                                                                                                                color: Theme.of(
+                                                                      context)
+                                                                   .primaryColorDark
+                                                                  .withOpacity(
+                                                                      0.7)),
                                                         )
                                                       ],
                                                     )),
@@ -373,9 +377,9 @@ class InvoicePage extends StatelessWidget {
                                                           .textTheme
                                                           .bodyMedium!
                                                           .copyWith(
-                                                              color: Theme.of(
+                                                                                                                           color: Theme.of(
                                                                       context)
-                                                                  .scaffoldBackgroundColor
+                                                                   .primaryColorDark
                                                                   .withOpacity(
                                                                       0.7)),
                                                     )
@@ -397,7 +401,7 @@ class InvoicePage extends StatelessWidget {
                                                 size.width * 0.020),
                                             decoration: BoxDecoration(
                                               color: Theme.of(context)
-                                                  .scaffoldBackgroundColor,
+                                                  .cardColor,
                                               borderRadius:
                                                   BorderRadius.circular(2),
                                               border: Border.all(
@@ -434,6 +438,7 @@ class InvoicePage extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
+                                                SizedBox(height: 2,),
                                                  DottedLine( // ADDED: BY MG: Dotted line
                                   dashLength: 2,
                                   dashGapLength: 2,
@@ -441,8 +446,11 @@ class InvoicePage extends StatelessWidget {
                                   lineThickness: 1,
                                   dashColor: Theme.of(context).dividerColor,
                                 ),
+                                                SizedBox(height: 2,),
+
                                                 if (arg.requestData.requestStops
                                                     .data.isNotEmpty)
+                                                    ////////
                                                   ListView.separated(
                                                     itemCount: arg
                                                         .requestData
@@ -530,6 +538,7 @@ class InvoicePage extends StatelessWidget {
                                                       ],
                                                     ),
                                                   ),
+                                                  /////
                                               ],
                                             ),
                                           ),
@@ -596,7 +605,10 @@ class InvoicePage extends StatelessWidget {
                                             SizedBox(
                                                 height: size.width * 0.025),
                                             CustomCard(
-                                              padding: EdgeInsets.all(4),
+                                              padding: EdgeInsets.symmetric(
+                                          horizontal: 4, vertical:6),
+                                              borderRadius:
+                                                  6,
                                               child: Column(
                                                 children: [
                                                   if (requestBillData
@@ -808,6 +820,7 @@ class InvoicePage extends StatelessWidget {
                                                   .textTheme
                                                   .bodyMedium!
                                                   .copyWith(
+                                                    color:AppColors.green,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize:
@@ -821,6 +834,7 @@ class InvoicePage extends StatelessWidget {
                                       ),
                                       Expanded(
                                         child: CustomButton(
+                                          borderRadius: 4,
                                           buttonColor:
                                               Theme.of(context).primaryColor,
                                           buttonName:
@@ -962,7 +976,7 @@ class InvoicePage extends StatelessWidget {
                               SizedBox(
                                 height: size.width * 0.065,
                                 width: size.width * 0.065,
-                                child: Image.asset(AppImages.tripSummary),
+                                child: Image.asset(AppImages.tripSummary), // TODO: here
                               ),
                               SizedBox(width: size.width * 0.05),
                               MyText(
