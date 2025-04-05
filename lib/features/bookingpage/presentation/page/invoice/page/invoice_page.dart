@@ -176,6 +176,7 @@ class InvoicePage extends StatelessWidget {
                               width: size.width,
                               height: size.height * 0.5,
                               color: Theme.of(context).scaffoldBackgroundColor,
+                              // This Screen Left
                               child: Column(
                                 children: [
                                   SizedBox(height: size.width * 0.4),
@@ -944,6 +945,7 @@ class InvoicePage extends StatelessWidget {
                   Positioned(
                       child: SafeArea(
                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: size.width * 0.05),
                         Container(
