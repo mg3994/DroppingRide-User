@@ -966,7 +966,7 @@ class InvoicePage extends StatelessWidget {
                           height: size.width * 0.1,
                           width: size.width * 0.5,
                           decoration: BoxDecoration(
-                              color: Theme.of(context).scaffoldBackgroundColor,
+                              color: Theme.of(context).cardColor,
                                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(4),
                   bottomLeft: Radius.circular(4),
