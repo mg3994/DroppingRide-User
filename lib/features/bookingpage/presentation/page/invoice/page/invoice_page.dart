@@ -967,9 +967,21 @@ class InvoicePage extends StatelessWidget {
                           width: size.width * 0.5,
                           decoration: BoxDecoration(
                               color: Theme.of(context).scaffoldBackgroundColor,
-                              borderRadius: const BorderRadius.only(
-                                  topRight: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10))),
+                               borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(4),
+                  bottomLeft: Radius.circular(4),
+                  topRight: Radius.circular(4),
+                  bottomRight: Radius.circular(4),
+                ),
+                                  //
+                                   boxShadow: [ 
+                                     BoxShadow(
+                                       spreadRadius:1.2,
+            blurStyle: BlurStyle.solid,
+            offset: const Offset(-2, 0),
+                                     color:Theme.of(context).shadowColor.withAlpha(100))
+                                   ]
+                                  ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
