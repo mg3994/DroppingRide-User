@@ -724,7 +724,7 @@ class _DestinationPageState extends State<DestinationPage> {
                                   children: [
                                     Expanded(
                                       child: CustomTextField(
-                                        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                                         controller: controller,
                                         enabled: true,
                                         filled: true,
@@ -1540,7 +1540,7 @@ class _DestinationPageState extends State<DestinationPage> {
        width: size.width*0.5,
                                             padding: const EdgeInsets.all(1.0),
                  decoration: BoxDecoration(
-                                                        color: Theme.of(context).shadowColor.withOpacity(0.4),
+                                                        color: Theme.of(context).primaryColor,
  
                    borderRadius: BorderRadius.circular(2.0),
                    boxShadow: [
