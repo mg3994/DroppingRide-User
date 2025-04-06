@@ -22,15 +22,13 @@ import '../../domain/models/user_details_model.dart';
 import '../widgets/leave_instruction.dart';
 import '../widgets/select_contact.dart';
 import 'confirm_location_page.dart';
-
 double _getAppBarHeight(BuildContext context) {
   final count = context.read<HomeBloc>().addressList.length;
 
-  if (count == 2) return 250;
-  if (count == 3) return 320;
-  return 380;
+  if (count == 2) return 220;
+  if (count == 3) return 280;
+  return 340;
 }
-
 class DestinationPage extends StatefulWidget {
   static const String routeName = '/destinationPage';
   final DestinationPageArguments arg;
@@ -350,198 +348,111 @@ class _DestinationPageState extends State<DestinationPage> {
                 },
                 child: SafeArea(
                   child: Scaffold(
-                //     appBar: PreferredSize(
-                //       preferredSize: Size(
-                //               size.width,
-                              
-                //                   (context.read<HomeBloc>().addressList.length == 2)
-                //                   ? size.height * 0.3
-                //                   : (context
-                //                               .read<HomeBloc>()
-                //                               .addressList
-                //                               .length ==
-                //                           3)
-                //                       ?   0.37 * MediaQuery.textScalerOf(context).scale(size.height)
-                //                       :   0.45 * MediaQuery.textScalerOf(context).scale(size.height)
-                //                  ),
-                //       child: AppBar(
-                //         elevation: 0,
-                //         backgroundColor: 
-                //             Theme.of(context).scaffoldBackgroundColor,
-                //         automaticallyImplyLeading: false,
-                //         leadingWidth: size.width * 0.2,
-                //         surfaceTintColor:
-                //             Theme.of(context).scaffoldBackgroundColor,
-                //         leading: Padding(
-                //           padding: const EdgeInsets.symmetric(
-                //               horizontal: 16, vertical: 6),
-                //           child: NavigationIconWidget(
+                    appBar: PreferredSize(
+                      preferredSize: Size(
+                              size.width,
+                              _getAppBarHeight(context) // (context.read<HomeBloc>().addressList.length == 2)
+                                  // (context.read<HomeBloc>().addressList.length == 2)
+                                  // ? size.height * 0.3
+                                  // : (context
+                                  //             .read<HomeBloc>()
+                                  //             .addressList
+                                  //             .length ==
+                                  //         3)
+                                  //     ?   0.37 * MediaQuery.textScalerOf(context).scale(size.height)
+                                  //     :   0.45 * MediaQuery.textScalerOf(context).scale(size.height)
+                                 ),
+                      child: AppBar(
+                        elevation: 0,
+                        backgroundColor: 
+                            Theme.of(context).scaffoldBackgroundColor,
+                        automaticallyImplyLeading: false,
+                        leadingWidth: size.width * 0.2,
+                        surfaceTintColor:
+                            Theme.of(context).scaffoldBackgroundColor,
+                        leading: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 6),
+                          child: NavigationIconWidget(
                             
-                //             color: Theme.of(context).cardColor,
-                //             onTap: () {
-                //               Navigator.pop(context);
-                //             },
-                //             icon: Icon(Icons.arrow_back_ios_new_rounded,
-                //                 size: 20,
-                //                 color: Theme.of(context).primaryColorDark),
-                //             // isShadowWidget: true,
-                //           ),
-                //         ),
-                //         actions: [
-                //           (context.read<HomeBloc>().addressList.length < 4 &&
-                //                   !widget.arg.isOutstationRide)
-                //               ? Padding(
-                //                   padding:
-                //                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                //                   child: InkWell(
-                //                     onTap: () {
-                //                       context
-                //                           .read<HomeBloc>()
-                //                           .add(AddStopEvent());
-                //                     },
-                //                     // child: Icon(
-                //                     //   Icons.add_outlined,
-                //                     //   color: Theme.of(context).primaryColor,
-                //                     // ),
-                //                     child: Container(
-                //                                   padding: const EdgeInsets.symmetric(horizontal: 8,vertical:4),
-                // decoration: BoxDecoration(
-                //                                        color: Theme.of(context).cardColor,
-
-                //   borderRadius: BorderRadius.circular(2.0),
-                //   boxShadow: [
-                //     BoxShadow(
-                //       color: Colors.black.withOpacity(0.1),
-                //       blurRadius: 5,
-                //       offset: const Offset(0, 2),
-                //     ),
-                //   ],
-                // ),
-                //                       child: 
-                //                         // Icon(
-                //                         //   Icons.add,
-                //                         //   color: Theme.of(context).primaryColorDark,
-                //                         //   size: 20,
-                //                         // ),
-                //                         MyText(
-                //                             text: AppLocalizations.of(context)!
-                //                                 .addStop,
-                //                             textStyle: Theme.of(context)
-                //                                 .textTheme
-                //                                 .bodyMedium!
-                //                                 .copyWith(
-                //                                     color: Theme.of(context).primaryColorDark,
-                //                                     fontWeight: FontWeight.w600)),
-                                      
-                //                     ),
-                //                   ),
-                //                 )
-                //               : const SizedBox(width: 1)
-                //         ],
-                //         bottom: PreferredSize(
-                //           preferredSize: Size(
-                //               size.width,
-                //               (context.read<HomeBloc>().addressList.length == 2)
-                //                   ? size.width * 0.3
-                //                   : (context
-                //                               .read<HomeBloc>()
-                //                               .addressList
-                //                               .length ==
-                //                           3)
-                //                       ? size.width * 0.4
-                //                       : size.width * 0.55),
-                //           child: buildLocationSelect(context, size),
-                //         ),
-                //       ),
-                //     ),
-                    body:  CustomScrollView(
-      slivers: [
-        SliverAppBar(
-           floating :true,
-  snap :true,
-          /// AppBar
-          toolbarHeight: 0,
-          forceElevated: true,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-          ),
-  stretch : true,
-          pinned: true,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          automaticallyImplyLeading: false,
-           expandedHeight: _getAppBarHeight(context),
-          elevation: 0,
-          flexibleSpace: LayoutBuilder(
-            builder: (context, constraints) {
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                color: Theme.of(context).scaffoldBackgroundColor,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /// Top Row: Back + Add Stop
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        NavigationIconWidget(
-                          color: Theme.of(context).cardColor,
-                          onTap: () => Navigator.pop(context),
-                          icon: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            size: 20,
-                            color: Theme.of(context).primaryColorDark,
+                            color: Theme.of(context).cardColor,
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.arrow_back_ios_new_rounded,
+                                size: 20,
+                                color: Theme.of(context).primaryColorDark),
+                            // isShadowWidget: true,
                           ),
                         ),
-                        if (context.read<HomeBloc>().addressList.length < 4 &&
-                            !widget.arg.isOutstationRide)
-                          InkWell(
-                            onTap: () =>
-                                context.read<HomeBloc>().add(AddStopEvent()),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).cardColor,
-                                borderRadius: BorderRadius.circular(4),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: MyText(
-                                text: AppLocalizations.of(context)!.addStop,
-                                textStyle: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                        color: Theme.of(context).primaryColorDark,
-                                        fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
+                        actions: [
+                          (context.read<HomeBloc>().addressList.length < 4 &&
+                                  !widget.arg.isOutstationRide)
+                              ? Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                  child: InkWell(
+                                    onTap: () {
+                                      context
+                                          .read<HomeBloc>()
+                                          .add(AddStopEvent());
+                                    },
+                                    // child: Icon(
+                                    //   Icons.add_outlined,
+                                    //   color: Theme.of(context).primaryColor,
+                                    // ),
+                                    child: Container(
+                                                  padding: const EdgeInsets.symmetric(horizontal: 8,vertical:4),
+                decoration: BoxDecoration(
+                                                       color: Theme.of(context).cardColor,
 
-                    /// Dynamic location section
-                    Expanded(child: buildLocationSelect(context, size)),
+                  borderRadius: BorderRadius.circular(2.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
+                    ),
                   ],
                 ),
-              );
-            },
-          ),
-        ),
-
-        /// Your content here
-        SliverList(
-          delegate: SliverChildListDelegate([
-             SingleChildScrollView(
+                                      child: 
+                                        // Icon(
+                                        //   Icons.add,
+                                        //   color: Theme.of(context).primaryColorDark,
+                                        //   size: 20,
+                                        // ),
+                                        MyText(
+                                            text: AppLocalizations.of(context)!
+                                                .addStop,
+                                            textStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    color: Theme.of(context).primaryColorDark,
+                                                    fontWeight: FontWeight.w600)),
+                                      
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(width: 1)
+                        ],
+                        bottom: PreferredSize(
+                          preferredSize: Size(
+                              size.width,
+                              (context.read<HomeBloc>().addressList.length == 2)
+                                  ? size.width * 0.3
+                                  : (context
+                                              .read<HomeBloc>()
+                                              .addressList
+                                              .length ==
+                                          3)
+                                      ? size.width * 0.4
+                                      : size.width * 0.55),
+                          child: buildLocationSelect(context, size),
+                        ),
+                      ),
+                    ),
+                    body: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -598,70 +509,6 @@ class _DestinationPageState extends State<DestinationPage> {
                         ],
                       ),
                     ),
-            // your scrollable content
-          ]),
-        ),
-      ],
-    ),
-  
-                    // 
-                    // SingleChildScrollView(
-                    //   child: Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                    //     children: [
-                    //       if (context
-                    //           .read<HomeBloc>()
-                    //           .searchInfoMessage
-                    //           .isEmpty) ...[
-                    //         SizedBox(height: size.width * 0.03),
-                    //         if (context.read<HomeBloc>().userData != null)
-                    //           buildFavoriteLocations(
-                    //               context,
-                    //               context
-                    //                   .read<HomeBloc>()
-                    //                   .userData!
-                    //                   .favouriteLocations
-                    //                   .data,
-                    //               size),
-                    //         SizedBox(height: size.width * 0.03),
-                    //         if (context
-                    //             .read<HomeBloc>()
-                    //             .recentSearchPlaces
-                    //             .isNotEmpty) ...[
-                    //           if (context
-                    //                   .read<HomeBloc>()
-                    //                   .recentRoutes
-                    //                   .isNotEmpty &&
-                    //               context.read<HomeBloc>().recentRoutes.any(
-                    //                   (element) =>
-                    //                       element.transportType ==
-                    //                       widget.arg.transportType))
-                    //             buildRecentRoutes(context, size),
-                    //           SizedBox(height: size.width * 0.02),
-                    //           buildRecentSearchLocations(context, size)
-                    //         ],
-                    //       ],
-                    //       if (context
-                    //           .read<HomeBloc>()
-                    //           .searchInfoMessage
-                    //           .isNotEmpty)
-                    //         Padding(
-                    //           padding: const EdgeInsets.only(left: 16, top: 16),
-                    //           child: MyText(
-                    //               text: context
-                    //                   .read<HomeBloc>()
-                    //                   .searchInfoMessage),
-                    //         ),
-                    //       if (context
-                    //           .read<HomeBloc>()
-                    //           .autoSearchPlaces
-                    //           .isNotEmpty) ...[
-                    //         SizedBox(height: size.width * 0.03),
-                    //         autoSearchPlacesWidget(context, size)
-                    //       ]
-                    //     ],
-                    //   ),
-                    // ),
                     bottomSheet: buildSelectFromMap(size, context),
                     bottomNavigationBar: (!context
                             .read<HomeBloc>()
