@@ -24,11 +24,25 @@ import '../widgets/select_contact.dart';
 import 'confirm_location_page.dart';
 double _getAppBarHeight(BuildContext context) {
   final count = context.read<HomeBloc>().addressList.length;
+  final textScaleFactor = MediaQuery.textScaleFactorOf(context);
 
-  if (count == 2) return 220;
-  if (count == 3) return 280;
-  return 340;
+  final baseHeight = switch (count) {
+    2 => 220.0,
+    3 => 280.0,
+    _ => 340.0,
+  };
+
+  // Slightly increase height with scale factor (e.g. 1.0 = no change, 1.2 = +20%)
+  return baseHeight * textScaleFactor.clamp(1.0, 1.3); // Optional: cap at 1.3x
 }
+// double _getAppBarHeight(BuildContext context, Size size) {
+//   final count = context.read<HomeBloc>().addressList.length;
+//   final extraPadding = MediaQuery.textScalerOf(context).scale(size.height * 0.02);
+
+//   if (count == 2) return 220 + extraPadding;
+//   if (count == 3) return 280 + extraPadding;
+//   return 340 + extraPadding;
+// }
 class DestinationPage extends StatefulWidget {
   static const String routeName = '/destinationPage';
   final DestinationPageArguments arg;
