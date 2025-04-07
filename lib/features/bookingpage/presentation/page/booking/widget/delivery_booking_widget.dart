@@ -615,7 +615,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                       .payAt,
                                               textStyle: Theme.of(context)
                                                   .textTheme
-                                                  .bodyMedium),
+                                                  .bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                       Row(
@@ -654,12 +654,14 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                           .read<BookingBloc>()
                                                           .payAtDrop)
                                                       ? Theme.of(context)
-                                                          .dividerColor
+                                                          .primaryColor
                                                           .withOpacity(0.8)
-                                                      : null,
+                                                      : Theme.of(context)
+                                                          .dividerColor
+                                                          .withOpacity(0.8),
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(30))),
+                                                          Radius.circular(4))),
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.all(3),
@@ -673,7 +675,12 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                       .copyWith(
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          color: Theme.of(
+                                                          color:  (!context
+                                                          .read<BookingBloc>()
+                                                          .payAtDrop)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                          .withOpacity(0.8):Theme.of(
                                                                   context)
                                                               .primaryColorDark),
                                                 ),
@@ -718,13 +725,15 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                             .read<BookingBloc>()
                                                             .payAtDrop)
                                                         ? Theme.of(context)
+                                                            .primaryColor
+                                                            .withOpacity(0.8)
+                                                        : Theme.of(context)
                                                             .dividerColor
-                                                            .withOpacity(0.5)
-                                                        : null,
+                                                            .withOpacity(0.8),
                                                     borderRadius:
                                                         const BorderRadius.all(
                                                             Radius.circular(
-                                                                30))),
+                                                                4))),
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(3),
@@ -738,7 +747,12 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                         .copyWith(
                                                             fontWeight:
                                                                 FontWeight.bold,
-                                                            color: Theme.of(
+                                                            color: (context
+                                                            .read<BookingBloc>()
+                                                            .payAtDrop)
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                            .withOpacity(0.8):Theme.of(
                                                                     context)
                                                                 .primaryColorDark),
                                                   ),

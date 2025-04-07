@@ -68,7 +68,7 @@ class EtaListViewWidget extends StatelessWidget {
                                         .showBiddingVehicles
                                     ? Theme.of(context)
                                         .primaryColor
-                                        .withOpacity(0.5)
+                                        .withOpacity(0.1)
                                     : Theme.of(context)
                                         .cardColor
                                         .withOpacity(0.5),
@@ -78,7 +78,7 @@ class EtaListViewWidget extends StatelessWidget {
                                             .showBiddingVehicles
                                         ? Theme.of(context)
                                             .primaryColor
-                                            .withOpacity(0.5)
+                                          
                                         : AppColors.transparent),
                               ),
                               child: Center(
@@ -124,7 +124,7 @@ class EtaListViewWidget extends StatelessWidget {
                                           .showBiddingVehicles
                                       ? Theme.of(context)
                                           .primaryColor
-                                          .withOpacity(0.5)
+                                          .withOpacity(0.1)
                                       : Theme.of(context)
                                           .cardColor
                                           .withOpacity(0.5),
@@ -134,7 +134,7 @@ class EtaListViewWidget extends StatelessWidget {
                                               .showBiddingVehicles
                                           ? Theme.of(context)
                                               .primaryColor
-                                              .withOpacity(0.5)
+                                             
                                           : AppColors.transparent),
                                 ),
                                 child: Center(

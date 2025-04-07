@@ -24,7 +24,7 @@ class BiddingOfferingPriceWidget extends StatelessWidget {
       child: BlocBuilder<BookingBloc, BookingState>(builder: (context, state) {
         return Container(
           decoration: BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color: Theme.of(context).cardColor,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
@@ -202,9 +202,11 @@ class BiddingOfferingPriceWidget extends StatelessWidget {
                     Container(
                       width: size.width * 0.5,
                       decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).primaryColor, width: 1),
                           color:
-                              Theme.of(context).dividerColor.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(10)),
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(4)),
                       child: TextField(
                         enabled: true,
                         textAlign: TextAlign.start,
@@ -214,7 +216,7 @@ class BiddingOfferingPriceWidget extends StatelessWidget {
                         decoration: InputDecoration(
                           border: const UnderlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  BorderRadius.all(Radius.circular(4)),
                               borderSide: BorderSide()),
                           prefixIconConstraints:
                               BoxConstraints(maxWidth: size.width * 0.2),
