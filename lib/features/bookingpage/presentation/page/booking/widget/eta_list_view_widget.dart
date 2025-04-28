@@ -749,13 +749,14 @@ class EtaListViewWidget extends StatelessWidget {
                                             width: size.width * 0.25,
                                             child: Column(
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.end,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
                                                 CustomCard(
+                                                  
           padding: const EdgeInsets.symmetric(
-                                          horizontal: 6, vertical: 4),
+                                          horizontal: 16, vertical: 4),
                                           color: Theme.of(context).primaryColor,
 
                                                   child: MyText(

@@ -216,6 +216,7 @@ class BottomSheetWidget extends StatelessWidget {
                                                           fontSize: 16),
                                                 ),
                                               ),
+                                              
                                               if (context
                                                           .read<HomeBloc>()
                                                           .userData !=
@@ -274,6 +275,7 @@ class BottomSheetWidget extends StatelessWidget {
                                     ),
                                   ],
                                 ),
+                                
                                 // Banner
                                 if (context.read<HomeBloc>().isSheetAtTop ==
                                         false &&
@@ -321,7 +323,7 @@ class BottomSheetWidget extends StatelessWidget {
                                                 .showRentalRide)))
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 5),
+                                        horizontal: 5,vertical: 12),
                                     child: ServicesModuleWidget(cont: cont),
                                   ),
 
@@ -372,16 +374,16 @@ class BottomSheetWidget extends StatelessWidget {
                       ],
                     ],
                   ),
-                  SizedBox(height: size.width * 0.1),
-                  Expanded(
-                      child: Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(AppImages.bottomBackground),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ))
+                  // SizedBox(height: size.width * 0.1),
+                  // Expanded(
+                  //     child: Container(
+                  //   decoration: const BoxDecoration(
+                  //     image: DecorationImage(
+                  //       image: AssetImage(AppImages.bottomBackground),
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //   ),
+                  // ))
                 ],
               ),
             );

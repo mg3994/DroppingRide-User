@@ -377,9 +377,10 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                            MainAxisAlignment.end,
                                         children: [
                                           CustomCard(
+                                            
                                             padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),
                                             color: Theme.of(context).primaryColor,
                                             child: MyText(

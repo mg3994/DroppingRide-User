@@ -163,10 +163,10 @@ class OnRideBottomSheet extends StatelessWidget {
                                     padding:
                                         const EdgeInsets.fromLTRB(10, 5, 10, 5),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(4),
+
                                         color: Theme.of(context)
-                                            .primaryColorDark
-                                            .withOpacity(0.5)),
+                                            .cardColor),
                                     child: Row(
                                       children: [
                                         MyText(
@@ -175,11 +175,14 @@ class OnRideBottomSheet extends StatelessWidget {
                                               .textTheme
                                               .bodyMedium!
                                               .copyWith(
-                                                color: (Theme.of(context)
-                                                            .brightness ==
-                                                        Brightness.light)
-                                                    ? AppColors.white
-                                                    : AppColors.black,
+                                                color:  Theme.of(context)
+                                            .primaryColorDark
+                                            .withOpacity(0.5)
+                                                // (Theme.of(context)
+                                                //             .brightness ==
+                                                //         Brightness.light)
+                                                //     ? AppColors.white
+                                                //     : AppColors.black,
                                               ),
                                         ),
                                         MyText(
@@ -221,9 +224,9 @@ class OnRideBottomSheet extends StatelessWidget {
                             Container(
                               width: size.width,
                               padding: EdgeInsets.fromLTRB(
-                                  size.width * 0.05,
+                                  size.width * 0.05, // Here
                                   size.width * 0.025,
-                                  size.width * 0.05,
+                                  size.width * 0.05, // Here
                                   size.width * 0.025),
                               child: Row(
                                 children: [
@@ -716,11 +719,11 @@ class OnRideBottomSheet extends StatelessWidget {
                           ],
                           Container(
                             margin: EdgeInsets.fromLTRB(
-                                size.width * 0.05,
+                                size.width * 0.05, // Here
                                 size.width * 0.025,
-                                size.width * 0.05,
+                                size.width * 0.05, // Here
                                 size.width * 0.025),
-                                padding:const EdgeInsets.symmetric(horizontal: 14,vertical: 5),
+                                padding:const EdgeInsets.symmetric(horizontal: 14,vertical:8 ),
                                 decoration: BoxDecoration(
         border: Border.all(width: 0.5,color: Theme.of(context).dividerColor),
         color:Theme.of(context).cardColor,
@@ -752,13 +755,7 @@ class OnRideBottomSheet extends StatelessWidget {
                                                 .pickAddress)),
                                   ],
                                 ),
-                                  DottedLine( // ADDED: BY MG: Dotted line
-                                    dashLength: 2,
-                                    dashGapLength: 2,
-                                    dashRadius: 1,
-                                    lineThickness: 1,
-                                    dashColor: Theme.of(context).dividerColor,
-                                  ),
+                                 
                                 if (!context
                                         .read<BookingBloc>()
                                         .requestData!
@@ -769,6 +766,13 @@ class OnRideBottomSheet extends StatelessWidget {
                                         .requestStops
                                         .data
                                         .isNotEmpty) ...[
+                                           DottedLine( // ADDED: BY MG: Dotted line
+                                    dashLength: 2,
+                                    dashGapLength: 2,
+                                    dashRadius: 1,
+                                    lineThickness: 1,
+                                    dashColor: Theme.of(context).dividerColor,
+                                  ),
                                   ListView.separated(
                                     itemCount: context
                                         .read<BookingBloc>()
@@ -906,7 +910,8 @@ class OnRideBottomSheet extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 left: size.width * 0.05,
                                 right: size.width * 0.05),
-                                padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 4),
+                                padding: EdgeInsets.symmetric(horizontal: size.width *0.04,vertical: size.width *0.03, ////HERE
+                                ),
                                 decoration: BoxDecoration(
                                   border: Border.all(width: 0.5,color: Theme.of(context).disabledColor.withAlpha(100)),
                                   color: Theme.of(context).cardColor,

@@ -44,6 +44,7 @@ class WalletPaymentGatewayListWidget extends StatelessWidget {
                                   width: size.width * 0.9,
                                   padding: EdgeInsets.all(size.width * 0.02),
                                   decoration: BoxDecoration(
+                                    color: Theme.of(context).cardColor,
                                       borderRadius: BorderRadius.circular(5),
                                       border: Border.all(
                                           width: 0.5,

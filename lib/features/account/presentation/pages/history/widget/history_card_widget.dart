@@ -137,7 +137,7 @@ class HistoryCardWidget extends StatelessWidget {
                                               ? history.convertedCancelledAt
                                               : history.convertedCreatedAt,
                                   textStyle:
-                                      Theme.of(context).textTheme.labelMedium,
+                                      Theme.of(context).textTheme.labelMedium?.copyWith(color:Theme.of(context).disabledColor),
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -193,7 +193,7 @@ class HistoryCardWidget extends StatelessWidget {
                                           .bodyLarge!
                                           .copyWith(
                                             color: Theme.of(context)
-                                                .primaryColorDark,
+                                                .disabledColor,
                                           ),
                                     ),
                                     if (history.isOutStation == 1 &&

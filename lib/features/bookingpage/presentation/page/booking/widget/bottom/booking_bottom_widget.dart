@@ -218,7 +218,7 @@ class BookingBottomWidget extends StatelessWidget {
                                 isScrollControlled: true,
                                 barrierColor: Theme.of(context).shadowColor,
                                 backgroundColor:
-                                    Theme.of(context).scaffoldBackgroundColor,
+                                    Theme.of(context).cardColor,
                                 shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.vertical(
                                     top: Radius.circular(20.0),

@@ -377,13 +377,13 @@ class WalletHistoryPage extends StatelessWidget {
                                   enableDrag: false,
                                   isDismissible: true,
                                   backgroundColor:
-                                      Theme.of(context).shadowColor,
+                                      Theme.of(context).scaffoldBackgroundColor,
                                   builder: (_) {
                                     return AddMoneyWalletWidget(cont :context,minWalletAmount :context.read<AccBloc>().walletResponse!.minimumAmountAddedToWallet);
                                   });
                             },
                             child: CustomCard(
-                              padding: const EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 10 , vertical: 8),
 
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -438,14 +438,14 @@ class WalletHistoryPage extends StatelessWidget {
                                     isScrollControlled: true,
                                     enableDrag: false,
                                     isDismissible: true,
-                                    backgroundColor:
-                                        Theme.of(context).shadowColor,
+                                     backgroundColor:
+                                      Theme.of(context).scaffoldBackgroundColor,
                                     builder: (_) {
                                       return WalletTransferMoneyWidget(cont:context, arg: arg);
                                     });
                               },
                               child: CustomCard(
-                              padding: const EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 10 , vertical: 8),
 
                                 child: Row(
                                   children: [

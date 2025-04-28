@@ -21,7 +21,7 @@ class SelectPreferenceWidget extends StatelessWidget {
             width: size.width,
             padding: EdgeInsets.all(size.width * 0.05),
             decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),

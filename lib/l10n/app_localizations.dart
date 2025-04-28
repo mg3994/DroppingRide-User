@@ -1242,7 +1242,7 @@ abstract class AppLocalizations {
   /// No description provided for @discoverYourCaptain.
   ///
   /// In en, this message translates to:
-  /// **'Discover your captain'**
+  /// **'Searching for Drivers...'**
   String get discoverYourCaptain;
 
   /// No description provided for @bookingDetails.
@@ -1458,7 +1458,7 @@ abstract class AppLocalizations {
   /// No description provided for @sosContacts.
   ///
   /// In en, this message translates to:
-  /// **'SOS Contats'**
+  /// **'SOS Contacts'**
   String get sosContacts;
 
   /// No description provided for @sosRideEmergencyText.

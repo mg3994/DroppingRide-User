@@ -231,7 +231,7 @@ class ChooseLanguagePage extends StatelessWidget {
       child: CustomButton(
          borderRadius: 4,
         buttonName: AppLocalizations.of(context)!.confirm,
-        height: size.width * 0.15,
+        height: size.width * 0.12,
         width: size.width * 0.85,
         onTap: () async {
           final selectedIndex = context.read<LanguageBloc>().selectedIndex;

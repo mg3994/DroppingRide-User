@@ -108,7 +108,8 @@ class _LandingPageState extends State<LandingPage> {
         ? Column(
             children: [
               CustomCard(
-                padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 2),
+               
+                padding:  EdgeInsets.symmetric(horizontal: size.width *0.02,vertical: size.height *0.02),
                 child: SizedBox(
                   height: size.height * 0.20,
                   width: size.width,

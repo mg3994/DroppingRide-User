@@ -262,6 +262,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                             MainAxisAlignment.start,
                                         children: [
                                           Column(
+                                            spacing: 3,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             mainAxisAlignment:

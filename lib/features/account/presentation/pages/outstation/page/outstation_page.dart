@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restart_tagxi/l10n/app_localizations.dart';
@@ -87,8 +88,9 @@ class OutstationHistoryPage extends StatelessWidget {
                                         .textTheme
                                         .bodyMedium!
                                         .copyWith(
-                                            color: Theme.of(context)
-                                                .disabledColor,fontSize: 18),
+                                            color:
+                                                Theme.of(context).disabledColor,
+                                            fontSize: 18),
                                   ),
                                   MyText(
                                     text: AppLocalizations.of(context)!
@@ -97,14 +99,47 @@ class OutstationHistoryPage extends StatelessWidget {
                                         .textTheme
                                         .bodyMedium!
                                         .copyWith(
-                                          color:
-                                              Theme.of(context).disabledColor,fontSize: 16
-                                        ),
+                                            color:
+                                                Theme.of(context).disabledColor,
+                                            fontSize: 16),
                                   ),
                                 ],
                               ),
                             ),
                           ),
+                          if(context.read<AccBloc>().historyList.isNotEmpty) 
+                          Padding(
+                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                            child: Column(
+                              spacing: 2,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    MyText(text: 
+                                      AppLocalizations.of(context)!.historyDetails,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              color: Theme.of(context).primaryColorDark,
+                                              fontSize: 18),
+                                    ),
+                                  ],
+                                ),
+                                          DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
+                              ],
+                            ),
+                          ),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: SizedBox(
@@ -112,7 +147,8 @@ class OutstationHistoryPage extends StatelessWidget {
                               shrinkWrap: true,
                               padding: EdgeInsets.zero,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: context.read<AccBloc>().historyList.length,
+                              itemCount:
+                                  context.read<AccBloc>().historyList.length,
                               itemBuilder: (_, index) {
                                 final history = context
                                     .read<AccBloc>()
@@ -198,13 +234,12 @@ class OutstationHistoryPage extends StatelessWidget {
                                         child: Container(
                                           margin: EdgeInsets.only(
                                               bottom: size.width * 0.02),
+                                          padding: EdgeInsets.only(
+                                              top: size.width * 0.02),
                                           decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary
-                                                .withOpacity(0.15),
+                                            color: Theme.of(context).cardColor,
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                                BorderRadius.circular(4),
                                             border: Border.all(
                                               width: size.width * 0.001,
                                               color: Theme.of(context)
@@ -213,89 +248,113 @@ class OutstationHistoryPage extends StatelessWidget {
                                           ),
                                           child: Column(
                                             children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
+                                              ///////////
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    bottom: size.width * 0.02,
+                                                    left: size.width * 0.02,
+                                                    right: size.width * 0.02),
+                                                padding: EdgeInsets.only(
+                                                    top: size.width * 0.02),
+                                                decoration: BoxDecoration(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .secondary
+                                                      .withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(1),
+                                                  border: Border.all(
+                                                    width: size.width * 0.001,
+                                                    color: Theme.of(context)
+                                                        .disabledColor,
+                                                  ),
+                                                ),
+                                                child: Column(children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
                                                         horizontal: 10,
                                                         vertical: 5),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    const PickupIcon(),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal: 5),
-                                                        child: MyText(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        const PickupIcon(),
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        5),
+                                                            child: MyText(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              text: history
+                                                                  .pickAddress,
+                                                              textStyle: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .bodySmall,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        MyText(
                                                           text: history
-                                                              .pickAddress,
+                                                              .cvTripStartTime,
                                                           textStyle:
                                                               Theme.of(context)
                                                                   .textTheme
-                                                                  .bodySmall,
+                                                                  .bodySmall!
+                                                                  .copyWith(
+                                                                    color: Theme.of(
+                                                                            context)
+                                                                        .disabledColor,
+                                                                  ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                    MyText(
-                                                      text: history
-                                                          .cvTripStartTime,
-                                                      textStyle:
-                                                          Theme.of(context)
-                                                              .textTheme
-                                                              .bodySmall!
-                                                              .copyWith(
-                                                                color: Theme.of(
+                                                  ),
+                                                  if (!history.isRental &&
+                                                      history.dropAddress
+                                                          .isNotEmpty)
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 10,
+                                                          vertical: 5),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          const DropIcon(),
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .only(
+                                                                      left: 5),
+                                                              child: MyText(
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                text: history
+                                                                    .dropAddress,
+                                                                textStyle: Theme.of(
                                                                         context)
-                                                                    .disabledColor,
+                                                                    .textTheme
+                                                                    .bodySmall,
                                                               ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              if (!history.isRental &&
-                                                  history
-                                                      .dropAddress.isNotEmpty)
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 10,
-                                                      vertical: 5),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    children: [
-                                                      const DropIcon(),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  left: 5),
-                                                          child: MyText(
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                            ),
+                                                          ),
+                                                          MyText(
                                                             text: history
-                                                                .dropAddress,
+                                                                .cvCompletedAt,
                                                             textStyle: Theme.of(
                                                                     context)
-                                                                .textTheme
-                                                                .bodySmall,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      MyText(
-                                                        text: history
-                                                            .cvCompletedAt,
-                                                        textStyle:
-                                                            Theme.of(context)
                                                                 .textTheme
                                                                 .bodySmall!
                                                                 .copyWith(
@@ -303,18 +362,35 @@ class OutstationHistoryPage extends StatelessWidget {
                                                                           context)
                                                                       .disabledColor,
                                                                 ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
-                                                ),
+                                                    ),
+                                                ]),
+                                              ),
+                                              /////////////////////
                                               SizedBox(
-                                                  height: size.width * 0.03),
+                                                  height: size.width * 0.015),
+                                              Padding(
+                                                padding:  EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                                                child: DottedLine(
+                                                  // ADDED: BY MG: Dotted line
+                                                  dashLength: 2,
+                                                  dashGapLength: 2,
+                                                  dashRadius: 1,
+                                                  lineThickness: 1,
+                                                  dashColor: Theme.of(context)
+                                                      .dividerColor,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                  height: size.width * 0.015),
                                               Container(
                                                 padding: EdgeInsets.all(
                                                     size.width * 0.025),
                                                 decoration: BoxDecoration(
                                                   color: Theme.of(context)
-                                                      .scaffoldBackgroundColor,
+                                                      .cardColor,
                                                   borderRadius:
                                                       const BorderRadius.only(
                                                           bottomLeft:

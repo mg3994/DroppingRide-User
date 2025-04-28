@@ -389,7 +389,8 @@ class SosPage extends StatelessWidget {
                       width: size.width,
                       margin: const EdgeInsets.only(right: 10, bottom: 10),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
+                         color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(2),
                           border: Border.all(
                               width: 0.5,
                               color: Theme.of(context).disabledColor)),
@@ -431,6 +432,8 @@ class SosPage extends StatelessWidget {
                                                 .primaryColorDark),
                                     maxLines: 2,
                                   ),
+                            SizedBox(height: size.height * 0.009,),
+
                                    DottedLine( // ADDED: BY MG: Dotted line
                                 dashLength: 2,
                                 dashGapLength: 2,
@@ -438,6 +441,8 @@ class SosPage extends StatelessWidget {
                                 lineThickness: 1,
                                 dashColor: Theme.of(context).dividerColor,
                               ),
+                            SizedBox(height: size.height * 0.009,),
+
         
                                   MyText(
                                     text: sosdata[index].number,

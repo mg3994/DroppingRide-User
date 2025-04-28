@@ -227,7 +227,7 @@ class RegisterPage extends StatelessWidget {
       child: CustomButton(
         buttonName: AppLocalizations.of(context)!.register,
         borderRadius: 4,
-        height: MediaQuery.of(context).size.height * 0.07,
+        height: MediaQuery.of(context).size.height * 0.06,
         isLoader: context.read<AuthBloc>().isLoading,
         onTap: () {
           if (context.read<AuthBloc>().formKey.currentState!.validate() &&
@@ -250,6 +250,8 @@ class RegisterPage extends StatelessWidget {
   Widget buildPasswordField(BuildContext context, Size size) {
     return CustomTextField(
       borderRadius: 2,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+
       controller: context.read<AuthBloc>().rPasswordController,
       fillColor: Theme.of(context).cardColor,
       filled: true,
@@ -292,6 +294,8 @@ class RegisterPage extends StatelessWidget {
   Widget buildEmailField(BuildContext context) {
     return CustomTextField(
       borderRadius: 2,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+
       controller: context.read<AuthBloc>().rEmailController,
       enabled: !context.read<AuthBloc>().isLoginByEmail,
       filled: true,
@@ -313,6 +317,8 @@ class RegisterPage extends StatelessWidget {
 
   Widget buildMobileField(BuildContext context, Size size) {
     return CustomTextField(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+
       controller: context.read<AuthBloc>().rMobileController,
       filled: true,
       fillColor: !context.read<AuthBloc>().isLoginByEmail
@@ -407,6 +413,7 @@ class RegisterPage extends StatelessWidget {
   Widget buildUserNameField(BuildContext context) {
     return CustomTextField(
       borderRadius: 2,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
       fillColor: Theme.of(context).cardColor,
       controller: context.read<AuthBloc>().rUserNameController,
       filled: true,
@@ -453,7 +460,7 @@ class RegisterPage extends StatelessWidget {
       }).toList(),
       decoration: InputDecoration(
         isDense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
         hintText: '',
         hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontSize: 14,

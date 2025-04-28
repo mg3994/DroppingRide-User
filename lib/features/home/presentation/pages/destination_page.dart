@@ -518,7 +518,13 @@ class _DestinationPageState extends State<DestinationPage> {
                               .autoSearchPlaces
                               .isNotEmpty) ...[
                             SizedBox(height: size.width * 0.03),
-                            autoSearchPlacesWidget(context, size)
+                            CustomCard(
+                              blurRadius: 4,
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.025,
+                                  vertical: size.width * 0.02),
+                                  padding: EdgeInsets.symmetric(vertical: size.width * 0.02,horizontal: size.width * 0.025),
+                              child: autoSearchPlacesWidget(context, size))
                           ]
                         ],
                       ),
@@ -577,85 +583,82 @@ class _DestinationPageState extends State<DestinationPage> {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  ListView.separated(
-                    itemCount: context.read<HomeBloc>().autoSearchPlaces.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) {
-                      final autoAddres = context
-                          .read<HomeBloc>()
-                          .autoSearchPlaces
-                          .elementAt(index);
-                      return InkWell(
-                        onTap: () {
-                          FocusScope.of(context).requestFocus(FocusNode());
-                          context.read<HomeBloc>().add(
-                              RecentSearchPlaceSelectEvent(
-                                  transportType: widget.arg.transportType,
-                                  address: autoAddres,
-                                  isPickupSelect:
-                                      context.read<HomeBloc>().isPickupSelect));
-                        },
-                        child: Row(
-                          children: [
-                            Container(
-                              height: size.height * 0.075,
-                              width: size.width * 0.075,
-                              decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .disabledColor
-                                      .withOpacity(0.25),
-                                  shape: BoxShape.circle),
-                              alignment: Alignment.center,
-                              child: Icon(
-                                Icons.location_pin,
-                                size: 20,
+            child: Column(
+              children: [
+                ListView.separated(
+                  itemCount: context.read<HomeBloc>().autoSearchPlaces.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (context, index) {
+                    final autoAddres = context
+                        .read<HomeBloc>()
+                        .autoSearchPlaces
+                        .elementAt(index);
+                    return InkWell(
+                      onTap: () {
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        context.read<HomeBloc>().add(
+                            RecentSearchPlaceSelectEvent(
+                                transportType: widget.arg.transportType,
+                                address: autoAddres,
+                                isPickupSelect:
+                                    context.read<HomeBloc>().isPickupSelect));
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            height: size.height * 0.075,
+                            width: size.width * 0.075,
+                            decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .disabledColor
-                                    .withOpacity(0.75),
-                              ),
+                                    .withOpacity(0.25),
+                                shape: BoxShape.circle),
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.location_pin,
+                              size: 20,
+                              color: Theme.of(context)
+                                  .disabledColor
+                                  .withOpacity(0.75),
                             ),
-                            SizedBox(width: size.width * 0.025),
-                            SizedBox(
-                              width: size.width * 0.8,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MyText(
-                                      text: autoAddres.address,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .copyWith(
-                                              color: Theme.of(context)
-                                                  .disabledColor),
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return     DottedLine( // ADDED: BY MG: Dotted line
-                                 dashLength: 2,
-                                 dashGapLength: 2,
-                                 dashRadius: 1,
-                                 lineThickness: 1,
-                                 dashColor: Theme.of(context).dividerColor,
-                               );
-                    },
-                  ),
-                  SizedBox(height: size.width * 0.15),
-                ],
-              ),
+                          ),
+                          SizedBox(width: size.width * 0.025),
+                          SizedBox(
+                            width: size.width * 0.8,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MyText(
+                                    text: autoAddres.address,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .disabledColor),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return     DottedLine( // ADDED: BY MG: Dotted line
+                               dashLength: 2,
+                               dashGapLength: 2,
+                               dashRadius: 1,
+                               lineThickness: 1,
+                               dashColor: Theme.of(context).dividerColor,
+                             );
+                  },
+                ),
+                SizedBox(height: size.width * 0.15),
+              ],
             ),
           ),
         ),

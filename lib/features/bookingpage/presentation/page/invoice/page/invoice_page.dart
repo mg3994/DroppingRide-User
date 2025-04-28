@@ -606,7 +606,9 @@ class InvoicePage extends StatelessWidget {
                                                 height: size.width * 0.025),
                                             CustomCard(
                                               padding: EdgeInsets.symmetric(
-                                          horizontal: 4, vertical:6),
+                                          horizontal: size.width * 0.04, 
+                                          ///////////// HERE
+                                          vertical:6),
                                               borderRadius:
                                                   6,
                                               child: Column(

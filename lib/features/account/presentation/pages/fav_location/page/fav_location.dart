@@ -1233,7 +1233,7 @@ class FavoriteLocationPage extends StatelessWidget {
                                       .copyWith(
                                         color:
                                             Theme.of(context).primaryColorDark,
-                                        fontSize: 10,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),

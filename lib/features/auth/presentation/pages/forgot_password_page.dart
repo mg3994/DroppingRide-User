@@ -182,7 +182,7 @@ class ForgotPasswordPage extends StatelessWidget {
       child: CustomButton(
         buttonName: AppLocalizations.of(context)!.confirm,
         borderRadius: 2,
-        height: MediaQuery.of(context).size.height * 0.07,
+        height: MediaQuery.of(context).size.height * 0.06,
         width: MediaQuery.of(context).size.width * 0.8,
         isLoader: context.read<AuthBloc>().isLoading,
         onTap: () {
@@ -224,7 +224,7 @@ class ForgotPasswordPage extends StatelessWidget {
           animationType: AnimationType.fade,
           pinTheme: PinTheme(
             shape: PinCodeFieldShape.box,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(4),
             fieldHeight: 45,
             fieldWidth: 45,
             activeFillColor: Theme.of(context).cardColor,

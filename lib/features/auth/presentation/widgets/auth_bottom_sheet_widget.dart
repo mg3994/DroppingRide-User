@@ -86,8 +86,8 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
           children: <Widget>[
             // Container(
                CustomCard(
-                  blurRadius: 2,
-                  border: Border.all(width: 1.2,color:Theme.of(context).disabledColor.withAlpha(100)),
+                  borderRadius: 2,
+                  border: Border.all(width: 0.4,color:Theme.of(context).disabledColor.withAlpha(100)),
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   padding: const EdgeInsets.all(1),
               // height: widget.showLoginBtn ? size.height * 0.38 : size.height * 0.25,
@@ -135,7 +135,8 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
                         SizedBox(height: size.width * 0.04),
                     MyText(
                       text:
-                          '${AppLocalizations.of(context)!.email}/${AppLocalizations.of(context)!.mobile}',
+                          // '${AppLocalizations.of(context)!.email}/'
+                          '${AppLocalizations.of(context)!.mobileNumber}',
                       textStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
                             // color: AppColors.darkGrey,
                             fontWeight: FontWeight.bold,
@@ -156,11 +157,13 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
                         filled: true,
                         focusNode: widget.focusNode,
                         hintText: AppLocalizations.of(context)!
-                            .emailAddressOrMobileNumber,
+                            .enterMobileNumber,
                         prefixConstraints:
                             BoxConstraints(maxWidth: size.width * 0.2),
-                        prefixIcon: !widget.isLoginByEmail
-                            ? Center(
+                        prefixIcon: 
+                        // !widget.isLoginByEmail
+                        //     ? 
+                            Center(
                                 child: InkWell(
                                   onTap: widget.countrySelectFunc,
                                   child: Row(
@@ -198,17 +201,24 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
                                   ),
                                 ),
                               )
-                            : null,
+                            // : null
+                            ,
+                            keyboardType:
+                            //  widget.isLoginByEmail
+                                // ? TextInputType.emailAddress
+                                // :
+                                 TextInputType.phone,
                         onTap: widget.onTapEvent,
                         onSubmitted: widget.onSubmitEvent,
                         onChange: widget.onChangeEvent,
                         validator: (value) {
                           if (value!.isNotEmpty &&
-                              !AppValidation.emailValidate(value) &&
+                              !AppValidation.emailValidate(value) 
+                              &&
                               !AppValidation.mobileNumberValidate(value)) {
-                            return AppLocalizations.of(context)!.validEmailMobile;
+                            return AppLocalizations.of(context)?.validMobile;
                           } else if (value.isEmpty) {
-                            return AppLocalizations.of(context)!.enterEmailMobile;
+                            return AppLocalizations.of(context)?.validMobile;
                           } else {
                             return null;
                           }
@@ -382,8 +392,8 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
                       : AppLocalizations.of(context)!.continueN,
                   // buttonName: AppLocalizations.of(context)!.continueText,
                   borderRadius: 4,
-                  width: size.width * 0.85,
-                  height: size.width * 0.15,
+                  width: size.width * 0.88,
+                  height: size.width * 0.12,
                   // textColor: AppColors.white,
                   buttonColor: (widget.emailOrMobile.text.isEmpty)
                       ? Theme.of(context).disabledColor.withOpacity(0.5)

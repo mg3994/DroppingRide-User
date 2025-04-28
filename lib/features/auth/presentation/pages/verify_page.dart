@@ -144,9 +144,10 @@ class _VerifyPageState extends State<VerifyPage>
                                   textAlign: TextAlign.center,
                                   textStyle:
                                       Theme.of(context).textTheme.labelSmall
-                                  // .copyWith(
-                                  //   color: AppColors.greyHintColor,
-                                  // ),
+                                  ?.copyWith(
+                                    fontSize: AppConstants().subHeaderSize,
+                                    // color: AppColors.greyHintColor,
+                                  ),
                                   )
                               : MyText(
                                   text: AppLocalizations.of(context)!
@@ -154,9 +155,11 @@ class _VerifyPageState extends State<VerifyPage>
                                   textAlign: TextAlign.center,
                                   textStyle:
                                       Theme.of(context).textTheme.labelSmall
-                                  // .copyWith(
-                                  //   color: AppColors.greyHintColor,
-                                  // )
+                                  ?.copyWith(
+                                    fontSize: AppConstants().subHeaderSize,
+
+                                    // color: AppColors.greyHintColor,
+                                  )
                                   ,
                                   maxLines: 2,
                                 ),
@@ -396,7 +399,7 @@ class _VerifyPageState extends State<VerifyPage>
           animationType: AnimationType.fade,
           pinTheme: PinTheme(
             shape: PinCodeFieldShape.box,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(4),
             fieldHeight: 45,
             fieldWidth: 45,
             activeFillColor: Theme.of(context).cardColor,
@@ -467,7 +470,7 @@ class _VerifyPageState extends State<VerifyPage>
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
           child: CustomButton(
             borderRadius: 4,
-            height: MediaQuery.of(context).size.height * 0.07,
+            height: MediaQuery.of(context).size.height * 0.06,
             buttonName: (!widget.arg.userExist)
                 ? AppLocalizations.of(context)!.confirm
                 : AppLocalizations.of(context)!.login,

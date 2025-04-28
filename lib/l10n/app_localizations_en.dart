@@ -577,7 +577,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createRequest => 'Create Request';
 
   @override
-  String get discoverYourCaptain => 'Discover your captain';
+  String get discoverYourCaptain => 'Searching for Drivers...';
 
   @override
   String get bookingDetails => 'Booking Details';
@@ -601,7 +601,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onTheWay => 'Driver is on the way';
 
   @override
-  String get driverArriveText => 'The captain will arrive within ** minutes be ready to meet him.';
+  String get driverArriveText => 'The Driver will arrive within ** minutes be ready to meet him.';
 
   @override
   String get rideCharge => 'Ride Charge';
@@ -685,7 +685,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notifyAdmin => 'Notify Admin';
 
   @override
-  String get sosContacts => 'SOS Contats';
+  String get sosContacts => 'SOS Contacts';
 
   @override
   String get sosRideEmergencyText => 'By clicking this button, the admin will be notified that you are in an emergency.';

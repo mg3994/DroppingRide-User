@@ -32,7 +32,7 @@ class ApplyCouponWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 20,bottom: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -56,15 +56,10 @@ class ApplyCouponWidget extends StatelessWidget {
                               .bodySmall!
                               .copyWith(color: Theme.of(context).disabledColor),
                         ),
-                               DottedLine( // ADDED: BY MG: Dotted line
-                                  dashLength: 2,
-                                  dashGapLength: 2,
-                                  dashRadius: 1,
-                                  lineThickness: 1,
-                                  dashColor: Theme.of(context).dividerColor,
-                                ),
+                              
                       ],
                     ),
+                  
                     InkWell(
                       onTap: () {
                         if (cont.mounted) {
@@ -91,8 +86,16 @@ class ApplyCouponWidget extends StatelessWidget {
                   ],
                 ),
               ),
+                 DottedLine( // ADDED: BY MG: Dotted line
+                                  dashLength: 2,
+                                  dashGapLength: 2,
+                                  dashRadius: 1,
+                                  lineThickness: 1,
+                                  lineLength: size.width *0.92,
+                                  dashColor: Theme.of(context).dividerColor,
+                                ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                padding: const EdgeInsets.fromLTRB(8, 12, 8, 10),
                 child: CustomTextField(
                   onTap: () {},
                   readOnly: (!context.read<BookingBloc>().isRentalRide &&
@@ -197,7 +200,7 @@ class ApplyCouponWidget extends StatelessWidget {
                   ),
                 ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
                 child: Center(
                   child: CustomButton(
                     width: size.width,
@@ -388,7 +391,7 @@ class ApplyCouponWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: size.width * 0.08),
+              SizedBox(height: size.width * 0.008),
               if ((!context.read<BookingBloc>().isRentalRide &&
                       (context.read<BookingBloc>().isMultiTypeVechiles
                           ? bookingBloc

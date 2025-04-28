@@ -134,7 +134,7 @@ class AppThemes {
         ),
         labelSmall: const TextStyle(
           fontWeight: FontWeight.w400,
-          fontSize: 10,
+          fontSize: 11,
           fontFamily: fontFamily,
           color: AppColors.labelSmall,
         ),
@@ -295,7 +295,7 @@ class AppThemes {
         ),
         labelSmall: const TextStyle(
           fontWeight: FontWeight.w400,
-          fontSize: 10,
+          fontSize: 11,
           fontFamily: fontFamily,
           color: AppColors.labelSmall,
         ),

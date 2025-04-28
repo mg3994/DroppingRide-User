@@ -266,6 +266,10 @@ class ConfirmFavLocation extends StatelessWidget {
                                   ),
                                   SizedBox(height: size.width * 0.05),
                                   CustomTextField(
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: size.width * 0.027,
+                                        horizontal: size.width * 0.025),
+                                    borderRadius: 2,
                                     filled: true,
                                     fillColor: Theme.of(context).cardColor,
                                     controller: context

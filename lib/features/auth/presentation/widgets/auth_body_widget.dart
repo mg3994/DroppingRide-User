@@ -80,7 +80,7 @@ class AuthBodyWidget extends StatelessWidget {
                     initialPage: 0,
                     enableInfiniteScroll: true,
                     reverse: false,
-                    autoPlay: true,
+                    autoPlay: false,
                     autoPlayInterval: const Duration(seconds: 2),
                     autoPlayAnimationDuration: const Duration(milliseconds: 300),
                     autoPlayCurve: Curves.easeInOut,

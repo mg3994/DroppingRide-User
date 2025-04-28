@@ -199,41 +199,51 @@ class RidePreviewWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                SizedBox(height: size.width * 0.04),
-                CustomCard(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.05,
-                      vertical: size.width * 0.02),
+                // SizedBox(height: size.width * 0.04),
+                  SizedBox(height: size.width * 0.02),
 
-                  child: ListView.builder(
-                      itemCount: arg.pickupAddressList.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemBuilder: (context, index) {
-                        final address =
-                            arg.pickupAddressList.elementAt(index);
-                        return Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.018),
-                              child: const PickupIcon(),
-                            ),
-                            Expanded(
-                              child: MyText(
-                                text: address.address,
-                                textStyle: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(fontSize: 13),
-                              ),
-                            ),
-                          ],
-                        );
-                      }),
-                ),
+                CustomCard(
+                  padding: EdgeInsets.symmetric(horizontal: 
+                size.width * 0.02, vertical: size.height * 0.02
+                  ),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.02,
+                      vertical: size.width * 0.02),
+                 border:Border.all(
+                      color: Theme.of(context).dividerColor.withOpacity(0.4),
+                      width: 0.8,
+                    ),
+                  child: Column(
+                    
+                    children: [
+                      ListView.builder(
+                          itemCount: arg.pickupAddressList.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          itemBuilder: (context, index) {
+                            final address =
+                                arg.pickupAddressList.elementAt(index);
+                            return Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                     horizontal: size.width * 0.001),
+                                  child: const PickupIcon(),
+                                ),
+                                Expanded(
+                                  child: MyText(
+                                    text: address.address,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(fontSize: 13),
+                                  ),
+                                ),
+                              ],
+                            );
+                          }),
+                   
                 if (arg.stopAddressList.isNotEmpty) ...[
                   SizedBox(height: size.width * 0.02),
                    DottedLine( // ADDED: BY MG: Dotted line
@@ -241,12 +251,15 @@ class RidePreviewWidget extends StatelessWidget {
                                   dashGapLength: 2,
                                   dashRadius: 1,
                                   lineThickness: 1,
+                                  lineLength: size.width * 0.85,
                                   dashColor: Theme.of(context).dividerColor.withOpacity(0.4),
                                 ),
                   // Divider(
                   //     indent: size.width * 0.12,
                   //     endIndent: size.width * 0.05,
                   //     color: Theme.of(context).dividerColor.withOpacity(0.4)),
+                  SizedBox(height: size.width * 0.02),
+
                   ListView.separated(
                     itemCount: arg.stopAddressList.length,
                     shrinkWrap: true,
@@ -259,7 +272,7 @@ class RidePreviewWidget extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.015),
+                                horizontal: size.width * 0.001),
                             child: const DropIcon(),
                           ),
                           Expanded(
@@ -280,6 +293,7 @@ class RidePreviewWidget extends StatelessWidget {
                                   dashGapLength: 2,
                                   dashRadius: 1,
                                   lineThickness: 1,
+                                   lineLength: size.width * 0.85,
                                   dashColor: Theme.of(context).dividerColor.withOpacity(0.4),
                                 );
                     },
@@ -290,10 +304,15 @@ class RidePreviewWidget extends StatelessWidget {
                                   dashGapLength: 2,
                                   dashRadius: 1,
                                   lineThickness: 1,
+                                  lineLength: size.width * 0.85,
                                   dashColor: Theme.of(context).dividerColor.withOpacity(0.4),
                                 ),
-                  SizedBox(height: size.width * 0.03),
+                  // SizedBox(height: size.width * 0.03),
                 ],
+                //////////////
+                ],
+                  ),
+                ),
                 if (!context.read<BookingBloc>().isRentalRide &&
                     context.read<BookingBloc>().etaDetailsList.isNotEmpty) ...[
                   EtaListViewWidget(cont: context,arg: arg,thisValue: this),

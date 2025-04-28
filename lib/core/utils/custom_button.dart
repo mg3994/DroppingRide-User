@@ -34,7 +34,7 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: (isLoader != null && !isLoader!) ? onTap : null,
       child: Container(
-        height: height ?? size.width * 0.1,
+        height: height ??  size.width * 0.12,
         width: width ?? size.width * 0.5,
         decoration: BoxDecoration(
             border: (isBorder != null && isBorder!)
