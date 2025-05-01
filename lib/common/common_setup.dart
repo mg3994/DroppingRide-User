@@ -3,12 +3,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:restart_tagxi/firebase_options.dart';
 import '../../../../di/locator.dart' as locator;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/pushnotification/push_notification.dart';
 import '../core/utils/connectivity_check.dart';
-import 'common.dart';
+// import 'common.dart';
+
 
 Future<void> commonSetup() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,11 +24,13 @@ Future<void> commonSetup() async {
     }
   });
   await Firebase.initializeApp(
-      options: FirebaseOptions(
-          apiKey: AppConstants.firbaseApiKey,
-          appId: AppConstants.firebaseAppId,
-          messagingSenderId: AppConstants.firebasemessagingSenderId,
-          projectId: AppConstants.firebaseProjectId));
+    options: DefaultFirebaseOptions.currentPlatform,
+      // options: FirebaseOptions(
+      //     apiKey: AppConstants.firbaseApiKey,
+      //     appId: AppConstants.firebaseAppId,
+      //     messagingSenderId: AppConstants.firebasemessagingSenderId,
+      //     projectId: AppConstants.firebaseProjectId)
+          );
   await locator.init();
 
   PushNotification().initMessaging();
