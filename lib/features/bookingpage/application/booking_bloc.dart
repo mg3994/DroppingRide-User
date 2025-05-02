@@ -2678,7 +2678,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         .endAt(higher)
         .onValue
         .listen((onData) {
-      debugPrint('Pickup NearBy Vechiles : ${onData.snapshot.children}');
+      debugPrint('Pickup NearBy Vechiles : ${onData.snapshot.children}'); //Issue Here Say MG:
       if (onData.snapshot.exists) {
         // List driverData = [];
         nearByDriversData.clear();
@@ -2690,6 +2690,52 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
       // context.read<BookingBloc>().add(UpdateEvent());
     });
   }
+
+//   void nearByVechileCheckStream(
+//   BuildContext context,
+//   dynamic vsync,
+//   LatLng currentLatLng,
+// ) {
+//   GeoHasher geo = GeoHasher();
+//   const double lat = 0.0144927536231884;
+//   const double lon = 0.0181818181818182;
+
+//   final lowerLat = currentLatLng.latitude - (lat * 1.24);
+//   final lowerLon = currentLatLng.longitude - (lon * 1.24);
+//   final greaterLat = currentLatLng.latitude + (lat * 1.24);
+//   final greaterLon = currentLatLng.longitude + (lon * 1.24);
+
+//   final lower = geo.encode(lowerLon, lowerLat);
+//   final higher = geo.encode(greaterLon, greaterLat);
+
+//   nearByVechileSubscription?.cancel(); // cancel old
+
+//   nearByVechileSubscription = FirebaseDatabase.instance
+//       .ref('drivers')
+//       .orderByChild('g')
+//       .startAt(lower)
+//       .endAt(higher)
+//       .onValue
+//       .listen((event) {
+//     final snapshot = event.snapshot;
+
+//     if (snapshot.exists) {
+//       final children = snapshot.children;
+
+//       // Do not process heavy logic here; offload it
+//       Future.microtask(() {
+//         nearByDriversData.clear();
+
+//         for (final element in children) {
+//           nearByDriversData.add(element.value);
+//         }
+
+//         checkNearByEta(nearByDriversData, vsync); // Keep this light too
+//       });
+//     }
+//   });
+// }
+
 
   Future<void> checkNearByEta(List<dynamic> driverData, vsync) async {
     final BitmapDescriptor bikeMarker = await BitmapDescriptor.asset(

@@ -82,6 +82,8 @@ class _BookingPageState extends State<BookingPage>
   // BookingBloc().navigatorPop(event, emit);
 
     BookingBloc().add(BookingNavigatorPopEvent());
+    // 
+    // BookingBloc().animationController?.dispose();
     // BookingBloc().animationController1?.dispose();
     
     WidgetsBinding.instance.removeObserver(this);

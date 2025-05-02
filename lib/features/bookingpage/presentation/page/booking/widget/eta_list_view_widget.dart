@@ -169,11 +169,11 @@ class EtaListViewWidget extends StatelessWidget {
                       Container(
                         width: size.width,
                         height: size.width * 0.15,
-                        decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).disabledColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
+                        // decoration: BoxDecoration(
+                        //   color:
+                        //       Theme.of(context).disabledColor.withOpacity(0.1),
+                        //   borderRadius: BorderRadius.circular(5),
+                        // ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -190,13 +190,16 @@ class EtaListViewWidget extends StatelessWidget {
                               child: Container(
                                 width: size.width * 0.45,
                                 decoration: BoxDecoration(
+                                  color: Theme.of(context).cardColor, 
                                     border:
                                         !context.read<BookingBloc>().isRoundTrip
                                             ? Border.all(
                                                 color: Theme.of(context)
-                                                    .primaryColorDark
-                                                    .withOpacity(0.5))
-                                            : null,
+                                                    .primaryColor)
+                                            : Border.all(
+                                              width: 0.5,
+                                                color: Theme.of(context)
+                                                    .disabledColor.withAlpha(100)),
                                     borderRadius: BorderRadius.circular(5)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
@@ -224,7 +227,7 @@ class EtaListViewWidget extends StatelessWidget {
                                             Icon(Icons.check_circle,
                                                 size: 20,
                                                 color: Theme.of(context)
-                                                    .primaryColorDark)
+                                                    .primaryColor)
                                         ],
                                       ),
                                       MyText(
@@ -259,13 +262,16 @@ class EtaListViewWidget extends StatelessWidget {
                               child: Container(
                                 width: size.width * 0.45,
                                 decoration: BoxDecoration(
+                                  color: Theme.of(context).cardColor,
                                     border:
                                         context.read<BookingBloc>().isRoundTrip
                                             ? Border.all(
                                                 color: Theme.of(context)
-                                                    .primaryColorDark
-                                                    .withOpacity(0.5))
-                                            : null,
+                                                    .primaryColor)
+                                            : Border.all(
+                                              width: 0.5,
+                                                color: Theme.of(context)
+                                                    .disabledColor.withAlpha(100)),
                                     borderRadius: BorderRadius.circular(5)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
@@ -293,7 +299,7 @@ class EtaListViewWidget extends StatelessWidget {
                                             Icon(Icons.check_circle,
                                                 size: 20,
                                                 color: Theme.of(context)
-                                                    .primaryColorDark)
+                                                    .primaryColor)
                                         ],
                                       ),
                                       MyText(
@@ -754,9 +760,10 @@ class EtaListViewWidget extends StatelessWidget {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 CustomCard(
+                                                  blurRadius: 2,
                                                   
           padding: const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 4),
+                                          horizontal: 8, vertical: 2),
                                           color: Theme.of(context).primaryColor,
 
                                                   child: MyText(
@@ -765,8 +772,8 @@ class EtaListViewWidget extends StatelessWidget {
                                                     textStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
                                                         fontSize:
                                                             (eta.hasDiscount && !context.read<BookingBloc>().showBiddingVehicles)
-                                                                ? 14
-                                                                : 16,
+                                                                ? 12
+                                                                : 14,
                                                         fontWeight: (eta
                                                                     .hasDiscount &&
                                                                 !context

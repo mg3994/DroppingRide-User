@@ -155,7 +155,7 @@ class InvoicePage extends StatelessWidget {
            final requestBillData = context.read<BookingBloc>().requestBillData;
             return (requestBillData != null) 
             ? Scaffold(
-              backgroundColor: Theme.of(context).shadowColor.withOpacity(0.4),
+              backgroundColor: Theme.of(context).disabledColor.withAlpha(100),
               resizeToAvoidBottomInset: false,
               body: Stack(
                 children: [
@@ -168,7 +168,7 @@ class InvoicePage extends StatelessWidget {
                           padding: EdgeInsets.all(size.width * 0.025),
                           width: size.width,
                           height: size.height * 0.9,
-                          color: const Color(0xffDEDCDC),
+                          color:const Color(0xffDEDCDC),// Theme.of(context).scaffoldBackgroundColor,//Colors.red,//
                           child: ClipPath(
                             clipper: ShapePainterCenter(),
                             child: Container(
@@ -959,9 +959,10 @@ class InvoicePage extends StatelessWidget {
                         ),
                       )),
                   Positioned(
+                 
                       child: SafeArea(
-                    child: Column(
-                       crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: size.width * 0.05),
                         Container(

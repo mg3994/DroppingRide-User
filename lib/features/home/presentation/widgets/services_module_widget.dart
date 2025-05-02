@@ -240,7 +240,7 @@ class ServicesModuleWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
                       onTap: () {
-                        if (context
+                        if (context //Commented By MG: => Issue here , also Memory Leak
                             .read<HomeBloc>()
                             .pickupAddressList
                             .isNotEmpty) {

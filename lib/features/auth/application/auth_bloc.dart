@@ -182,8 +182,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> verifyPhoneNumber(String phoneNumber, context) async {
+  Future<void> verifyPhoneNumber(String phoneNumber, context, ) async {
+
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    // Set preferred language for Firebase Auth
+    firebaseAuth.setLanguageCode(  'en'); // TODO: change to dynamic language
     await firebaseAuth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {

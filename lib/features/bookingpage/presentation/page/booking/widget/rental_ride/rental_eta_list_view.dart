@@ -25,95 +25,113 @@ class RentalEtaListViewWidget extends StatelessWidget {
       value: cont.read<BookingBloc>(),
       child: BlocBuilder<BookingBloc, BookingState>(
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomCard(
-                  
-                  padding: EdgeInsets.all(4),
-                  child: Column(
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomCard(
+                padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.02,
+                    vertical: size.height * 0.02),
+                margin: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.02, vertical: size.width * 0.02),
+                border: Border.all(
+                  color: Theme.of(context).dividerColor.withOpacity(0.4),
+                  width: 0.8,
+                ),
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                  // SizedBox(height: size.width * 0.02),
-                  // const Divider(),
-                  SizedBox(height: size.width * 0.02),
-                    DottedLine( // ADDED: BY MG: Dotted line
-                                      dashLength: 2,
-                                      dashGapLength: 2,
-                                      dashRadius: 1,
-                                      lineThickness: 1,
-                                      dashColor: Theme.of(context).dividerColor,
-                                    ),
-                  SizedBox(height: size.width * 0.02),
+                      // SizedBox(height: size.width * 0.02),
+                      // const Divider(),
+                      SizedBox(height: size.width * 0.02),
+                      DottedLine(
+                        // ADDED: BY MG: Dotted line
+                        dashLength: 2,
+                        dashGapLength: 2,
+                        dashRadius: 1,
+                        lineThickness: 1,
+                        dashColor: Theme.of(context).dividerColor,
+                      ),
+                      SizedBox(height: size.width * 0.02),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      MyText(
-                        text: AppLocalizations.of(context)!.selectedPackage,
-                        textStyle:
-                            Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          MyText(
+                            text: AppLocalizations.of(context)!.selectedPackage,
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
                                   color: Theme.of(context).disabledColor,
                                   fontWeight: FontWeight.w600,
                                 ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context
-                              .read<BookingBloc>()
-                              .add(ShowRentalPackageListEvent());
-                        },
-                        child: MyText(
-                          text: AppLocalizations.of(context)!.edit,
-                          textStyle:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          ),
+                          InkWell(
+                            onTap: () {
+                              context
+                                  .read<BookingBloc>()
+                                  .add(ShowRentalPackageListEvent());
+                            },
+                            child: MyText(
+                              text: AppLocalizations.of(context)!.edit,
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
                                     color: Theme.of(context).primaryColorDark,
                                     fontWeight: FontWeight.bold,
                                   ),
-                        ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                          DottedLine( // ADDED: BY MG: Dotted line
-                                    dashLength: 2,
-                                    dashGapLength: 2,
-                                    dashRadius: 1,
-                                    lineThickness: 1,
-                                    dashColor: Theme.of(context).dividerColor,
-                                  ),
-                  SizedBox(height: size.width * 0.02),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(
-                            color: Theme.of(context)
-                                .primaryColorDark
-                                .withOpacity(0.7)),
-                        color: AppColors.darkGrey.withOpacity(0.3)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: MyText(
-                        text: context
-                            .read<BookingBloc>()
-                            .rentalPackagesList[
-                                context.read<BookingBloc>().selectedPackageIndex]
-                            .packageName,
-                        textStyle:
-                            Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      DottedLine(
+                        // ADDED: BY MG: Dotted line
+                        dashLength: 2,
+                        dashGapLength: 2,
+                        dashRadius: 1,
+                        lineThickness: 1,
+                        dashColor: Theme.of(context).dividerColor,
+                      ),
+                      SizedBox(height: size.width * 0.02),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(
+                                color: Theme.of(context)
+                                    .primaryColorDark
+                                    .withOpacity(0.7)),
+                            color: AppColors.darkGrey.withOpacity(0.3)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: MyText(
+                            text: context
+                                .read<BookingBloc>()
+                                .rentalPackagesList[context
+                                    .read<BookingBloc>()
+                                    .selectedPackageIndex]
+                                .packageName,
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  // 
-                                ]),
-                ),
-                SizedBox(height: size.width * 0.02),
-                // const Divider(),
-                SizedBox(height: size.width * 0.01),
+                      //
+                    ]),
+              ),
+              SizedBox(height: size.width * 0.02),
+              // const Divider(),
+              SizedBox(height: size.width * 0.01),
+              ///////
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children:[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -154,8 +172,8 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .copyWith(
-                                          color: Theme.of(context)
-                                              .primaryColorDark,
+                                          color:
+                                              Theme.of(context).primaryColorDark,
                                           fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(width: size.width * 0.02),
@@ -168,14 +186,13 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                   .showDateTime
                                   .isNotEmpty) ...[
                                 MyText(
-                                  text:
-                                      context.read<BookingBloc>().showDateTime,
+                                  text: context.read<BookingBloc>().showDateTime,
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .bodySmall!
                                       .copyWith(
-                                          color: Theme.of(context)
-                                              .primaryColorDark),
+                                          color:
+                                              Theme.of(context).primaryColorDark),
                                 ),
                                 Icon(Icons.cancel_outlined,
                                     size: 18,
@@ -221,24 +238,19 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                           .length ==
                                       2
                                   ? context.read<BookingBloc>().currentSizeTwo
-                                  : context
-                                      .read<BookingBloc>()
-                                      .currentSizeThree;
+                                  : context.read<BookingBloc>().currentSizeThree;
                           context
                               .read<BookingBloc>()
                               .updateScrollHeight(selectedSize);
                           context.read<BookingBloc>().scrollToBottomFunction(
-                              context
-                                  .read<BookingBloc>()
-                                  .dropAddressList
-                                  .length);
-
+                              context.read<BookingBloc>().dropAddressList.length);
+                
                           // Jump to the selected size position in the scroll controller
                           context
                               .read<BookingBloc>()
                               .etaScrollController
                               .jumpTo(selectedSize);
-
+                
                           // For Check near ETA
                           context.read<BookingBloc>().checkNearByEta(
                               context.read<BookingBloc>().nearByDriversData,
@@ -252,18 +264,17 @@ class RentalEtaListViewWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: (index ==
                                     0) // Highlight the item now at the top
-                                ? Theme.of(context)
-                                    .primaryColor
-                                    .withOpacity(0.2)
-                                : Theme.of(context)
-                                    .cardColor,
+                                ? Theme.of(context).primaryColor.withOpacity(0.2)
+                                : Theme.of(context).cardColor,
                             border: Border.all(
-                              width: 1.2,
+                                width: 1.2,
                                 color: (index == 0) // Selected item at the top
                                     ? Theme.of(context)
                                         .primaryColor //
                                         .withOpacity(0.7)
-                                    : Theme.of(context).disabledColor.withOpacity(0.4)),
+                                    : Theme.of(context)
+                                        .disabledColor
+                                        .withOpacity(0.4)),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Padding(
@@ -279,8 +290,7 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                       height: 50,
                                       width: 50,
                                       fit: BoxFit.cover,
-                                      placeholder: (context, url) =>
-                                          const Center(
+                                      placeholder: (context, url) => const Center(
                                         child: Loader(),
                                       ),
                                       errorWidget: (context, url, error) =>
@@ -292,8 +302,7 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         // SizedBox(height: size.width * 0.01),
                                         SizedBox(
@@ -315,8 +324,7 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                           children: [
                                             Icon(
                                               Icons.timer,
-                                              color:
-                                                  Theme.of(context).hintColor,
+                                              color: Theme.of(context).hintColor,
                                               size: 14,
                                             ),
                                             SizedBox(width: size.width * 0.005),
@@ -329,13 +337,13 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                                           .read<BookingBloc>()
                                                           .nearByEtaVechileList
                                                           .elementAt(context
-                                                              .read<
-                                                                  BookingBloc>()
+                                                              .read<BookingBloc>()
                                                               .nearByEtaVechileList
-                                                              .indexWhere((element) =>
-                                                                  element
-                                                                      .typeId ==
-                                                                  eta.typeId))
+                                                              .indexWhere(
+                                                                  (element) =>
+                                                                      element
+                                                                          .typeId ==
+                                                                      eta.typeId))
                                                           .duration
                                                           .isNotEmpty)
                                                   ? context
@@ -344,11 +352,9 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                                       .elementAt(context
                                                           .read<BookingBloc>()
                                                           .nearByEtaVechileList
-                                                          .indexWhere(
-                                                              (element) =>
-                                                                  element
-                                                                      .typeId ==
-                                                                  eta.typeId))
+                                                          .indexWhere((element) =>
+                                                              element.typeId ==
+                                                              eta.typeId))
                                                       .duration
                                                   : '--',
                                               textStyle: Theme.of(context)
@@ -376,12 +382,12 @@ class RentalEtaListViewWidget extends StatelessWidget {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          CustomCard(
-                                            
-                                            padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),
+                                          CustomCard( // TODO: Here cange the ver and hor
+                                            borderRadius: 2,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: size.width * 0.01, vertical: size.width * 0.01),
                                             color: Theme.of(context).primaryColor,
                                             child: MyText(
                                               text:
@@ -436,9 +442,9 @@ class RentalEtaListViewWidget extends StatelessWidget {
                       );
                     },
                   ),
-                ),
-              ],
-            ),
+                ),]),
+              ),
+            ],
           );
         },
       ),

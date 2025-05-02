@@ -43,7 +43,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                 .enableModulesForApplications ==
                             'both')
                       CustomCard(
-                        padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 2),
+                        padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 2),
                         child: MyText(
                           text: AppLocalizations.of(context)!.service,
                           textStyle:
@@ -53,23 +53,26 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                   ),
                         ),
                       ),
-                    // InkWell(
-                    //   onTap: () {
-                    //     Navigator.pop(context);
-                    //   },
-                    //   child: Row(
-                    //     children: [
-                    //       MyText(text: AppLocalizations.of(context)!.cancel,
-                    //       textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 16),),
-                    //       const Icon(Icons.cancel_outlined,size:20)
-                    //     ],
-                    //   ),
-                    // )
+                   CustomCard(
+                        padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 2),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                          children: [
+                            MyText(text: AppLocalizations.of(context)!.cancel,
+                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.red),),
+                            const Icon(Icons.cancel_outlined,size:20,color: AppColors.red)
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
                 SizedBox(height: size.width * 0.02),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     if ((arg.userData.enableModulesForApplications == 'both' ||
                             arg.userData.enableModulesForApplications ==
@@ -178,15 +181,15 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                   ],
                 ),
                 SizedBox(height: size.width * 0.02),
-                if (context.read<BookingBloc>().userData != null &&
-                    context
-                            .read<BookingBloc>()
-                            .userData!
-                            .enableModulesForApplications ==
-                        'both') ...[
-                  const Divider(),
-                  SizedBox(height: size.width * 0.02),
-                ],
+                // if (context.read<BookingBloc>().userData != null &&
+                //     context
+                //             .read<BookingBloc>()
+                //             .userData!
+                //             .enableModulesForApplications ==
+                //         'both') ...[
+                //   const Divider(),
+                //   SizedBox(height: size.width * 0.02),
+                // ],
                 MyText(
                   text: AppLocalizations.of(context)!.selectPackage,
                   textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -242,7 +245,7 @@ Widget packageList(BuildContext context, BookingPageArguments arg) {
                                       : Theme.of(context)
                                           .cardColor,
                                   border: Border.all(
-                                    width: 1.5,
+                                    width: 0.9,
                                       color: (index ==
                                               context
                                                   .read<BookingBloc>()
