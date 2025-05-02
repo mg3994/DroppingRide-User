@@ -240,14 +240,14 @@ class ServicesModuleWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 10),
                     child: InkWell(
                       onTap: () {
-                        if (context //Commented By MG: => Issue here , also Memory Leak
-                            .read<HomeBloc>()
-                            .pickupAddressList
-                            .isNotEmpty) {
+                        // if (context //Commented By MG: => Issue here , also Memory Leak
+                        //     .read<HomeBloc>()
+                        //     .pickupAddressList
+                        //     .isNotEmpty) {
                           context
                               .read<HomeBloc>()
                               .add(ServiceTypeChangeEvent(serviceTypeIndex: 3));
-                        }
+                        // }
                       },
                       child: Container(
                         height: size.width * 0.19,

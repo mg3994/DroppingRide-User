@@ -207,7 +207,7 @@ class UserDetail {
       chatId: json["conversation_id"] ?? '',
       mapType: json["map_type"] ?? '',
       hasOngoingRide: json["has_ongoing_ride"] ?? false,
-      showOutstationRideFeature: json["show_outstation_ride_feature"] ?? '',
+      showOutstationRideFeature: json["show_outstation_ride_feature"] ?? '0',// zero is added by manish MG:
       showTaxiOutstationRideFeature:
           json["show_taxi_outstation_ride_feature"] ?? '0',
       showDeliveryOutstationRideFeature:
