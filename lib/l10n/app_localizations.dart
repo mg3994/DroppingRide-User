@@ -1290,7 +1290,7 @@ abstract class AppLocalizations {
   /// No description provided for @driverArriveText.
   ///
   /// In en, this message translates to:
-  /// **'The captain will arrive within ** minutes be ready to meet him.'**
+  /// **'The Driver will arrive within ** minutes be ready to meet him.'**
   String get driverArriveText;
 
   /// No description provided for @rideCharge.
