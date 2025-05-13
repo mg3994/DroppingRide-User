@@ -22,8 +22,8 @@ class AppConstants {
 
   static String mapKey =
       (Platform.isAndroid) ?  "AIzaSyAoi9wM6k_nXs7W6-5CLv3MuoEDuWoiRcA" : 'ios map key';
-  static const String privacyPolicy = 'https://webapp.droppingride.com/privacy';
-  static const String termsCondition = 'https://webapp.droppingride.com/terms';
+  static const String privacyPolicy = 'https://docs.google.com/document/d/1zOWR2AoJIxrMTCkgRm6KJNU37APQmg-89a_65mvpMj4/edit?usp=sharing';
+  static const String termsCondition = 'https://docs.google.com/document/d/1tlgCMtki56tvbjVOc1Wf_vPS3o_7NK4u5pQk2Vs1gl4/edit?usp=sharing';
 
   // static List<LocaleLanguageList> languageList = [
   //   LocaleLanguageList(name: 'English', lang: 'en'),

@@ -655,7 +655,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                           .payAtDrop)
                                                       ? Theme.of(context)
                                                           .primaryColor
-                                                          .withOpacity(0.8)
+                                                          .withAlpha(50)
                                                       : Theme.of(context)
                                                           .dividerColor
                                                           .withOpacity(0.8),
@@ -726,7 +726,7 @@ class DeliveryBookingWidget extends StatelessWidget {
                                                             .payAtDrop)
                                                         ? Theme.of(context)
                                                             .primaryColor
-                                                            .withOpacity(0.8)
+                                                            .withAlpha(50)
                                                         : Theme.of(context)
                                                             .dividerColor
                                                             .withOpacity(0.8),

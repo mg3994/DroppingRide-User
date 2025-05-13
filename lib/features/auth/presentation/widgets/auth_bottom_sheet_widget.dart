@@ -159,7 +159,7 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
                         hintText: AppLocalizations.of(context)!
                             .enterMobileNumber,
                         prefixConstraints:
-                            BoxConstraints(maxWidth: size.width * 0.2),
+                            BoxConstraints(maxWidth: size.width * 0.25),
                         prefixIcon: 
                         // !widget.isLoginByEmail
                         //     ? 
@@ -171,7 +171,7 @@ class AuthBottomSheetWidgetState extends State<AuthBottomSheetWidget>
                                       Container(
                                         height: 22,
                                         width: 28,
-                                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                                        margin: const EdgeInsets.symmetric(horizontal: 4),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.rectangle,
                                           color: Theme.of(context).canvasColor,
